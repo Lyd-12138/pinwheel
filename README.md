@@ -33,7 +33,7 @@ Mac 完整解压后运行“安装风车笔记.command”，安装到 ~/Applicat
 
 ## 开发
 
-需要 Node.js 24.19+、npm，以及支持 Electron 的桌面环境。
+需要 Node.js 24.19+、npm，以及支持 Pinwheel 的桌面环境。
 
 ```sh
 npm ci
@@ -42,7 +42,7 @@ npm test
 npm start
 ```
 
-Electron 运行时未成功下载时运行 `node download-runtime.mjs`。仅做构建和单元测试时可 `npm ci --ignore-scripts`，此时不能直接启动 Electron。
+Pinwheel 运行时未成功下载时运行 `node download-runtime.mjs`。仅做构建和单元测试时可 `npm ci --ignore-scripts`，此时不能直接启动 Pinwheel。
 
 ```sh
 npm run build:harmony
