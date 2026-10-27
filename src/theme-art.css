@@ -1,0 +1,179 @@
+/* Theme artwork is static, local CSS. It sits below the editable document. */
+:root{--art-image:none;--art-size:100% 100%;--art-position:center;--rail-art:none}
+.editor-column:after{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;background-image:var(--art-image);background-size:var(--art-size);background-position:var(--art-position);background-repeat:no-repeat}
+.sidebar{position:relative;isolation:isolate;box-shadow:6px 0 32px #00000008}
+.sidebar:before{content:'';position:absolute;inset:0 0 auto;height:350px;z-index:0;pointer-events:none;background-image:var(--rail-art);background-size:cover;mask-image:linear-gradient(#000 30%,transparent)}
+.sidebar>*{position:relative;z-index:1}
+.brand-mark{box-shadow:0 7px 20px color-mix(in srgb,var(--accent) 22%,transparent)}
+.brand strong{font-family:var(--heading-font,var(--ui-font));letter-spacing:2px}
+.brand strong span{letter-spacing:2.4px;margin-top:2px}
+.local-badge{border-radius:20px;padding:3px 7px}
+.topbar{background:color-mix(in srgb,var(--bg) 94%,var(--accent) 6%)}
+.toolbar{background:color-mix(in srgb,var(--bg) 98%,var(--accent) 2%)}
+.export-button{border-radius:8px;background:var(--accent-bg);border-color:color-mix(in srgb,var(--accent) 35%,var(--border));color:var(--accent);font-weight:600}
+.mode-switch{background:var(--panel);border:1px solid var(--border)}
+.sidebar .workspace-button{border:1px solid var(--border);background:color-mix(in srgb,var(--sidebar) 72%,var(--accent-bg) 28%);border-radius:12px}
+.sidebar .search{border-radius:10px;box-shadow:0 3px 10px #00000006}
+.sidebar .sidebar-tabs>button{font-weight:600;letter-spacing:.8px}
+.note-item.active,.outline-list>button.active{box-shadow:inset 3px 0 var(--accent),0 4px 14px #00000007}
+.note-item.active{border-radius:9px}
+.rich-editor{caret-color:var(--accent)}
+:root:not([data-theme-style=plain]) .rich-editor>h1{font-size:clamp(30px,calc(var(--editor-size)*2.65),60px);line-height:1.35;margin-bottom:30px;letter-spacing:-1px}
+:root:not([data-theme-style=plain]) .rich-editor>h1:first-child{padding-top:8px}
+.rich-editor h2{letter-spacing:.3px}
+.rich-editor blockquote{border-color:var(--accent);background:color-mix(in srgb,var(--panel) 90%,transparent);color:var(--text);border-radius:2px 14px 14px 2px;box-shadow:0 5px 20px #00000005}
+.rich-editor blockquote p{opacity:.88}
+.rich-editor .code-block{background:var(--code);border-radius:12px;box-shadow:0 8px 24px #0000000e}
+.rich-editor .code-block-bar{background:color-mix(in srgb,var(--code) 88%,var(--accent) 12%);padding:9px 15px;letter-spacing:.5px}
+.rich-editor .code-block pre{background:var(--code)}
+.rich-editor th{color:var(--accent)}
+.rich-editor a{text-decoration-color:color-mix(in srgb,var(--accent) 45%,transparent);text-decoration-thickness:1.5px}
+.rich-editor hr{border:0;height:1px;background:linear-gradient(90deg,var(--accent),var(--border),transparent)}
+.modal{border-radius:20px}.modal-shade{background:#080c226f;backdrop-filter:blur(10px)}
+.theme-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.modal.settings-modal{width:860px}
+.theme-card{padding:8px;border-radius:12px;gap:9px;transition:border-color .15s,box-shadow .15s}
+.theme-card .theme-sample{height:98px;border-radius:7px;padding:13px 12px 8px 35px;font-size:28px;box-shadow:inset 0 0 0 1px #ffffff14}
+.theme-card .theme-sample:before{width:24px}
+.theme-card .theme-sample i{margin-top:7px;height:3px;position:relative;z-index:1}
+.theme-card>span:nth-child(2){font-size:12px;font-weight:600;letter-spacing:1px}
+.theme-card>small{font-size:9px;white-space:normal;line-height:1.5;margin:0}
+.theme-card.chosen{box-shadow:0 0 0 2px var(--accent),0 7px 20px #00000012}
+.theme-card.chosen:after{content:'✓';position:absolute;right:12px;top:12px;width:19px;height:19px;display:grid;place-items:center;background:var(--sample-accent);color:var(--sample-bg);border-radius:50%;font-size:12px;font-weight:700}
+
+/* Daylight: a warm art gallery with a dark plum rail and a peach prism. */
+:root[data-theme-style=light]{--art-image:radial-gradient(ellipse 260px 260px at 100% 0%,#eab3d34d 0 65%,transparent 65.4%),conic-gradient(from 220deg at 100% 0%,transparent 0 16deg,#ffbd7445 16deg 38deg,transparent 38deg 55deg,#e9919e24 55deg 75deg,transparent 75deg),radial-gradient(ellipse at 0% 100%,#ffcb8735,transparent 50%);--rail-art:radial-gradient(ellipse at 0 0,#965260 0,transparent 65%),linear-gradient(145deg,#4d3153,transparent)}
+:root:is([data-theme-style=light],[data-theme-style=paper]) .sidebar{--text:#fff0e5;--muted:#d7b9c8;--border:#ffffff24;--accent:#ffd18b;--accent-bg:#ffffff19;--hover:#ffffff13;--bg:#ffffff12;color:var(--text);background:var(--sidebar)}
+:root:is([data-theme-style=light],[data-theme-style=paper]) .sidebar .search{background:#ffffff0c}
+:root:is([data-theme-style=light],[data-theme-style=paper]) .sidebar input{color:var(--text)}
+:root:is([data-theme-style=light],[data-theme-style=paper]) .note-item.active{background:linear-gradient(110deg,#ffcc8b29,#ffffff12);color:#ffe4b7}
+:root[data-theme-style=light] .brand-mark{background:#ffd18b;color:#38213e;border-radius:50% 50% 50% 5px;box-shadow:5px 5px 0 #d4779270}
+:root[data-theme-style=light] .rich-editor h1{color:#713945;font-weight:500}
+:root[data-theme-style=light] .rich-editor h2{border-bottom:2px solid #e8ad8c;width:fit-content;max-width:100%;padding-right:42px}
+:root[data-theme-style=light] .rich-editor blockquote{border-color:#df8d70;background:#fff0dfe8}
+.theme-card.light .theme-sample{background:conic-gradient(from 220deg at 100% 0%,#fffaf2 0 15deg,#f8c68b 15deg 40deg,#f5dae4 40deg 75deg,#fffaf2 75deg)}
+
+/* Midnight: electric green, sharp rules and a technical grid. */
+:root[data-theme-style=dark]{--art-image:linear-gradient(135deg,transparent 70%,#b8ff650b 70% 71%,transparent 71% 74%,#b8ff6508 74% 75%,transparent 75%),radial-gradient(ellipse at 100% 0,#28466544,transparent 65%);--rail-art:repeating-linear-gradient(135deg,#b8ff6508 0 1px,transparent 1px 13px)}
+:root[data-theme-style=dark] .brand-mark{border-radius:3px;background:#b8ff65;color:#0c1721;box-shadow:5px 5px 0 #31495c}
+:root[data-theme-style=dark] .sidebar-tabs>button[aria-selected=true]{color:#b8ff65;border-bottom:2px solid #b8ff65}
+:root[data-theme-style=dark] .note-item,:root[data-theme-style=dark] .search,:root[data-theme-style=dark] .mode-switch,:root[data-theme-style=dark] .rich-editor .code-block{border-radius:3px}
+:root[data-theme-style=dark] .note-item.active{background:#b8ff6514;box-shadow:inset 3px 0 #b8ff65}
+:root[data-theme-style=dark] .rich-editor h1{color:#f0f7ff;letter-spacing:-1.8px;font-weight:750;text-shadow:3px 3px 0 #b8ff651e}
+:root[data-theme-style=dark] .rich-editor h2{border-bottom:1px solid #b8ff6555;padding-bottom:11px}
+:root[data-theme-style=dark] .rich-editor blockquote{border-radius:0;border-left-width:4px;background:#b8ff650d}
+.theme-card.dark .theme-sample{background:repeating-linear-gradient(90deg,transparent 0 22px,#b8ff6514 22px 23px),linear-gradient(145deg,#101522,#1a3043)}
+
+/* Manuscript: red cloth binding, cream stock and an editorial double rule. */
+:root[data-theme-style=paper]{--art-image:linear-gradient(90deg,transparent 96%,#a232380a 96% 96.2%,transparent 96.2%),linear-gradient(0deg,#a2323807,transparent 35%);--rail-art:radial-gradient(ellipse at 100% 0,#b14f51,transparent 80%)}
+:root[data-theme-style=paper] .sidebar{border-right:4px solid #b88b58;box-shadow:7px 0 0 #f1dfbc}
+:root[data-theme-style=paper] .brand-mark{background:#f8dfaa;color:#692d36;border:1px solid #e7be78;border-radius:3px;box-shadow:3px 3px 0 #220c2280}
+:root[data-theme-style=paper] .brand strong{font-family:Georgia,SimSun,serif;letter-spacing:4px}
+:root[data-theme-style=paper] .rich-editor h1{color:#852a34;font-weight:600;border-top:5px solid #a23238;border-bottom:1px solid #a23238;padding:16px 0 20px;letter-spacing:2px}
+:root[data-theme-style=paper] .rich-editor h2{border-bottom:3px double #bba07b;font-weight:600}
+:root[data-theme-style=paper] .rich-editor blockquote{border-left:4px solid #a23238;background:#f4e3c3e8;border-radius:0;font-style:italic}
+:root[data-theme-style=paper] .rich-editor .code-block{border-radius:2px;border-color:#c7ac85;box-shadow:4px 4px 0 #bfa17d25}
+.theme-card.paper .theme-sample{border-top:4px solid #a23238;background:repeating-linear-gradient(0deg,transparent 0 3px,#94734a08 3px 4px),#fff2d9;color:#852a34}
+
+/* Tidal: deep water, luminous circular wavefronts and cyan light. */
+:root[data-theme-style=ocean]{--art-image:radial-gradient(circle at 108% 5%,transparent 0 170px,#66e7ef24 171px 172px,transparent 173px 204px,#66e7ef1c 205px 206px,transparent 207px 240px,#66e7ef12 241px 242px,transparent 243px),radial-gradient(ellipse at 100% 0,#1279b955,transparent 62%);--rail-art:radial-gradient(ellipse at 0 0,#19b9b777,transparent 70%)}
+:root[data-theme-style=ocean] .sidebar{background:linear-gradient(170deg,#064b62,#052b45 45%,#071d34)}
+:root[data-theme-style=ocean] .brand-mark{background:linear-gradient(140deg,#a0f7ec,#47b4ed);color:#053445;border-radius:15px 15px 15px 2px;box-shadow:0 5px 24px #66e7ef28}
+:root[data-theme-style=ocean] .rich-editor h1{color:#a2f5fa;font-weight:700;letter-spacing:1px}
+:root[data-theme-style=ocean] .rich-editor h2{color:#8cddf1;border-color:#5bdded5c}
+:root[data-theme-style=ocean] .rich-editor blockquote{color:#c9f3fa;background:#13475ce8;border-color:#66e7ef}
+:root[data-theme-style=ocean] .note-item.active{background:linear-gradient(100deg,#66e7ef2c,#1c607c44);border:1px solid #66e7ef3a}
+.theme-card.ocean .theme-sample{background:radial-gradient(circle at 100% 0,transparent 25px,#66e7ef44 26px 27px,transparent 28px 43px,#66e7ef2c 44px 45px,transparent 46px),linear-gradient(135deg,#0c425c,#08243e)}
+
+/* Blossom: a rose and lilac dream with generous ornamental curves. */
+:root[data-theme-style=sakura]{--art-image:radial-gradient(ellipse 160px 255px at 100% 0%,#e489c32b 0 70%,transparent 70.5%),radial-gradient(ellipse 270px 140px at 90% 0%,#c7a1e62e 0 70%,transparent 70.5%),radial-gradient(ellipse at 0% 100%,#f3b0db44,transparent 65%);--rail-art:radial-gradient(ellipse at 0% 0%,#f28cc477,transparent 65%),radial-gradient(ellipse at 100% 10%,#b6a0ed77,transparent 75%)}
+:root[data-theme-style=sakura] .sidebar{background:linear-gradient(165deg,#f9cfe4,#e9d9fa 60%,#f9e5f1)}
+:root[data-theme-style=sakura] .brand-mark{background:linear-gradient(145deg,#d7438f,#9d50ac);color:#fff4fc;border-radius:50% 50% 50% 8px;box-shadow:4px 4px 0 #fff5}
+:root[data-theme-style=sakura] .rich-editor h1{color:#ae236f;font-weight:500;letter-spacing:2px}
+:root[data-theme-style=sakura] .rich-editor h2{color:#97418c;border-bottom:2px dotted #cd85b8;padding-bottom:12px}
+:root[data-theme-style=sakura] .note-item.active{background:#fff7fbd9;border:1px solid #eeb1d4;box-shadow:0 4px 14px #b7207710}
+:root[data-theme-style=sakura] .search,:root[data-theme-style=sakura] .mode-switch,:root[data-theme-style=sakura] .note-item{border-radius:16px}
+:root[data-theme-style=sakura] .rich-editor blockquote{border-radius:2px 24px 24px 2px;background:#ffe7f3eb;border-color:#c14593;color:#804467}
+:root[data-theme-style=sakura] .rich-editor .code-block{border-radius:16px;border-color:#e7bfdc}
+.theme-card.sakura .theme-sample{background:radial-gradient(ellipse at 100% 0,#ceaaeb80 0 33%,transparent 34%),radial-gradient(ellipse at 70% 0,#f2a4cf88 0 25%,transparent 26%),#fff6fc;color:#a92b77}
+
+/* Soda: acid lime, cobalt and lilac with graphic offset shadows. */
+:root[data-theme-style=mint]{--art-image:radial-gradient(circle at 100% 0,#c6adff70 0 125px,transparent 126px),radial-gradient(circle at 100% 0,transparent 0 147px,#3559b32b 148px 150px,transparent 151px),linear-gradient(135deg,transparent 87%,#f5a2d43b 87% 94%,transparent 94%);--rail-art:radial-gradient(circle at 90% 0,#edfca988 0 100px,transparent 101px),repeating-linear-gradient(135deg,transparent 0 18px,#3e603312 18px 19px)}
+:root[data-theme-style=mint] .sidebar{background:#caf779;border-right:2px solid #244432}
+:root[data-theme-style=mint] .brand-mark{background:#385bc2;color:#f0ffb9;border-radius:9px;border:2px solid #203c30;box-shadow:4px 4px 0 #203c30}
+:root[data-theme-style=mint] .brand strong{font-family:var(--ui-font);font-weight:800;letter-spacing:1px}
+:root[data-theme-style=mint] .search,:root[data-theme-style=mint] .workspace-button{border:1.5px solid #536e3b;border-radius:7px;box-shadow:3px 3px 0 #25473222}
+:root[data-theme-style=mint] .note-item.active{background:#ded8ff;color:#243b8b;border:1.5px solid #263f31;box-shadow:3px 3px 0 #263f31;border-radius:6px}
+:root[data-theme-style=mint] .rich-editor h1{color:#2b4599;font-weight:800;letter-spacing:-1.5px;text-shadow:3px 3px 0 #c7dd8c}
+:root[data-theme-style=mint] .rich-editor h2{border:0;padding-left:12px;border-left:6px solid #385bc2;color:#294829}
+:root[data-theme-style=mint] .rich-editor blockquote{background:#e1dcffe8;border:1.5px solid #526192;border-left:5px solid #385bc2;border-radius:5px;box-shadow:4px 4px 0 #385bc21b;color:#34446b}
+:root[data-theme-style=mint] .rich-editor .code-block{border:1.5px solid #59704a;box-shadow:4px 4px 0 #506e352e;border-radius:7px}
+.theme-card.mint .theme-sample{background:radial-gradient(circle at 100% 0,#c6adff 0 42px,transparent 43px),repeating-linear-gradient(0deg,transparent 0 17px,#57934418 17px 18px),#f5ffe9;border:1.5px solid #536e3b;color:#385bc2;box-shadow:3px 3px 0 #203c3033}
+
+/* Cinema: a large sun, a red-violet horizon and film perforations. */
+:root[data-theme-style=sunset]{--art-image:radial-gradient(circle at 99% 8%,#ffd18c33 0 72px,#fa996633 73px 125px,#e95d7726 126px 177px,transparent 178px),linear-gradient(165deg,transparent 68%,#853c5b30 68% 80%,transparent 80%);--rail-art:radial-gradient(ellipse at 100% 0,#d9547180,transparent 78%)}
+:root[data-theme-style=sunset] .sidebar{background:linear-gradient(165deg,#5c233d,#391a30 50%,#231526);border-right-color:#b9755c}
+:root[data-theme-style=sunset] .sidebar:after{content:'';position:absolute;left:0;top:0;bottom:0;width:5px;pointer-events:none;background:repeating-linear-gradient(0deg,#ffbc703b 0 10px,transparent 10px 26px)}
+:root[data-theme-style=sunset] .brand-mark{background:linear-gradient(140deg,#ffcf77,#ff8f76);color:#50213b;border-radius:8px;box-shadow:0 0 28px #fb8d6c33}
+:root[data-theme-style=sunset] .rich-editor h1{color:#ffd397;font-weight:750;letter-spacing:1px;text-shadow:0 5px 28px #ef6e6e33}
+:root[data-theme-style=sunset] .rich-editor h2{color:#ffc5a2;border-bottom:1px solid #ffb65e66}
+:root[data-theme-style=sunset] .rich-editor blockquote{background:#5b3039e8;color:#ffe0ca;border-color:#ffb65e}
+:root[data-theme-style=sunset] .note-item.active{background:linear-gradient(100deg,#ffb65e29,#ef6a7d16);color:#ffd59b;border:1px solid #ffb65e38}
+.theme-card.sunset .theme-sample{background:radial-gradient(circle at 100% 0,#ffd18c 0 22px,#fa9966bb 23px 37px,#e95d7766 38px 53px,transparent 54px),linear-gradient(135deg,#50223e,#291626);color:#ffd397}
+
+/* Aurora: bright spectral ribbons and stars over a violet night. */
+:root[data-theme-style=aurora]{--art-image:radial-gradient(ellipse 280px 220px at 100% 0,#a347ee44,transparent 85%),conic-gradient(from 200deg at 110% -5%,transparent 0 16deg,#65f3d63b 20deg,#7c5cdb4f 27deg,transparent 37deg 52deg,#e363d929 58deg,transparent 70deg),radial-gradient(circle at 78% 13%,#ffffffc0 0 1px,transparent 1.8px),radial-gradient(circle at 91% 36%,#65f3d6 0 1px,transparent 2px),radial-gradient(circle at 63% 5%,#bba0ff 0 1px,transparent 2px);--rail-art:radial-gradient(ellipse at 0 0,#7255b099,transparent 70%),radial-gradient(ellipse at 100% 40%,#2aa6ac33,transparent 75%)}
+:root[data-theme-style=aurora] .sidebar{background:linear-gradient(170deg,#251b4c,#191337 55%,#112b38);border-right-color:#8067bb66}
+:root[data-theme-style=aurora] .brand-mark{background:linear-gradient(140deg,#80ffdd,#b092ff 65%,#f29cdc);color:#20153e;border-radius:13px;box-shadow:0 0 30px #a980ff44}
+:root[data-theme-style=aurora] .rich-editor h1{background:linear-gradient(100deg,#8affdf 0%,#bbabff 50%,#f8a6e0 100%);background-clip:text;color:transparent;width:fit-content;max-width:100%;font-weight:750;letter-spacing:-1px;filter:drop-shadow(0 3px 16px #a980ff25)}
+:root[data-theme-style=aurora] .rich-editor h2{color:#c4b6ff;border-bottom:1px solid #9b7ae382}
+:root[data-theme-style=aurora] .note-item.active{background:linear-gradient(110deg,#65f3d622,#b09aff24);border:1px solid #a48cff55;box-shadow:inset 3px 0 #65f3d6,0 3px 18px #07051544;color:#b2ffe8}
+:root[data-theme-style=aurora] .rich-editor blockquote{background:#302746df;border-color:#a78bfa;color:#ddd4ff}
+:root[data-theme-style=aurora] .rich-editor .code-block{border-color:#8273be77;box-shadow:0 0 30px #7d5ecf0c,0 8px 24px #0002}
+.theme-card.aurora .theme-sample{background:conic-gradient(from 200deg at 110% -5%,#1b1638 0 15deg,#65f3d66b 20deg,#7c5cdb99 27deg,#1b1638 39deg 52deg,#e363d959 58deg,#1b1638 70deg);color:#a8ffdf}
+
+/* Jazz: an oversize vinyl disc, champagne brass and serif typography. */
+:root[data-theme-style=vinyl]{--art-image:radial-gradient(circle at 100% 0,transparent 0 75px,#e4b96729 76px 77px,transparent 78px 105px,#e4b96738 106px 108px,transparent 109px 143px,#d49d3d15 144px 245px,transparent 246px),repeating-radial-gradient(circle at 100% 0,transparent 0 7px,#e4b9670f 8px 9px,transparent 10px 13px);--rail-art:radial-gradient(circle at 100% 0,#87633055,transparent 75%)}
+:root[data-theme-style=vinyl] .sidebar{background:linear-gradient(170deg,#242016,#0f0e0c 50%);border-right:1px solid #c89c4c66}
+:root[data-theme-style=vinyl] .brand-mark{background:repeating-radial-gradient(circle,#edc36e 0 4px,#c69c50 5px 6px);border:2px solid #e4c78b;color:#201b13;border-radius:50%;box-shadow:0 0 0 4px #edc36e14,0 8px 18px #0004}
+:root[data-theme-style=vinyl] .brand strong{letter-spacing:4px;font-family:Georgia,SimSun,serif}
+:root[data-theme-style=vinyl] .rich-editor h1{color:#f5d28f;font-weight:400;letter-spacing:3px}
+:root[data-theme-style=vinyl] .rich-editor h2{border-bottom:3px double #a9834566;letter-spacing:2px;font-weight:400}
+:root[data-theme-style=vinyl] .rich-editor blockquote{border-left:2px solid #edc36e;background:#32291ee8;color:#dec8a0;border-radius:0;font-style:italic}
+:root[data-theme-style=vinyl] .note-item.active{background:linear-gradient(100deg,#edc36e20,#edc36e08);border:1px solid #d5a85044;color:#f6d797}
+:root[data-theme-style=vinyl] .rich-editor .code-block{border-radius:3px;border-color:#a9834566;box-shadow:0 8px 24px #0003}
+.theme-card.vinyl .theme-sample{background:repeating-radial-gradient(circle at 100% 0,transparent 0 7px,#e4b96744 8px 9px,transparent 10px 13px),#1b1814;color:#f5d28f}
+
+@media(max-width:800px){.theme-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.theme-card .theme-sample{height:86px}}
+@media(prefers-reduced-transparency:reduce){.modal-shade{backdrop-filter:none;background:#080c22c9}}
+@media print{.editor-column:after,.sidebar:before{display:none}}
+
+/* Additional families: botanical, editorial poster, ink landscape, technical. */
+:root[data-theme-style=forest]{--art-image:radial-gradient(ellipse 34px 125px at 97% 4%,#6c8f5a2e 0 96%,transparent 97%),radial-gradient(ellipse 105px 30px at 96% 16%,#7b9b6330 0 96%,transparent 97%),radial-gradient(ellipse 25px 100px at 89% 0%,#385d4026 0 96%,transparent 97%),linear-gradient(112deg,transparent 88%,#61834d13 88% 89%,transparent 89%);--rail-art:radial-gradient(ellipse at 0 0,#749d5b55,transparent 80%)}
+:root[data-theme-style=forest] .brand-mark{background:#3d7251;color:#eef6dd;border-radius:50% 50% 8px 50%}
+:root[data-theme-style=forest] .rich-editor h1{font-family:Georgia,SimSun,serif;color:#355f42;font-weight:500;letter-spacing:2px}
+:root[data-theme-style=forest] .rich-editor h2{border-bottom:2px dotted #88a273;color:#456649}
+:root[data-theme-style=forest] .rich-editor blockquote{border-left:3px solid #6f925f;background:#e1ebd7e8;border-radius:1px 24px 24px 1px}
+.theme-card.forest .theme-sample{background:radial-gradient(ellipse 16px 50px at 95% 0,#6c8f5a55 95%,transparent 96%),radial-gradient(ellipse 45px 12px at 93% 30%,#7b9b6344 95%,transparent 96%),#f2f5e9}
+:root[data-theme-style=brutalism]{--art-image:linear-gradient(90deg,transparent 96%,#171717 96% 96.3%,transparent 96.3%),linear-gradient(0deg,transparent 95%,#ee44341c 95%);--rail-art:none}
+:root[data-theme-style=brutalism] .sidebar{color:#fff6e8;--text:#fff6e8;--muted:#ffe2c9;--accent:#fff6e8;--accent-bg:#171717;--hover:#17171724;--border:#17171766;--bg:#ffffff12;background:#d5352c;border-right:2px solid #171717}
+:root[data-theme-style=brutalism] .brand-mark{background:#171717;color:#fff6e8;border-radius:0;box-shadow:none}
+:root[data-theme-style=brutalism] .brand strong{font-family:var(--ui-font);font-weight:800}
+:root[data-theme-style=brutalism] .rich-editor h1{font-weight:900;color:#171717;border-bottom:8px solid #d5352c;padding-bottom:18px;letter-spacing:-2px}
+:root[data-theme-style=brutalism] .rich-editor h2{border:0;color:#b52b22;font-weight:800}
+:root[data-theme-style=brutalism] .note-item.active,:root[data-theme-style=brutalism] .workspace-button,:root[data-theme-style=brutalism] .search,:root[data-theme-style=brutalism] .rich-editor .code-block{border-radius:0;box-shadow:none;border:1.5px solid #171717}
+:root[data-theme-style=brutalism] .rich-editor blockquote{background:#171717;color:#faf8f1;border-radius:0;border-color:#d5352c}
+.theme-card.brutalism .theme-sample{background:linear-gradient(0deg,#d5352c 0 8px,transparent 8px),#faf8f1;color:#171717;border-radius:0;border:1px solid #171717}
+:root[data-theme-style=ink]{--art-image:linear-gradient(155deg,transparent 72%,#79918620 72% 78%,transparent 78%),linear-gradient(25deg,transparent 80%,#526e621a 80% 88%,transparent 88%),radial-gradient(ellipse at 100% 0,#a2b3a42b,transparent 65%);--rail-art:linear-gradient(165deg,transparent 30%,#728c7924 30% 45%,transparent 45%)}
+:root[data-theme-style=ink] .brand-mark{background:#9c3c32;color:#f5f4ed;border-radius:2px;transform:rotate(-3deg);box-shadow:none}
+:root[data-theme-style=ink] .rich-editor h1{color:#304842;letter-spacing:5px;font-weight:400}
+:root[data-theme-style=ink] .rich-editor h2{border-bottom:1px solid #a9b8ac;letter-spacing:2px;font-weight:500}
+:root[data-theme-style=ink] .rich-editor blockquote{border-color:#9c3c32;background:#e6eae2b8;border-radius:0;color:#52695d}
+:root[data-theme-style=ink] .rich-editor .code-block{border-radius:2px;box-shadow:none}
+.theme-card.ink .theme-sample{background:linear-gradient(155deg,transparent 50%,#79918655 50% 63%,transparent 63%),linear-gradient(25deg,transparent 60%,#526e6233 60% 80%,transparent 80%),#f5f4ed}
+:root[data-theme-style=blueprint]{--art-image:linear-gradient(#a5d6f533 1px,transparent 1px),linear-gradient(90deg,#a5d6f533 1px,transparent 1px),radial-gradient(circle at 100% 0,transparent 0 150px,#b8eeff55 151px 152px,transparent 153px);--art-size:120px 120px,120px 120px,100% 100%;--rail-art:repeating-linear-gradient(0deg,transparent 0 23px,#8fb9df12 23px 24px)}
+:root[data-theme-style=blueprint] .brand-mark{border:1px solid #b8eeff;background:transparent;color:#b8eeff;border-radius:0;box-shadow:4px 4px 0 #b8eeff20}
+:root[data-theme-style=blueprint] .rich-editor h1{color:#eef9ff;font-weight:600;border:1px solid #b8eeff7a;border-left:6px solid #b8eeff;padding:14px 20px;letter-spacing:1px}
+:root[data-theme-style=blueprint] .rich-editor h2{color:#cbecff;border-bottom:2px solid #b8eeff80}
+:root[data-theme-style=blueprint] .rich-editor .code-block,:root[data-theme-style=blueprint] .rich-editor blockquote{border:1px solid #b8eeff77;border-radius:0;background:#123565f2;box-shadow:none}
+.theme-card.blueprint .theme-sample{background:linear-gradient(#b8eeff33 1px,transparent 1px),linear-gradient(90deg,#b8eeff33 1px,transparent 1px),#113b76;background-size:16px 16px;color:#eef9ff}

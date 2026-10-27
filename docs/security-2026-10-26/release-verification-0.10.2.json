@@ -1,0 +1,58 @@
+{
+  "version": "0.10.2",
+  "date": "2026-10-27",
+  "passed": true,
+  "coreTests": 65,
+  "checks": [
+    {
+      "test": "language",
+      "report": "packaged-language-0.10.2.json",
+      "passed": true
+    },
+    {
+      "test": "rename-migration",
+      "report": "packaged-rename-migration-0.10.2.json",
+      "passed": true
+    },
+    {
+      "test": "security-ui",
+      "report": "packaged-security-ui-0.10.2.json",
+      "passed": true
+    },
+    {
+      "test": "encryption-ui",
+      "report": "packaged-encryption-ui-0.10.2.json",
+      "passed": true
+    },
+    {
+      "test": "pet-studio",
+      "report": "packaged-pet-studio-0.10.2.json",
+      "passed": true
+    },
+    {
+      "test": "installer",
+      "report": "packaged-installer-0.10.2.json",
+      "passed": true
+    },
+    {
+      "test": "desktop",
+      "report": "packaged-desktop-0.10.2.json",
+      "passed": true
+    }
+  ],
+  "executableSha256": "8e84549b05d27d444da2957653200d1e0ac287eff0fc5722b92835b9e0821a59",
+  "mainSha256": "1d3e318c4f6739c715017226f274e15799b6d13b34b1e81519543b5fcb8421c7",
+  "dataIsolation": true,
+  "windowsInstallerTestMode": true,
+  "windowsInstalledLaunchUninstallTested": true,
+  "windowsCleanVmTested": false,
+  "registryAssociationAndLoginRebootTested": false,
+  "windowsSigned": false,
+  "macRuntimeTested": false,
+  "appleSignedOrNotarized": false,
+  "harmonyNativeSdkCompiled": false,
+  "harmonyHapBuilt": false,
+  "harmonyDeviceTested": false,
+  "legalClearance": false,
+  "githubPublished": false
+}

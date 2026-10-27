@@ -1,0 +1,12 @@
+{
+  "version": "0.10.3",
+  "checkedAt": "2026-10-27T07:08:30.786Z",
+  "endpoint": "https://registry.npmjs.org/-/npm/v1/security/advisories/bulk",
+  "lockSha256": "4443d11016c000e12ac852c65f363bbbf50505bdb05b9319c6b973e227380f7b",
+  "packageNames": 418,
+  "packageVersions": 426,
+  "returnedAdvisoryPackages": 0,
+  "passed": true,
+  "advisories": {},
+  "scope": "Locked public npm package names/versions including optional platform packages. No source-code, runtime exploit, unpublished vulnerability, or complete Chromium/OS component assessment."
+}

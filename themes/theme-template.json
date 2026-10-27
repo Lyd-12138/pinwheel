@@ -1,0 +1,54 @@
+{
+  "themeApiVersion": 2,
+  "name": "我的海盐手帐",
+  "colorScheme": "light",
+  "tokens": {
+    "bg": "#ffffff",
+    "sidebar": "#f0f4f9",
+    "panel": "#f7f9fc",
+    "text": "#283747",
+    "muted": "#8797a8",
+    "border": "#dfe7ef",
+    "accent": "#4f759a",
+    "accent-bg": "#dfeaf5",
+    "hover": "#e9f0f7",
+    "code": "#f0f4f9"
+  },
+  "typography": {
+    "body": "sans",
+    "heading": "serif",
+    "interface": "sans"
+  },
+  "background": {
+    "pattern": "waves",
+    "color": "#89cce3",
+    "secondary": "#b8b0e8",
+    "opacity": 0.2,
+    "size": 64
+  },
+  "ui": {
+    "labels": {
+      "风车笔记": "海盐书房",
+      "pinwheel": "MY WRITING ROOM",
+      "笔记": "手记",
+      "大纲": "章节",
+      "设置": "主题与外观",
+      "新建文件": "新建手记",
+      "新建文件夹": "新建分类",
+      "创建文件": "创建手记",
+      "创建文件夹": "创建分类"
+    },
+    "icons": {
+      "brand": "✦",
+      "file": "▤",
+      "folder": {
+        "paths": [
+          "M3 6h7l2 2h9v12H3z"
+        ],
+        "strokeWidth": 1.5
+      },
+      "settings": "✧",
+      "outline": "≋"
+    }
+  }
+}

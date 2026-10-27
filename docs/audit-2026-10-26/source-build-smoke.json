@@ -1,0 +1,25 @@
+{
+  "version": "0.10.1",
+  "passed": true,
+  "sourceFiles": 224,
+  "node": "v24.22.1",
+  "dependencyMode": "Existing locked node_modules copied into the snapshot; no clean network npm ci or GitHub-hosted CI was run",
+  "checks": [
+    {
+      "command": "node node_modules/typescript/bin/tsc --noEmit",
+      "passed": true
+    },
+    {
+      "command": "node node_modules/vite/bin/vite.js build",
+      "passed": true
+    },
+    {
+      "command": "node scripts/build-main.mjs",
+      "passed": true
+    },
+    {
+      "command": "node scripts/build-harmony.mjs",
+      "passed": true
+    }
+  ]
+}

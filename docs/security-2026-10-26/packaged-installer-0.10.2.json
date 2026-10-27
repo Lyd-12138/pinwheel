@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "version": "0.10.2",
+  "installation": "passed",
+  "launch": "passed",
+  "uninstall": "passed",
+  "userFilesRetained": true,
+  "systemPreferencesChanged": false
+}

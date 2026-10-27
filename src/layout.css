@@ -1,0 +1,30 @@
+/* Scrollers occupy panel edges; text width is independent of scrollbar width. */
+body:has(.app),#root{height:100%;overflow:hidden}
+.sidebar-collapsed .sidebar{display:none}
+.writing-area>.editor-column,.focused .writing-area>.editor-column{padding:0;min-height:0}
+.writing-area .editor-host,.focused .writing-area .editor-host{max-width:none;margin:0;width:100%;min-height:0}
+.rich-host,.cm-scroller{scrollbar-gutter:stable;overscroll-behavior:contain}
+.rich-editor{width:100%;max-width:none;margin:0;padding:34px clamp(20px,3vw,48px) max(180px,45vh);min-height:100%;min-width:0}
+.rich-editor>h1:first-child{margin-bottom:24px}
+.editor-host .cm-content{padding:34px 24px 45vh!important}
+.editor-host .cm-gutters{padding-top:30px}
+.editor-host .cm-scroller{padding-right:16px}
+.writing-area .outline{display:flex;flex-direction:column;width:224px;min-height:0;padding:0;overflow:hidden;border-left:1px solid var(--border);background:var(--panel)}
+.outline-header{height:68px;flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding:0 22px;color:var(--text);font-size:12px;font-weight:600}
+.outline-header small{color:var(--muted);font-size:10px;font-weight:400}
+.outline-list{flex:1;min-height:0;position:relative;overflow:auto;padding:0 12px 24px;scrollbar-gutter:stable;overscroll-behavior:contain}
+.outline-list>button{display:block;position:relative;width:100%;min-height:36px;margin:2px 0;padding:8px 10px;text-align:left;line-height:1.55;font-size:12px;color:var(--muted);border-radius:5px;overflow-wrap:anywhere;white-space:normal}
+.outline-list>button.active{background:var(--accent-bg);color:var(--accent);font-weight:600}
+.outline-list>button.active:before{content:'';position:absolute;left:3px;top:10px;bottom:10px;width:2px;background:var(--accent);border-radius:2px}
+.outline-list>p{font-size:11px;line-height:1.8;padding:0 10px;color:var(--muted)}
+.focused .writing-area .outline{display:none}
+.rich-host,.cm-scroller,.outline-list,.note-list{scrollbar-width:thin;scrollbar-color:color-mix(in srgb,var(--muted) 40%,transparent) transparent}
+.rich-host:hover,.cm-scroller:hover,.outline-list:hover,.note-list:hover{scrollbar-color:var(--muted) transparent}
+.code-block{border:1px solid var(--border);border-radius:8px;background:var(--code);margin:22px 0;overflow:hidden}
+.code-block-bar{display:flex;align-items:center;justify-content:space-between;padding:7px 13px;border-bottom:1px solid var(--border);font:11px/1.5 'Segoe UI','Microsoft YaHei',sans-serif;color:var(--muted);user-select:none}
+.code-block-bar select{font:inherit;max-width:190px;color:var(--text);background:var(--panel);border:1px solid var(--border);border-radius:4px;padding:3px 6px;cursor:pointer}
+.prose pre,.prose pre code{white-space:pre-wrap;overflow-wrap:anywhere;word-break:normal}
+.rich-editor .code-block pre{border:0;border-radius:0;margin:0;padding:16px 18px;overflow:auto;white-space:pre-wrap;tab-size:4;scrollbar-width:thin}
+.rich-editor .code-block pre code{font:14px/1.75 Consolas,'Cascadia Code',monospace;white-space:pre-wrap;overflow-wrap:anywhere}
+@media(max-width:1150px){.writing-area .outline{width:196px}.rich-editor{padding-left:30px;padding-right:30px}.outline-header{padding:0 16px}}
+@media(max-width:1000px){.writing-area .outline{width:176px}.outline-header{padding:0 12px}.outline-list{padding-left:6px;padding-right:6px}.rich-editor{padding-left:24px;padding-right:24px}.header-actions{gap:9px}}

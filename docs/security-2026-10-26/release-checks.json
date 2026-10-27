@@ -1,0 +1,100 @@
+{
+  "version": "0.10.3",
+  "date": "2026-10-27",
+  "technicalChecksPassed": true,
+  "legalClearance": false,
+  "repositoryFiles": 277,
+  "repositoryBytes": 17034218,
+  "secretsAndPersonalPaths": [],
+  "filesOverGitHub100MiB": [],
+  "missingNoticeMarkers": [],
+  "sourceArchiveChecks": [
+    {
+      "file": "elkjs-0.9.3-a8304cf79fde75bc2ab1a89d28320f53f8637436.zip",
+      "passed": true
+    },
+    {
+      "file": "elk-pr955.patch",
+      "passed": true
+    },
+    {
+      "file": "gwt-user-2.10.0-sources.jar",
+      "passed": true
+    },
+    {
+      "file": "guava-31.1-jre-sources.jar",
+      "passed": true
+    },
+    {
+      "file": "emf-common-2.12.4-sources.jar",
+      "passed": true
+    },
+    {
+      "file": "emf-ecore-2.12.4-sources.jar",
+      "passed": true
+    },
+    {
+      "file": "org.eclipse.xtext.xbase.lib-2.28.0-sources.jar",
+      "passed": true
+    },
+    {
+      "file": "org.eclipse.xtend.lib-2.28.0-sources.jar",
+      "passed": true
+    },
+    {
+      "file": "org.eclipse.elk.core-0.9.1-sources.jar",
+      "passed": true
+    },
+    {
+      "file": "org.eclipse.elk.graph-0.9.1-sources.jar",
+      "passed": true
+    },
+    {
+      "file": "org.eclipse.elk.graph.json-0.9.1-sources.jar",
+      "passed": true
+    },
+    {
+      "file": "org.eclipse.elk.alg.common-0.9.1-sources.jar",
+      "passed": true
+    },
+    {
+      "file": "org.eclipse.elk.alg.disco-0.9.1-sources.jar",
+      "passed": true
+    },
+    {
+      "file": "org.eclipse.elk.alg.force-0.9.1-sources.jar",
+      "passed": true
+    },
+    {
+      "file": "org.eclipse.elk.alg.layered-0.9.1-sources.jar",
+      "passed": true
+    },
+    {
+      "file": "org.eclipse.elk.alg.mrtree-0.9.1-sources.jar",
+      "passed": true
+    },
+    {
+      "file": "org.eclipse.elk.alg.rectpacking-0.9.1-sources.jar",
+      "passed": true
+    },
+    {
+      "file": "org.eclipse.elk.alg.radial-0.9.1-sources.jar",
+      "passed": true
+    },
+    {
+      "file": "org.eclipse.elk.alg.spore-0.9.1-sources.jar",
+      "passed": true
+    }
+  ],
+  "openItems": [
+    "Name/trademark clearance not completed; existing Pinwheel software found.",
+    "No private Typora source or patent claim comparison.",
+    "Historical Java/GWT engine build not independently reproduced; melk SNAPSHOT input not pinned.",
+    "Chromium transitive component rights not exhaustively independently reviewed."
+  ],
+  "scope": "Allowlisted repository snapshot, high-confidence secret/path patterns, own MIT metadata, notice presence and archived-source hashes; archive integrity and installed application files checked separately.",
+  "dependencyNoticeCoverage": {
+    "packages": 382,
+    "missing": []
+  }
+}

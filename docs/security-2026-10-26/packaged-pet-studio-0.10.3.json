@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "packaged": true,
+  "errors": [],
+  "nativeMenuEventTested": true,
+  "dragTestedWithCursorStub": true
+}

@@ -1,0 +1,5 @@
+.locked-document{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:32px;z-index:2;background:var(--bg);gap:14px}
+.lock-emblem{display:grid;place-items:center;width:76px;height:76px;border-radius:26px;background:var(--accent-bg);color:var(--accent);margin-bottom:8px}
+.locked-document h1{font-size:24px;margin:0;font-weight:600}.locked-document p{margin:0;color:var(--muted);line-height:1.8}.locked-document small{color:var(--muted);font-size:11px;margin-top:8px}.locked-document button{padding:10px 24px;border-radius:8px}
+.password-error{color:#b24444;background:#b2444410;border-radius:8px;padding:10px 12px;font-size:13px;line-height:1.7}
+.toolbar[inert]{opacity:.4}

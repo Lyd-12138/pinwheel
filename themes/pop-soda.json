@@ -1,0 +1,42 @@
+{
+  "themeApiVersion": 2,
+  "name": "灵感汽水",
+  "colorScheme": "light",
+  "tokens": {
+    "bg": "#f5ffe9",
+    "sidebar": "#caf779",
+    "panel": "#e9f8d6",
+    "text": "#203c30",
+    "muted": "#597650",
+    "border": "#a1bd84",
+    "accent": "#385bc2",
+    "accent-bg": "#d9e1ff",
+    "hover": "#e4f2ce",
+    "code": "#e9f3d9"
+  },
+  "appearance": "mint",
+  "typography": {
+    "body": "sans",
+    "heading": "sans",
+    "interface": "sans"
+  },
+  "background": {
+    "pattern": "grid",
+    "color": "#68a34b",
+    "secondary": "#88b95c",
+    "opacity": 0.13,
+    "size": 32
+  },
+  "ui": {
+    "labels": {
+      "风车笔记": "灵感汽水",
+      "pinwheel": "pinwheel",
+      "笔记": "笔记",
+      "大纲": "大纲",
+      "设置": "设置"
+    },
+    "icons": {
+      "brand": "✳"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "entry",
+  "version": "0.2.3",
+  "description": "风车笔记手机与平板版",
+  "main": "",
+  "author": "pinwheel",
+  "license": "MIT",
+  "dependencies": {}
+}

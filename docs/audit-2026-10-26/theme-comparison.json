@@ -1,0 +1,8 @@
+{
+  "officialRepository": "https://github.com/typora/typora-default-themes",
+  "commit": "cf4f2cb7e81a73050456367cfdfdb80b5a14a7b2",
+  "publicCssFiles": 10,
+  "localFiles": 16,
+  "method": "Remove comments and whitespace, compare exact contiguous substrings of at least 160 characters. This is a narrow evidence screen, not proof of independent authorship or a substantial-similarity determination.",
+  "matches": []
+}

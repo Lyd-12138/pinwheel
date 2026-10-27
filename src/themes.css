@@ -1,0 +1,41 @@
+.prose{font-family:var(--writing-font,"Segoe UI","Microsoft YaHei",sans-serif)}
+:root[data-color-scheme=dark]{color-scheme:dark;--shadow:0 24px 80px #0008}
+:root[data-color-scheme=light]{color-scheme:light}
+:root[data-color-scheme=dark] button.primary{color:var(--sidebar)}
+:root[data-color-scheme=dark] .format-tools button{color:var(--muted)}
+:root[data-theme=ocean] .sidebar{background:linear-gradient(165deg,#dceefa 0%,var(--sidebar) 45%,#f0f7fb 100%)}
+:root[data-theme=ocean] .prose h1{color:#24647e;letter-spacing:.5px}
+:root[data-theme=ocean] .brand-mark{border-radius:14px 14px 14px 4px;box-shadow:0 5px 14px #24799622}
+:root[data-theme=sakura] .sidebar{background:radial-gradient(ellipse at 15% 0%,#f4d7e6 0%,transparent 50%),var(--sidebar)}
+:root[data-theme=sakura] .prose h1{color:#a24e73;font-weight:600;letter-spacing:1px}
+:root[data-theme=sakura] .prose h2{border-bottom-style:dashed}
+:root[data-theme=sakura] .brand-mark{border-radius:50% 50% 50% 15%}
+:root[data-theme=mint] .brand-mark{border-radius:50%;box-shadow:5px -4px 0 #a9dec9}
+:root[data-theme=mint] .mode-switch,:root[data-theme=mint] .sidebar-tabs>button,:root[data-theme=mint] .note-item{border-radius:12px}
+:root[data-theme=mint] .prose h1{letter-spacing:-1px;color:#13715e}
+:root[data-theme=sunset] .sidebar{background:linear-gradient(160deg,#3d293a 0%,var(--sidebar) 50%,#2e2127 100%)}
+:root[data-theme=sunset] .prose h1{color:#ffd0ae;letter-spacing:.5px}
+:root[data-theme=sunset] .prose blockquote{color:#d1afa6;border-color:var(--accent)}
+:root[data-theme=sunset] .brand-mark{background:linear-gradient(140deg,#eeae8b,#bd748c);color:#2a1e29}
+:root[data-theme=aurora] .sidebar{background:radial-gradient(ellipse at 0% 0%,#204341 0%,transparent 50%),linear-gradient(180deg,#171f36,var(--sidebar))}
+:root[data-theme=aurora] .prose h1{width:fit-content;max-width:100%;background:linear-gradient(110deg,#94ead2,#b7aff7);background-clip:text;color:transparent}
+:root[data-theme=aurora] .brand-mark{background:linear-gradient(145deg,#7adac2,#9a9ce3);color:#112631;box-shadow:0 0 24px #79dec51a}
+:root[data-theme=aurora] .prose blockquote{color:#a6c7d6;border-color:var(--accent)}
+:root[data-theme=vinyl] .brand-mark{border-radius:50%;background:repeating-radial-gradient(circle,#ddbc73 0 3px,#a88c53 4px 5px);color:#24221c}
+:root[data-theme=vinyl] .prose h1{color:#e4c587;letter-spacing:1.5px;font-weight:500}
+:root[data-theme=vinyl] .prose h2{border-bottom:1px dotted var(--border);font-weight:500}
+:root[data-theme=vinyl] .prose blockquote{color:#c1b492;border-color:var(--accent)}
+.modal.settings-modal{width:720px}
+.theme-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.theme-card{min-width:0;padding:7px;gap:7px;position:relative;font-size:11px}
+.theme-card .theme-sample{height:64px;position:relative;overflow:hidden;border:1px solid var(--sample-border);background:var(--sample-bg);color:var(--sample-text);font-family:var(--sample-font);font-size:22px;padding:7px 9px 5px 26px}
+.theme-card .theme-sample:before{content:'';position:absolute;left:0;top:0;bottom:0;width:17px;background:var(--sample-sidebar);border-right:1px solid var(--sample-border)}
+.theme-card .theme-sample i{height:3px;margin-top:4px;background:var(--sample-accent);opacity:.55}
+.theme-card .theme-sample i:last-child{width:45%;opacity:.25}
+.theme-card>small{font-size:9px;font-weight:400;color:var(--muted);margin-top:-3px;white-space:nowrap}
+.theme-card.chosen{box-shadow:0 0 0 1px var(--accent)}
+.theme-card.aurora .theme-sample{background:linear-gradient(125deg,#204341,#252c49)}
+.theme-card.sunset .theme-sample{background:linear-gradient(125deg,#3e2938,#25212b)}
+.theme-card.sakura .theme-sample{background:radial-gradient(ellipse at top right,#f5d8e6,#fff9fb)}
+.theme-card.system .theme-sample{background:linear-gradient(90deg,#f7faf5 50%,#273029 50%);color:#91a681}
+@media(max-width:1000px){.theme-grid{gap:7px}.modal.settings-modal{padding:28px}}

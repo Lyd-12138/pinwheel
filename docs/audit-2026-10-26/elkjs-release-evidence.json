@@ -1,0 +1,7 @@
+{
+  "url": "https://github.com/kieler/elkjs/releases/tag/0.9.3",
+  "tag": "0.9.3",
+  "created_at": "2024-04-16T08:20:41Z",
+  "body": "Based on ELK 0.9.1\r\n\r\n## elkjs changes\r\n* update to mocha 10.3.0 by @Eddykasp in https://github.com/kieler/elkjs/pull/269\r\n* #208 Add worker termination conditions and method by @skspade in https://github.com/kieler/elkjs/pull/274\r\n\r\n## ELk Changes\r\nThese changes are not yet released in ELK, but are already included in this elkjs release.\r\n* Consider node's size when computing available space in port placement by @Eddykasp https://github.com/eclipse/elk/pull/955\r\n\r\nFor all changes and fixed issues see the [ELK release notes](https://eclipse.dev/elk/downloads/releasenotes/release-0.9.1.html).",
+  "commit": "a8304cf79fde75bc2ab1a89d28320f53f8637436"
+}

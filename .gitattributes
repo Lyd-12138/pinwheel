@@ -1,0 +1,10 @@
+# Preserve the verified source snapshot bytes, including upstream archives/patches.
+# This keeps SOURCE-MANIFEST hashes stable across Windows/macOS Git checkouts.
+* -text
+*.zip binary
+*.jar binary
+*.moye-pet binary
+*.png binary
+*.ico binary
+*.icns binary
+third-party/sources/* -text

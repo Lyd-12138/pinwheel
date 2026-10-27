@@ -1,0 +1,41 @@
+{
+  "product": "风车笔记 / pinwheel HarmonyOS NEXT",
+  "version": "0.2.3",
+  "date": "2026-10-27",
+  "webBuild": true,
+  "typeScriptWebChecked": true,
+  "coreTests": {
+    "passed": true,
+    "total": 65,
+    "harmonyCases": 6,
+    "environment": "Node with test adapters for documented Harmony APIs; native service source transpiled for protocol and business tests"
+  },
+  "browserPreview": {
+    "passed": true,
+    "environment": "Chromium preview with actual native service source and documented API test adapters; not a Harmony device",
+    "checks": [
+      "390px phone layout",
+      "source/rich editing, highlighting, formula, Mermaid, wrapping, autosave",
+      "tap link delegates to native external browser",
+      "native picker attachment and image rendering",
+      "theme switch",
+      "export note pack",
+      "outline navigation",
+      "encrypt, background lock, wrong password, unlock",
+      "desktop pack import",
+      "reload restores document, mode and theme",
+      "1280px tablet layout",
+      "system back dismisses sheet, saves, then backgrounds native ability",
+      "manual English updates native language and survives reload",
+      "unsupported Harmony system language falls back to English"
+    ],
+    "errors": [],
+    "blocked": [],
+    "report": "../docs/security-2026-10-26/harmony-release-preview-0.2.3.json"
+  },
+  "nativeArkTsCompiled": false,
+  "hapBuilt": false,
+  "signed": false,
+  "deviceTested": false,
+  "reason": "Current environment has no detected DevEco Studio/HarmonyOS SDK/hvigor/ohpm/hdc, signing certificate or connected Harmony device. Native compiler and device verification remain required."
+}

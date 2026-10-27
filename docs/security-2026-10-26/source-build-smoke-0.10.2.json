@@ -1,0 +1,30 @@
+{
+  "version": "0.10.2",
+  "date": "2026-10-27",
+  "passed": true,
+  "sourceFiles": 248,
+  "node": "v24.22.1",
+  "dependencyMode": "Fresh allowlisted source snapshot, existing locked node_modules shared by a directory junction. No fresh network npm ci or GitHub-hosted CI execution.",
+  "checks": [
+    {
+      "command": "node node_modules/typescript/bin/tsc --noEmit",
+      "passed": true
+    },
+    {
+      "command": "node node_modules/typescript/bin/tsc -p harmony/tsconfig.web.json --noEmit",
+      "passed": true
+    },
+    {
+      "command": "node node_modules/vite/bin/vite.js build",
+      "passed": true
+    },
+    {
+      "command": "node scripts/build-main.mjs",
+      "passed": true
+    },
+    {
+      "command": "node scripts/build-harmony.mjs",
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "version": "0.10.1",
+  "passed": true,
+  "coreTests": 56,
+  "checks": [
+    "test-results/language-1792998558366/result.json",
+    "test-results/rename-migration-1792998574745/result.json",
+    "test-results/installer-1792998658363/result.json",
+    "test-results/packaged/desktop-results.json"
+  ],
+  "executableSha256": "8e84549b05d27d444da2957653200d1e0ac287eff0fc5722b92835b9e0821a59",
+  "mainSha256": "a6d2b494038f95ed61d48d74e1b967888cb03ee135d31799faf709cdfa124a00",
+  "dataIsolation": true,
+  "legalClearance": false,
+  "note": "Isolated actual packaged Windows application tests; local test fixture trees omitted from public source."
+}

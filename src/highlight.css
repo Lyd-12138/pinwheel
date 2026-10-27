@@ -1,0 +1,16 @@
+.hljs-comment,.hljs-quote{color:#6a7c76;font-style:italic}
+.hljs-keyword,.hljs-selector-tag,.hljs-literal,.hljs-section,.hljs-deletion{color:#9c3c79}
+.hljs-string,.hljs-regexp,.hljs-addition,.hljs-attribute{color:#287a4b}
+.hljs-number,.hljs-symbol,.hljs-bullet{color:#a65b1b}
+.hljs-title,.hljs-title.function_,.hljs-title.class_,.hljs-name{color:#2862a1}
+.hljs-built_in,.hljs-type,.hljs-variable,.hljs-template-variable{color:#9a4c22}
+.hljs-attr,.hljs-property,.hljs-selector-class,.hljs-selector-id{color:#48668e}
+.hljs-meta{color:#7560a3}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:700}
+:root[data-color-scheme=dark] .hljs-comment,:root[data-color-scheme=dark] .hljs-quote{color:#92a699}
+:root[data-color-scheme=dark] .hljs-keyword,:root[data-color-scheme=dark] .hljs-selector-tag,:root[data-color-scheme=dark] .hljs-literal,:root[data-color-scheme=dark] .hljs-section,:root[data-color-scheme=dark] .hljs-deletion{color:#e2a0ca}
+:root[data-color-scheme=dark] .hljs-string,:root[data-color-scheme=dark] .hljs-regexp,:root[data-color-scheme=dark] .hljs-addition,:root[data-color-scheme=dark] .hljs-attribute{color:#a0d49a}
+:root[data-color-scheme=dark] .hljs-number,:root[data-color-scheme=dark] .hljs-symbol,:root[data-color-scheme=dark] .hljs-bullet{color:#e6b486}
+:root[data-color-scheme=dark] .hljs-title,:root[data-color-scheme=dark] .hljs-name{color:#97c7ef}
+:root[data-color-scheme=dark] .hljs-built_in,:root[data-color-scheme=dark] .hljs-type,:root[data-color-scheme=dark] .hljs-variable,:root[data-color-scheme=dark] .hljs-template-variable{color:#efbb8e}
+:root[data-color-scheme=dark] .hljs-attr,:root[data-color-scheme=dark] .hljs-property,:root[data-color-scheme=dark] .hljs-selector-class,:root[data-color-scheme=dark] .hljs-selector-id{color:#acbfec}
+:root[data-color-scheme=dark] .hljs-meta{color:#c7b2f0}

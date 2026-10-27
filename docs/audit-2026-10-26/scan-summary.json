@@ -1,0 +1,121 @@
+{
+  "version": "0.10.1",
+  "date": "2026-10-26",
+  "scope": "installed dependency metadata + legal files to depth 3; first-party source signatures and asset hashes; excludes private Typora code and patent clearance",
+  "packages": 382,
+  "lockEntries": 428,
+  "licenseHistogram": {
+    "MIT": 310,
+    "Apache-2.0": 13,
+    "BSD-2-Clause": 2,
+    "ISC": 39,
+    "BSD-3-Clause": 9,
+    "(MPL-2.0 OR Apache-2.0)": 1,
+    "EPL-2.0": 1,
+    "[{\"type\":\"MIT\",\"url\":\"http://sjs.mit-license.org\"}]": 1,
+    "(MIT OR GPL-3.0-or-later)": 1,
+    "null": 1,
+    "MPL-2.0": 2,
+    "(MIT AND Zlib)": 1,
+    "Unlicense": 1
+  },
+  "missingLicenseText": [
+    "@electron-internal/extract-zip",
+    "@rolldown/binding-win32-x64-msvc",
+    "format",
+    "isarray",
+    "rehype-katex",
+    "remark-math"
+  ],
+  "reviewLicenses": [
+    {
+      "name": "elkjs",
+      "license": "EPL-2.0"
+    },
+    {
+      "name": "format",
+      "license": [
+        {
+          "type": "MIT",
+          "url": "http://sjs.mit-license.org"
+        }
+      ]
+    },
+    {
+      "name": "khroma",
+      "license": null
+    },
+    {
+      "name": "lightningcss",
+      "license": "MPL-2.0"
+    },
+    {
+      "name": "lightningcss-win32-x64-msvc",
+      "license": "MPL-2.0"
+    },
+    {
+      "name": "pako",
+      "license": "(MIT AND Zlib)"
+    },
+    {
+      "name": "robust-predicates",
+      "license": "Unlicense"
+    }
+  ],
+  "sources": 110,
+  "sourceBrandSignatures": [
+    {
+      "file": "scripts/audit-release.mjs",
+      "line": 20,
+      "sample": "const result={version:pkg.version,date:'2026-10-26',technicalChecksPassed:passed,legalClearance:false,repositoryFiles:files.length,repositoryBytes:files.reduce((n,f)=>n+f.bytes,0),secretsAndPersonalPaths:findings,filesOv"
+    }
+  ],
+  "assets": [
+    {
+      "path": "pet-examples/空白制作模板.moye-pet",
+      "bytes": 2810,
+      "sha256": "2602cfb7b3132bc4f8aa82cc7ad0e3db376475c66542631526569940a1805645"
+    },
+    {
+      "path": "pet-examples/部件定制示例.moye-pet",
+      "bytes": 3051,
+      "sha256": "430569b48fe15da0c4e7d59bfb877152a65225df1277f90cff76c2f62b2d1579"
+    },
+    {
+      "path": "harmony/AppScope/resources/base/media/app_icon.svg",
+      "bytes": 535,
+      "sha256": "d19415ad380afab519a138443ae6b6b38a7919be35d7d6d8a117f0552624a814"
+    },
+    {
+      "path": "assets/moye.icns",
+      "bytes": 75428,
+      "sha256": "4a67d7a02a77813856287b16382a40f9d8146ed057a4087d42769fd8f22da3c1"
+    },
+    {
+      "path": "assets/moye.ico",
+      "bytes": 28706,
+      "sha256": "750468d9397c638a4cff1051cc2415dcfaf9a3f6e628ed2cd4dbee2c0b103aed"
+    },
+    {
+      "path": "assets/moye.png",
+      "bytes": 10825,
+      "sha256": "b78d97b467a6c8cf6d7b20fc94c7a8c7fba7957ae34f1a9558c1035a8cde6d5c"
+    },
+    {
+      "path": "assets/pinwheel.icns",
+      "bytes": 100242,
+      "sha256": "e44a8bd830ef3f7a84e59ef28458602f22645c52349db39934c4be45a889d9c6"
+    },
+    {
+      "path": "assets/pinwheel.ico",
+      "bytes": 37067,
+      "sha256": "e612072ebc01d9f212f7c1a89e8f180765416f8c2d95876f53bc0da1956391cf"
+    },
+    {
+      "path": "assets/pinwheel.png",
+      "bytes": 14784,
+      "sha256": "1a9e97d3a3c254906611ee43fba96beca1655459ea750a7dbb4de69a07d112e3"
+    }
+  ],
+  "ownLicensePresent": true
+}

@@ -1,0 +1,47 @@
+[
+  {
+    "file": "lib/elk-api.d.ts",
+    "match": true,
+    "sha256": "12a419bf30c7b35e43b348d2b8d047a01a14a701767405d49aadcb53fc69927c"
+  },
+  {
+    "file": "lib/elk-api.js",
+    "match": true,
+    "sha256": "b5866a7495d7d4731d4ec66342e2a090061f95fe9c80817846e807f0bb38a785"
+  },
+  {
+    "file": "lib/elk-worker.d.ts",
+    "match": true,
+    "sha256": "cfd7e67195b610f808ebab6ba1065cc2b1709af17309a1975a70f52f814459cc"
+  },
+  {
+    "file": "lib/elk-worker.js",
+    "match": true,
+    "sha256": "90ab078ad34ff826ca0ece1ee338ae98071a6b3e6cfbb00ce2eb671b32eacd88"
+  },
+  {
+    "file": "lib/elk-worker.min.js",
+    "match": true,
+    "sha256": "114c4f17aea4b297a2d3dd6c86bdfccb45e12040da964ea8f9766345fce4f538"
+  },
+  {
+    "file": "lib/elk.bundled.d.ts",
+    "match": true,
+    "sha256": "e2540f67a80eed487a4851a05a8c7d89542e68bae4f2a0090c1f5e318f1e5ff9"
+  },
+  {
+    "file": "lib/elk.bundled.js",
+    "match": true,
+    "sha256": "b0745abd7f23cd91690a1587e377edbe19fd7233c783300290936720546216d4"
+  },
+  {
+    "file": "lib/main.d.ts",
+    "match": true,
+    "sha256": "e2540f67a80eed487a4851a05a8c7d89542e68bae4f2a0090c1f5e318f1e5ff9"
+  },
+  {
+    "file": "lib/main.js",
+    "match": true,
+    "sha256": "f96e2e5ed6ebe8fa6f42e3e8609deed937034aa615f3e67096e3a105aed09ef8"
+  }
+]

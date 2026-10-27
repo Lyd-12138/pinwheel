@@ -1,0 +1,79 @@
+{
+  "version": "0.10.2",
+  "date": "2026-10-26",
+  "passed": true,
+  "scope": "Source-launched Windows Electron, Node tests, builds, Edge Harmony preview with API adapters; no new installers or native Harmony SDK/device validation.",
+  "core": {
+    "total": 65,
+    "passed": 65,
+    "failed": 0,
+    "skipped": 0,
+    "logSha256": "b6aa81fd2e876b3f608270a92cf3598aa5198fcf9d539134c6694ab97166635d",
+    "securityCases": 9
+  },
+  "build": {
+    "desktopTypeScript": true,
+    "harmonyWebTypeScript": true,
+    "vite": true,
+    "mainBundle": true,
+    "harmonyWeb": true,
+    "logSha256": "86847740d2aabd3c738212bfbf93036e5b1c7fb872d459dc8246ca7c8adf74e9"
+  },
+  "checks": [
+    {
+      "name": "security-ui",
+      "passed": true,
+      "sourceRun": "security-ui-1793005475621",
+      "report": "security-ui.json",
+      "sha256": "44cadc9c8170912da6cbf574de628300d013bd2f4e58f5db2b9e510d638894d0"
+    },
+    {
+      "name": "encryption-ui",
+      "passed": true,
+      "sourceRun": "encryption-ui-1793005408276",
+      "report": "encryption-ui.json",
+      "sha256": "807b0fe477fd56cd46d0d2587c99cf50b5f03b3c3b5d9d280dd9dfe779e846df"
+    },
+    {
+      "name": "pet-studio-ui",
+      "passed": true,
+      "sourceRun": "pet-studio-1793005660832",
+      "report": "pet-studio-ui.json",
+      "sha256": "b768c111c23f489a273530067efd908b0b10df03b02e643342a2e3426b5922a4"
+    },
+    {
+      "name": "language-ui",
+      "passed": true,
+      "sourceRun": "language-1793005664491",
+      "report": "language-ui.json",
+      "sha256": "82b099378338034f22d5d7c99a6b3cf82fb2d2c927a238422305141f8e398c6c"
+    },
+    {
+      "name": "harmony-ui",
+      "passed": true,
+      "sourceRun": "harmony-ui-1793005412448",
+      "report": "harmony-ui.json",
+      "sha256": "49cf27d949ef11b9f0bc5f97112b49f29760359dad74f1665758e6554faffe36"
+    },
+    {
+      "name": "desktop",
+      "passed": true,
+      "report": "desktop.json"
+    }
+  ],
+  "dependencies": {
+    "report": "dependencies.json",
+    "packageNames": 416,
+    "packageVersions": 424,
+    "returnedAdvisoryPackages": 0,
+    "lockSha256": "7a3cab8a51216ab250de2900621dfb673517ba3ab3afe11ccdcf66f803da2ee1"
+  },
+  "dataIsolation": true,
+  "maliciousExecutablesLaunched": false,
+  "binariesRefreshed": false,
+  "old0101ArchivesIncludeFixes": false,
+  "harmonyNativeSdkCompiled": false,
+  "hapBuilt": false,
+  "macRuntimeTested": false,
+  "securityCertification": false
+}

@@ -1,0 +1,8 @@
+[
+  {
+    "file": "scripts/audit-release.mjs",
+    "line": 20,
+    "sample": "const result={version:pkg.version,date:'2026-10-26',technicalChecksPassed:passed,legalClearance:false,repositoryFiles:files.length,repositoryBytes:files.reduce((n,f)=>n+f.bytes,0),secretsAndPersonalPaths:findings,filesOv",
+    "classification": "Audit limitation wording; not copied runtime code"
+  }
+]

@@ -1,0 +1,48 @@
+import { _electron as electron, expect } from '@playwright/test';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
+const run = path.join(root, 'test-results', 'context-ui-' + Date.now()); await fs.mkdir(run,{recursive:true});
+const packaged = process.env.MOYE_PACKAGED_EXECUTABLE;
+let app; const errors=[];
+try {
+  app=await electron.launch({...(packaged?{executablePath:packaged}:{}),args:packaged?[]:[root],env:{...process.env,MOYE_TEST_DATA:path.join(run,'data'),MOYE_TEST_WORKSPACE:path.join(run,'notes'),MOYE_HEADLESS: '1', MOYE_TEST_LOCALE: 'zh-CN'},timeout:60000});
+  const page=await app.firstWindow();page.on('pageerror',e=>errors.push(String(e)));
+  await expect(page.locator('.rich-editor h1')).toBeVisible();
+  await expect(page.getByRole('button',{name:'新建笔记',exact:true})).toHaveCount(0);
+  await page.locator('.note-list').click({button:'right',position:{x:30,y:8}});
+  await page.getByRole('menuitem',{name:'新建文件夹',exact:true}).click();
+  await page.getByPlaceholder('例如：学习资料').fill('我的分类');await page.getByRole('button',{name:'创建文件夹',exact:true}).click();
+  const folder=page.locator('.folder-row[data-path="我的分类"]');await expect(folder).toBeVisible();
+  expect((await fs.stat(path.join(run,'notes/我的分类'))).isDirectory()).toBe(true);
+  await folder.click({button:'right'});await page.getByRole('menuitem',{name:'新建文件',exact:true}).click();
+  await page.getByPlaceholder('例如：今天的灵感').fill('备忘');await page.getByRole('button',{name:'创建文件',exact:true}).click();
+  await expect(page.locator('.rich-editor h1')).toHaveText('备忘');
+  expect(await fs.readFile(path.join(run,'notes/我的分类/备忘.md'),'utf8')).toContain('# 备忘');
+  await folder.focus();await page.keyboard.press('Shift+F10');await expect(page.getByRole('menu')).toBeVisible();await page.keyboard.press('Escape');await expect(page.getByRole('menu')).toHaveCount(0);
+  await page.getByRole('button',{name:'文件列表',exact:true}).click();
+  await page.locator('.note-item[data-path="我的分类/备忘.md"]').click({button:'right'});await page.getByRole('menuitem',{name:'新建文件',exact:true}).click();
+  await page.getByPlaceholder('例如：今天的灵感').fill('备忘');await page.getByRole('button',{name:'创建文件',exact:true}).click();
+  await expect(page.locator('.error-banner')).toContainText('同名文件已存在');await page.getByRole('button',{name:'关闭对话框',exact:true}).click();await page.getByRole('button',{name:'关闭错误提示',exact:true}).click();
+  await page.getByRole('button',{name:'设置',exact:true}).click();
+  await app.evaluate(({dialog},file)=>{dialog.showOpenDialog=async()=>({canceled:false,filePaths:[file]});},path.join(root,'themes/theme-template.json'));
+  await page.getByRole('button',{name:'导入主题 JSON',exact:true}).click();await page.getByRole('button',{name:'关闭对话框',exact:true}).click();
+  await expect(page.locator('.brand strong')).toContainText('海盐书房');await expect(page.getByRole('tab',{name:'手记',exact:true})).toBeVisible();
+  await expect(page.locator('.brand-mark .custom-icon')).toHaveText('✦');
+  await page.locator('.note-item[data-path="我的分类/备忘.md"]').click({button:'right'});await page.getByRole('menuitem',{name:'新建手记',exact:true}).click();
+  await page.getByPlaceholder('例如：今天的灵感').fill('换装后');await page.getByRole('button',{name:'创建手记',exact:true}).click();
+  await expect(page.locator('.rich-editor h1')).toHaveText('换装后');
+  expect(await fs.readFile(path.join(run,'notes/我的分类/换装后.md'),'utf8')).toContain('# 换装后');
+  await page.getByRole('button',{name:'主题与外观',exact:true}).click();
+  await app.evaluate(({dialog},file)=>{dialog.showSaveDialog=async()=>({canceled:false,filePath:file});},path.join(run,'shared-theme.json'));
+  await page.getByRole('button',{name:'导出主题模板',exact:true}).click();
+  await expect.poll(async()=>JSON.parse(await fs.readFile(path.join(run,'shared-theme.json'),'utf8')).ui.labels['新建文件']).toBe('新建手记');
+  const shared=JSON.parse(await fs.readFile(path.join(run,'shared-theme.json'),'utf8'));expect(shared.ui.icons.brand).toBe('✦');expect(shared.background.pattern).toBe('waves');
+  await page.getByRole('button',{name:'关闭对话框',exact:true}).click();
+  await page.getByRole('button',{name:'文件树',exact:true}).click();
+  expect(await page.locator('.folder-symbol svg').first().getAttribute('stroke-width')).toBe('1.5');
+  if(!packaged) await page.screenshot({path:path.join(run,'custom-ui-and-files.png'),animations:'disabled',timeout:15000});
+  expect(errors).toEqual([]);await fs.writeFile(path.join(run,'result.json'),JSON.stringify({passed:true,packaged:Boolean(packaged),errors},null,2));console.log('Context/UI checks passed:',run);
+}catch(error){console.error(error);await fs.writeFile(path.join(run,'result.json'),JSON.stringify({passed:false,errors,error:String(error)},null,2));process.exitCode=1;}
+finally{if(app)await app.close();}

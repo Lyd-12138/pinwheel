@@ -1,0 +1,37 @@
+{
+  "remark-math@6.0.0": {
+    "file": "remark-math-6.0.0.txt",
+    "source": "https://github.com/remarkjs/remark-math/blob/d5d0660b150810a535bbb07eac6cc96a4510aa24/license",
+    "method": "Exact upstream license at npm gitHead"
+  },
+  "rehype-katex@7.0.1": {
+    "file": "rehype-katex-7.0.1.txt",
+    "source": "https://github.com/remarkjs/remark-math/blob/88a9497e1ede93b958237c85edbf5651faeca7af/license",
+    "method": "Exact upstream license at npm gitHead"
+  },
+  "isarray@1.0.0": {
+    "file": "isarray-1.0.0.txt",
+    "source": "Installed npm package README License section",
+    "method": "Verbatim license from packaged README; HTML email entities decoded"
+  },
+  "pako@1.0.11": {
+    "file": "pako-1.0.11-zlib.txt",
+    "source": "Installed npm package lib/zlib/deflate.js",
+    "method": "Verbatim zlib license header; comment delimiters removed"
+  },
+  "format@0.2.2": {
+    "file": "format-0.2.2-MIT.txt",
+    "source": "Installed npm package Readme.md License section; https://github.com/samsonjs/format/tree/4f898096759776b7c84fa7a25b13c923dadfe46e",
+    "method": "Copyright and MIT designation from packaged README, combined with standard MIT permission text; upstream has no standalone LICENSE file"
+  },
+  "KaTeX-fonts": {
+    "file": "KaTeX-fonts-OFL-1.1.txt",
+    "source": "Installed KaTeX TTF nameID 13 copyright/RFN notices; https://openfontlicense.org/documents/OFL.txt",
+    "method": "Embedded font copyright/RFN declarations plus official SIL OFL 1.1 full text"
+  },
+  "@rolldown/binding-win32-x64-msvc@1.2.14": {
+    "file": "rolldown-binding-1.2.14.txt",
+    "source": "Installed rolldown@1.2.14 LICENSE (same upstream repository/version)",
+    "method": "Retain the upstream license for the platform binding; build tool not bundled as an application runtime dependency"
+  }
+}

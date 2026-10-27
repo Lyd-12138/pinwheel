@@ -1,0 +1,42 @@
+{
+  "themeApiVersion": 2,
+  "name": "霓虹宇宙",
+  "colorScheme": "dark",
+  "tokens": {
+    "bg": "#100e29",
+    "sidebar": "#191337",
+    "panel": "#201d40",
+    "text": "#edf0ff",
+    "muted": "#a6a3cd",
+    "border": "#4b3f76",
+    "accent": "#65f3d6",
+    "accent-bg": "#254846",
+    "hover": "#312952",
+    "code": "#1c203c"
+  },
+  "appearance": "aurora",
+  "typography": {
+    "body": "sans",
+    "heading": "sans",
+    "interface": "sans"
+  },
+  "background": {
+    "pattern": "aurora",
+    "color": "#176b75",
+    "secondary": "#8639bf",
+    "opacity": 0.42,
+    "size": 48
+  },
+  "ui": {
+    "labels": {
+      "风车笔记": "霓虹宇宙",
+      "pinwheel": "pinwheel",
+      "笔记": "笔记",
+      "大纲": "大纲",
+      "设置": "设置"
+    },
+    "icons": {
+      "brand": "✦"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "themeApiVersion": 1,
+  "name": "蓝墨",
+  "colorScheme": "light",
+  "tokens": {
+    "bg": "#ffffff",
+    "sidebar": "#f0f4f9",
+    "panel": "#f7f9fc",
+    "text": "#283747",
+    "muted": "#8797a8",
+    "border": "#dfe7ef",
+    "accent": "#4f759a",
+    "accent-bg": "#dfeaf5",
+    "hover": "#e9f0f7",
+    "code": "#f0f4f9"
+  }
+}

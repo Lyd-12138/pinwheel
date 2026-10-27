@@ -1,0 +1,24 @@
+.main{container-type:inline-size;container-name:workspace}
+.main,.writing-area,.editor-column,.rich-host{min-width:0}
+.toolbar{height:auto;min-height:53px;flex-wrap:wrap;gap:8px 12px;padding:9px 18px;overflow:visible}
+.format-tools{flex:1 1 380px;min-width:0;flex-wrap:wrap;row-gap:5px}
+.mode-switch{margin-left:auto}
+.breadcrumb{flex:1}.header-actions{gap:12px}
+.rich-editor .tableWrapper{width:100%;max-width:100%;overflow-x:auto;scrollbar-width:thin}
+.rich-editor table{width:100%!important;min-width:0!important;table-layout:fixed}
+.rich-editor td,.rich-editor th{min-width:0;overflow-wrap:anywhere;padding:8px 10px}
+.rich-editor img,.preserved-node svg{max-width:100%;height:auto}
+.preserved-node{max-width:100%;min-width:0}
+.modal{max-width:100%;min-width:0}.modal-shade{padding:16px}
+.path-setting{min-width:0;flex-wrap:wrap}.path-setting>span{min-width:0;flex-basis:220px}
+.theme-grid{width:100%}.custom-theme-actions{gap:7px}
+.statusbar>span{min-width:0}.statusbar>span:first-child{flex:1}.statusbar>span:last-child{flex-shrink:0}
+@container workspace (max-width:560px){
+  .toolbar{padding:8px 12px}.format-tools{flex-basis:100%;order:2}.mode-switch{order:1}
+  .topbar{padding:0 14px;gap:8px}.header-actions{gap:6px}.breadcrumb{gap:7px}
+  .breadcrumb .slash,.breadcrumb>span:first-of-type{display:none}
+  .header-actions .save-status{font-size:9px;gap:2px}
+  .statusbar{padding:0 12px;gap:10px}.status-divider{padding:0 4px}
+}
+@media(max-width:800px){.sidebar{width:220px;padding-left:10px;padding-right:10px}.sidebar-tabs{margin-left:-10px;margin-right:-10px;padding:0 10px}.sidebar .brand{gap:8px;padding-left:4px;padding-right:4px}.sidebar .brand strong{font-size:20px}.rich-editor{padding:24px 20px max(150px,40vh)}.theme-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-height:620px){.sidebar{padding-top:14px;padding-bottom:10px}.sidebar .brand{padding-bottom:12px}.sidebar .workspace-button{margin-bottom:8px;padding-top:6px;padding-bottom:6px}.sidebar-tabs{margin-bottom:10px}.sidebar .offline{display:none}.sidebar .new-note{margin:8px 0}.sidebar .sidebar-bottom{padding-top:8px}.topbar{height:54px}}

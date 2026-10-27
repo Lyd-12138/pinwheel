@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "packaged": true,
+  "errors": [],
+  "checks": [
+    "unsupported system language defaults to English",
+    "manual switching updates the page and brand immediately",
+    "pet language updates live through a minimal locale-only permission",
+    "manual language preference persists across restart",
+    "note content and source bytes are unchanged"
+  ],
+  "englishChineseRemainders": []
+}

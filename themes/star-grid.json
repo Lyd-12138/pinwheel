@@ -1,0 +1,46 @@
+{
+  "themeApiVersion": 2,
+  "name": "星河网格",
+  "colorScheme": "dark",
+  "tokens": {
+    "bg": "#151f2d",
+    "sidebar": "#111b27",
+    "panel": "#1c2a3a",
+    "text": "#e2ebf6",
+    "muted": "#8da4bb",
+    "border": "#314459",
+    "accent": "#9ac8ef",
+    "accent-bg": "#263e54",
+    "hover": "#22374a",
+    "code": "#1a2a3b"
+  },
+  "typography": {
+    "body": "sans",
+    "heading": "sans",
+    "interface": "sans"
+  },
+  "background": {
+    "pattern": "grid",
+    "color": "#6a91bc",
+    "secondary": "#88aaca",
+    "opacity": 0.1,
+    "size": 40
+  },
+  "ui": {
+    "labels": {
+      "风车笔记": "星河札记",
+      "pinwheel": "STAR JOURNAL"
+    },
+    "icons": {
+      "brand": "✧",
+      "file": {
+        "paths": [
+          "M14 3H5v18h14V8z",
+          "M14 3v6h5M8 13h8M8 17h5"
+        ],
+        "color": "#9ac8ef",
+        "strokeWidth": 1.5
+      }
+    }
+  }
+}

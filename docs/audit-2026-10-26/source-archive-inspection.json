@@ -1,0 +1,232 @@
+[
+  {
+    "file": "elkjs-0.9.3-a8304cf79fde75bc2ab1a89d28320f53f8637436.zip",
+    "entries": 87,
+    "java": 3,
+    "xtend": 1,
+    "melk": 0,
+    "headerMarkers": {
+      "Eclipse Public License": 24,
+      "SPDX-License-Identifier": 24
+    },
+    "gplHeaderReview": [],
+    "zipIntegrity": true
+  },
+  {
+    "file": "emf-common-2.12.4-sources.jar",
+    "entries": 79,
+    "java": 58,
+    "xtend": 0,
+    "melk": 0,
+    "headerMarkers": {
+      "Eclipse Public License": 58
+    },
+    "gplHeaderReview": [],
+    "zipIntegrity": true
+  },
+  {
+    "file": "emf-ecore-2.12.4-sources.jar",
+    "entries": 186,
+    "java": 143,
+    "xtend": 0,
+    "melk": 0,
+    "headerMarkers": {
+      "Eclipse Public License": 143
+    },
+    "gplHeaderReview": [],
+    "zipIntegrity": true
+  },
+  {
+    "file": "guava-31.1-jre-sources.jar",
+    "entries": 649,
+    "java": 619,
+    "xtend": 0,
+    "melk": 0,
+    "headerMarkers": {
+      "Apache License": 612
+    },
+    "gplHeaderReview": [],
+    "zipIntegrity": true
+  },
+  {
+    "file": "gwt-user-2.10.0-sources.jar",
+    "entries": 4110,
+    "java": 4110,
+    "xtend": 0,
+    "melk": 0,
+    "headerMarkers": {
+      "Apache License": 4105
+    },
+    "gplHeaderReview": [],
+    "zipIntegrity": true
+  },
+  {
+    "file": "org.eclipse.elk.alg.common-0.9.1-sources.jar",
+    "entries": 113,
+    "java": 83,
+    "xtend": 0,
+    "melk": 1,
+    "headerMarkers": {
+      "Eclipse Public License": 83,
+      "SPDX-License-Identifier": 83
+    },
+    "gplHeaderReview": [],
+    "zipIntegrity": true
+  },
+  {
+    "file": "org.eclipse.elk.alg.disco-0.9.1-sources.jar",
+    "entries": 36,
+    "java": 15,
+    "xtend": 0,
+    "melk": 1,
+    "headerMarkers": {
+      "Eclipse Public License": 15,
+      "SPDX-License-Identifier": 15
+    },
+    "gplHeaderReview": [],
+    "zipIntegrity": true
+  },
+  {
+    "file": "org.eclipse.elk.alg.force-0.9.1-sources.jar",
+    "entries": 46,
+    "java": 21,
+    "xtend": 0,
+    "melk": 2,
+    "headerMarkers": {
+      "Eclipse Public License": 21,
+      "SPDX-License-Identifier": 21
+    },
+    "gplHeaderReview": [],
+    "zipIntegrity": true
+  },
+  {
+    "file": "org.eclipse.elk.alg.layered-0.9.1-sources.jar",
+    "entries": 293,
+    "java": 247,
+    "xtend": 0,
+    "melk": 1,
+    "headerMarkers": {
+      "Eclipse Public License": 247,
+      "SPDX-License-Identifier": 247
+    },
+    "gplHeaderReview": [],
+    "zipIntegrity": true
+  },
+  {
+    "file": "org.eclipse.elk.alg.mrtree-0.9.1-sources.jar",
+    "entries": 65,
+    "java": 40,
+    "xtend": 0,
+    "melk": 1,
+    "headerMarkers": {
+      "Eclipse Public License": 40,
+      "SPDX-License-Identifier": 40
+    },
+    "gplHeaderReview": [],
+    "zipIntegrity": true
+  },
+  {
+    "file": "org.eclipse.elk.alg.radial-0.9.1-sources.jar",
+    "entries": 65,
+    "java": 37,
+    "xtend": 0,
+    "melk": 1,
+    "headerMarkers": {
+      "Eclipse Public License": 37,
+      "SPDX-License-Identifier": 37
+    },
+    "gplHeaderReview": [],
+    "zipIntegrity": true
+  },
+  {
+    "file": "org.eclipse.elk.alg.rectpacking-0.9.1-sources.jar",
+    "entries": 62,
+    "java": 38,
+    "xtend": 0,
+    "melk": 1,
+    "headerMarkers": {
+      "Eclipse Public License": 38,
+      "SPDX-License-Identifier": 38
+    },
+    "gplHeaderReview": [],
+    "zipIntegrity": true
+  },
+  {
+    "file": "org.eclipse.elk.alg.spore-0.9.1-sources.jar",
+    "entries": 44,
+    "java": 21,
+    "xtend": 0,
+    "melk": 1,
+    "headerMarkers": {
+      "Eclipse Public License": 21,
+      "SPDX-License-Identifier": 21
+    },
+    "gplHeaderReview": [],
+    "zipIntegrity": true
+  },
+  {
+    "file": "org.eclipse.elk.core-0.9.1-sources.jar",
+    "entries": 147,
+    "java": 113,
+    "xtend": 0,
+    "melk": 2,
+    "headerMarkers": {
+      "Eclipse Public License": 113,
+      "SPDX-License-Identifier": 113
+    },
+    "gplHeaderReview": [],
+    "zipIntegrity": true
+  },
+  {
+    "file": "org.eclipse.elk.graph-0.9.1-sources.jar",
+    "entries": 55,
+    "java": 40,
+    "xtend": 0,
+    "melk": 0,
+    "headerMarkers": {
+      "Eclipse Public License": 40,
+      "SPDX-License-Identifier": 40
+    },
+    "gplHeaderReview": [],
+    "zipIntegrity": true
+  },
+  {
+    "file": "org.eclipse.elk.graph.json-0.9.1-sources.jar",
+    "entries": 29,
+    "java": 6,
+    "xtend": 5,
+    "melk": 0,
+    "headerMarkers": {
+      "Eclipse Public License": 11,
+      "SPDX-License-Identifier": 11
+    },
+    "gplHeaderReview": [],
+    "zipIntegrity": true
+  },
+  {
+    "file": "org.eclipse.xtend.lib-2.28.0-sources.jar",
+    "entries": 56,
+    "java": 19,
+    "xtend": 8,
+    "melk": 0,
+    "headerMarkers": {
+      "Eclipse Public License": 27,
+      "SPDX-License-Identifier": 27
+    },
+    "gplHeaderReview": [],
+    "zipIntegrity": true
+  },
+  {
+    "file": "org.eclipse.xtext.xbase.lib-2.28.0-sources.jar",
+    "entries": 63,
+    "java": 49,
+    "xtend": 0,
+    "melk": 0,
+    "headerMarkers": {
+      "Eclipse Public License": 49,
+      "SPDX-License-Identifier": 49
+    },
+    "gplHeaderReview": [],
+    "zipIntegrity": true
+  }
+]

@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "environment": "Chromium preview with actual native service source and documented API test adapters; not a Harmony device",
+  "checks": [
+    "390px phone layout",
+    "source/rich editing, highlighting, formula, Mermaid, wrapping, autosave",
+    "tap link delegates to native external browser",
+    "native picker attachment and image rendering",
+    "theme switch",
+    "export note pack",
+    "outline navigation",
+    "encrypt, background lock, wrong password, unlock",
+    "desktop pack import",
+    "reload restores document, mode and theme",
+    "1280px tablet layout",
+    "system back dismisses sheet, saves, then backgrounds native ability",
+    "manual English updates native language and survives reload",
+    "unsupported Harmony system language falls back to English"
+  ],
+  "errors": [],
+  "blocked": []
+}

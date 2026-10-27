@@ -1,0 +1,1557 @@
+[
+  {
+    "file": "src/code-block.ts",
+    "line": 1,
+    "sample": "import { t } from './i18n';"
+  },
+  {
+    "file": "src/code-block.ts",
+    "line": 2,
+    "sample": "import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight';"
+  },
+  {
+    "file": "src/code-block.ts",
+    "line": 3,
+    "sample": "import { codeHighlighter, codeLanguages } from '../shared/code-highlight.mjs';"
+  },
+  {
+    "file": "src/diagrams.ts",
+    "line": 6,
+    "sample": "      const { default: mermaid } = await import('mermaid');"
+  },
+  {
+    "file": "src/editor-toolbar.tsx",
+    "line": 1,
+    "sample": "import React, { useEffect, useRef, useState } from 'react';"
+  },
+  {
+    "file": "src/editor-toolbar.tsx",
+    "line": 2,
+    "sample": "import type { NoteEditor } from './editor';"
+  },
+  {
+    "file": "src/editor-toolbar.tsx",
+    "line": 3,
+    "sample": "import { Icon, useThemeUI } from './ui';"
+  },
+  {
+    "file": "src/editor.ts",
+    "line": 1,
+    "sample": "import { t } from './i18n';"
+  },
+  {
+    "file": "src/editor.ts",
+    "line": 2,
+    "sample": "import { Editor, Node, Mark, type JSONContent } from '@tiptap/core';"
+  },
+  {
+    "file": "src/editor.ts",
+    "line": 3,
+    "sample": "import StarterKit from '@tiptap/starter-kit';"
+  },
+  {
+    "file": "src/editor.ts",
+    "line": 4,
+    "sample": "import { HighlightedCodeBlock } from './code-block';"
+  },
+  {
+    "file": "src/editor.ts",
+    "line": 5,
+    "sample": "import { TableKit, TableCell, TableHeader } from '@tiptap/extension-table';"
+  },
+  {
+    "file": "src/editor.ts",
+    "line": 6,
+    "sample": "import Image from '@tiptap/extension-image';"
+  },
+  {
+    "file": "src/editor.ts",
+    "line": 7,
+    "sample": "import TaskList from '@tiptap/extension-task-list';"
+  },
+  {
+    "file": "src/editor.ts",
+    "line": 8,
+    "sample": "import TaskItem from '@tiptap/extension-task-item';"
+  },
+  {
+    "file": "src/editor.ts",
+    "line": 9,
+    "sample": "import { TextSelection } from '@tiptap/pm/state';"
+  },
+  {
+    "file": "src/editor.ts",
+    "line": 10,
+    "sample": "import { undo, redo } from '@codemirror/commands';"
+  },
+  {
+    "file": "src/editor.ts",
+    "line": 11,
+    "sample": "import { openSearchPanel } from '@codemirror/search';"
+  },
+  {
+    "file": "src/editor.ts",
+    "line": 12,
+    "sample": "import { EditorView } from '@codemirror/view';"
+  },
+  {
+    "file": "src/editor.ts",
+    "line": 13,
+    "sample": "import { NoteEditor as SourceEditor } from './source-editor';"
+  },
+  {
+    "file": "src/editor.ts",
+    "line": 14,
+    "sample": "import { richDocument, MarkdownSnapshot, serializeRichNode } from '../shared/rich-document.mjs';"
+  },
+  {
+    "file": "src/editor.ts",
+    "line": 15,
+    "sample": "import { renderMarkdown, isRemote, headings } from '../shared/markdown.mjs';"
+  },
+  {
+    "file": "src/editor.ts",
+    "line": 16,
+    "sample": "import { drawDiagrams } from './diagrams';"
+  },
+  {
+    "file": "src/i18n.ts",
+    "line": 1,
+    "sample": "import { useSyncExternalStore } from 'react';"
+  },
+  {
+    "file": "src/i18n.ts",
+    "line": 2,
+    "sample": "import { t, getLanguage, subscribeLanguage, setLanguage, brandName } from '../shared/i18n.mjs';"
+  },
+  {
+    "file": "src/language-panel.tsx",
+    "line": 1,
+    "sample": "import React from 'react';"
+  },
+  {
+    "file": "src/language-panel.tsx",
+    "line": 2,
+    "sample": "import { t, setLanguage } from './i18n';"
+  },
+  {
+    "file": "src/language-panel.tsx",
+    "line": 3,
+    "sample": "import { call, type Settings } from './types';"
+  },
+  {
+    "file": "src/main.tsx",
+    "line": 1,
+    "sample": "import { t, useLanguage, setLanguage, brandName } from './i18n';"
+  },
+  {
+    "file": "src/main.tsx",
+    "line": 2,
+    "sample": "import { LanguagePanel } from './language-panel';"
+  },
+  {
+    "file": "src/main.tsx",
+    "line": 3,
+    "sample": "import React, { useEffect, useMemo, useRef, useState } from 'react';"
+  },
+  {
+    "file": "src/main.tsx",
+    "line": 4,
+    "sample": "import { createRoot } from 'react-dom/client';"
+  },
+  {
+    "file": "src/main.tsx",
+    "line": 5,
+    "sample": "import { call, type Document, type Note, type Workspace, type Settings, type WorkspaceSession } from './types';"
+  },
+  {
+    "file": "src/main.tsx",
+    "line": 6,
+    "sample": "import { NoteEditor, type Mode } from './editor';"
+  },
+  {
+    "file": "src/main.tsx",
+    "line": 7,
+    "sample": "import { NoteTree } from './note-browser';"
+  },
+  {
+    "file": "src/main.tsx",
+    "line": 8,
+    "sample": "import { ThemePicker } from './theme-picker';"
+  },
+  {
+    "file": "src/main.tsx",
+    "line": 9,
+    "sample": "import { EditorToolbar } from './editor-toolbar';"
+  },
+  {
+    "file": "src/main.tsx",
+    "line": 10,
+    "sample": "import { TypographyPanel, CustomThemesPanel } from './preferences-panel';"
+  },
+  {
+    "file": "src/main.tsx",
+    "line": 11,
+    "sample": "import { PetDesktop, PetsPanel } from './pets';"
+  },
+  {
+    "file": "src/main.tsx",
+    "line": 12,
+    "sample": "import { fontStack } from '../shared/preferences.mjs';"
+  },
+  {
+    "file": "src/main.tsx",
+    "line": 13,
+    "sample": "import { Icon, ThemeUIContext, uiLabel } from './ui';"
+  },
+  {
+    "file": "src/main.tsx",
+    "line": 14,
+    "sample": "import { builtInThemes } from '../shared/themes.mjs';"
+  },
+  {
+    "file": "src/main.tsx",
+    "line": 15,
+    "sample": "import { backgroundStyle, themeFonts } from '../shared/theme-format.mjs';"
+  },
+  {
+    "file": "src/main.tsx",
+    "line": 16,
+    "sample": "import 'katex/dist/katex.min.css';"
+  },
+  {
+    "file": "src/main.tsx",
+    "line": 17,
+    "sample": "import './style.css';"
+  },
+  {
+    "file": "src/main.tsx",
+    "line": 18,
+    "sample": "import './widgets.css';"
+  },
+  {
+    "file": "src/main.tsx",
+    "line": 19,
+    "sample": "import './layout.css';"
+  },
+  {
+    "file": "src/main.tsx",
+    "line": 20,
+    "sample": "import './highlight.css';"
+  },
+  {
+    "file": "src/main.tsx",
+    "line": 21,
+    "sample": "import './sidebar.css';"
+  },
+  {
+    "file": "src/main.tsx",
+    "line": 22,
+    "sample": "import './themes.css';"
+  },
+  {
+    "file": "src/main.tsx",
+    "line": 23,
+    "sample": "import './responsive.css';"
+  },
+  {
+    "file": "src/main.tsx",
+    "line": 24,
+    "sample": "import './theme-canvas.css';"
+  },
+  {
+    "file": "src/main.tsx",
+    "line": 25,
+    "sample": "import './encryption.css';"
+  },
+  {
+    "file": "src/main.tsx",
+    "line": 26,
+    "sample": "import './theme-art.css';"
+  },
+  {
+    "file": "src/main.tsx",
+    "line": 27,
+    "sample": "import './workspace-controls.css';"
+  },
+  {
+    "file": "src/main.tsx",
+    "line": 28,
+    "sample": "import './editor-toolbar.css';"
+  },
+  {
+    "file": "src/main.tsx",
+    "line": 29,
+    "sample": "import './preferences.css';"
+  },
+  {
+    "file": "src/main.tsx",
+    "line": 30,
+    "sample": "import './pets.css';"
+  },
+  {
+    "file": "src/main.tsx",
+    "line": 312,
+    "sample": "  const importNotes = () => guard(async () => { if (!(await save())) return; setBusy(true); try { const result = await call('import'); if (result) { await refreshNotes(); setNotice(`已导入 ${result.count} 篇笔记，存放于 ${result.folder}`); } } finally { setBusy(false); "
+  },
+  {
+    "file": "src/main.tsx",
+    "line": 369,
+    "sample": "      <div className=\"sidebar-bottom\"><button onClick={importNotes} disabled={busy}><Icon name=\"import\"/>{uiText(\"导入笔记\")}</button><button onClick={() => setModal('settings')}><Icon name=\"settings\"/>{uiText(\"设置\")}</button></div>"
+  },
+  {
+    "file": "src/note-browser.tsx",
+    "line": 1,
+    "sample": "import React, { useMemo } from 'react';"
+  },
+  {
+    "file": "src/note-browser.tsx",
+    "line": 2,
+    "sample": "import type { Note } from './types';"
+  },
+  {
+    "file": "src/note-browser.tsx",
+    "line": 3,
+    "sample": "import { Icon, useThemeUI } from './ui';"
+  },
+  {
+    "file": "src/note-browser.tsx",
+    "line": 4,
+    "sample": "import { noteTree } from '../shared/note-tree.mjs';"
+  },
+  {
+    "file": "src/pet-canvas.tsx",
+    "line": 1,
+    "sample": "import { t } from \"./i18n\";"
+  },
+  {
+    "file": "src/pet-canvas.tsx",
+    "line": 2,
+    "sample": "import React, { useEffect, useRef, useState } from 'react';"
+  },
+  {
+    "file": "src/pet-designer.tsx",
+    "line": 1,
+    "sample": "import { t } from \"./i18n\";"
+  },
+  {
+    "file": "src/pet-designer.tsx",
+    "line": 2,
+    "sample": "import React, { useState } from 'react';"
+  },
+  {
+    "file": "src/pet-designer.tsx",
+    "line": 3,
+    "sample": "import { type Pet, type Pets, call } from './types';"
+  },
+  {
+    "file": "src/pet-designer.tsx",
+    "line": 4,
+    "sample": "import { PetAvatar } from './pets';"
+  },
+  {
+    "file": "src/pet-designer.tsx",
+    "line": 5,
+    "sample": "import { petKinds } from '../shared/pets.mjs';"
+  },
+  {
+    "file": "src/pet-designer.tsx",
+    "line": 6,
+    "sample": "import { appearanceDefaults, petActions } from '../shared/pet-format.mjs';"
+  },
+  {
+    "file": "src/pets.tsx",
+    "line": 1,
+    "sample": "import { t, useLanguage, setLanguage, getLanguage } from './i18n';"
+  },
+  {
+    "file": "src/pets.tsx",
+    "line": 2,
+    "sample": "import React, { useEffect, useId, useRef, useState } from 'react';"
+  },
+  {
+    "file": "src/pets.tsx",
+    "line": 3,
+    "sample": "import { call, type Pet, type Pets } from './types';"
+  },
+  {
+    "file": "src/pets.tsx",
+    "line": 4,
+    "sample": "import { actionVisual, appearanceDefaults } from '../shared/pet-format.mjs';"
+  },
+  {
+    "file": "src/pets.tsx",
+    "line": 5,
+    "sample": "import { PetDesigner } from './pet-designer';"
+  },
+  {
+    "file": "src/pets.tsx",
+    "line": 6,
+    "sample": "import { PetCanvas } from './pet-canvas';"
+  },
+  {
+    "file": "src/preferences-panel.tsx",
+    "line": 1,
+    "sample": "import { t } from \"./i18n\";"
+  },
+  {
+    "file": "src/preferences-panel.tsx",
+    "line": 2,
+    "sample": "import React, { useState } from 'react';"
+  },
+  {
+    "file": "src/preferences-panel.tsx",
+    "line": 3,
+    "sample": "import { call, type Settings } from './types';"
+  },
+  {
+    "file": "src/preferences-panel.tsx",
+    "line": 4,
+    "sample": "import { fontStack } from '../shared/preferences.mjs';"
+  },
+  {
+    "file": "src/preview.worker.ts",
+    "line": 1,
+    "sample": "import { renderMarkdown, headings, isRemote } from '../shared/markdown.mjs';"
+  },
+  {
+    "file": "src/source-editor.ts",
+    "line": 1,
+    "sample": "import { t, getLanguage } from './i18n';"
+  },
+  {
+    "file": "src/source-editor.ts",
+    "line": 2,
+    "sample": "import { EditorState, Compartment } from '@codemirror/state';"
+  },
+  {
+    "file": "src/source-editor.ts",
+    "line": 3,
+    "sample": "import { EditorView, keymap, lineNumbers, highlightActiveLine, drawSelection, dropCursor } from '@codemirror/view';"
+  },
+  {
+    "file": "src/source-editor.ts",
+    "line": 4,
+    "sample": "import { defaultKeymap, history, historyKeymap, indentWithTab, redo, indentMore, indentLess } from '@codemirror/commands';"
+  },
+  {
+    "file": "src/source-editor.ts",
+    "line": 5,
+    "sample": "import { markdown, markdownLanguage } from '@codemirror/lang-markdown';"
+  },
+  {
+    "file": "src/source-editor.ts",
+    "line": 6,
+    "sample": "import { languages } from '@codemirror/language-data';"
+  },
+  {
+    "file": "src/source-editor.ts",
+    "line": 7,
+    "sample": "import { syntaxHighlighting, defaultHighlightStyle, bracketMatching, foldGutter, foldKeymap } from '@codemirror/language';"
+  },
+  {
+    "file": "src/source-editor.ts",
+    "line": 8,
+    "sample": "import { searchKeymap, highlightSelectionMatches } from '@codemirror/search';"
+  },
+  {
+    "file": "src/source-editor.ts",
+    "line": 9,
+    "sample": "import { closeBrackets, closeBracketsKeymap } from '@codemirror/autocomplete';"
+  },
+  {
+    "file": "src/source-editor.ts",
+    "line": 10,
+    "sample": "import { parse } from '../shared/markdown.mjs';"
+  },
+  {
+    "file": "src/theme-picker.tsx",
+    "line": 1,
+    "sample": "import { t } from \"./i18n\";"
+  },
+  {
+    "file": "src/theme-picker.tsx",
+    "line": 2,
+    "sample": "import React, { useState } from 'react';"
+  },
+  {
+    "file": "src/theme-picker.tsx",
+    "line": 3,
+    "sample": "import { builtInThemes, themeFamilies } from '../shared/themes.mjs';"
+  },
+  {
+    "file": "src/theme-picker.tsx",
+    "line": 4,
+    "sample": "import { useThemeUI } from './ui';"
+  },
+  {
+    "file": "src/types.ts",
+    "line": 7,
+    "sample": "export type WorkspaceSession = { lastPath: string; mode: 'source' | 'markdown'; collapsed: string[]; views: Record<string, import('./editor').EditorSession> };"
+  },
+  {
+    "file": "src/ui.tsx",
+    "line": 1,
+    "sample": "import React, { createContext, useContext } from 'react';"
+  },
+  {
+    "file": "src/ui.tsx",
+    "line": 2,
+    "sample": "import type { ThemeUI } from './types';"
+  },
+  {
+    "file": "src/ui.tsx",
+    "line": 3,
+    "sample": "import { t } from './i18n';"
+  },
+  {
+    "file": "shared/code-highlight.mjs",
+    "line": 1,
+    "sample": "import { all, createLowlight } from 'lowlight';"
+  },
+  {
+    "file": "shared/code-highlight.mjs",
+    "line": 2,
+    "sample": "import { visit } from 'unist-util-visit';"
+  },
+  {
+    "file": "shared/i18n.mjs",
+    "line": 1,
+    "sample": "import en from './locales/en.json' with { type: 'json' };"
+  },
+  {
+    "file": "shared/locales/en.json",
+    "line": 710,
+    "sample": "  \"正文与附件，可导入后继续编辑\": \"Body and attachments; editable after import\","
+  },
+  {
+    "file": "shared/markdown.mjs",
+    "line": 1,
+    "sample": "import { unified } from 'unified';"
+  },
+  {
+    "file": "shared/markdown.mjs",
+    "line": 2,
+    "sample": "import remarkParse from 'remark-parse';"
+  },
+  {
+    "file": "shared/markdown.mjs",
+    "line": 3,
+    "sample": "import remarkGfm from 'remark-gfm';"
+  },
+  {
+    "file": "shared/markdown.mjs",
+    "line": 4,
+    "sample": "import remarkMath from 'remark-math';"
+  },
+  {
+    "file": "shared/markdown.mjs",
+    "line": 5,
+    "sample": "import remarkFrontmatter from 'remark-frontmatter';"
+  },
+  {
+    "file": "shared/markdown.mjs",
+    "line": 6,
+    "sample": "import remarkRehype from 'remark-rehype';"
+  },
+  {
+    "file": "shared/markdown.mjs",
+    "line": 7,
+    "sample": "import rehypeSanitize, { defaultSchema } from 'rehype-sanitize';"
+  },
+  {
+    "file": "shared/markdown.mjs",
+    "line": 8,
+    "sample": "import rehypeKatex from 'rehype-katex';"
+  },
+  {
+    "file": "shared/markdown.mjs",
+    "line": 9,
+    "sample": "import rehypeStringify from 'rehype-stringify';"
+  },
+  {
+    "file": "shared/markdown.mjs",
+    "line": 10,
+    "sample": "import { visit } from 'unist-util-visit';"
+  },
+  {
+    "file": "shared/markdown.mjs",
+    "line": 11,
+    "sample": "import { highlightCode } from './code-highlight.mjs';"
+  },
+  {
+    "file": "shared/pet-image.mjs",
+    "line": 1,
+    "sample": "import { imageSize } from 'image-size';"
+  },
+  {
+    "file": "shared/pet-image.mjs",
+    "line": 2,
+    "sample": "import { gifSize } from './gif.mjs';"
+  },
+  {
+    "file": "shared/pet-image.mjs",
+    "line": 3,
+    "sample": "import { validPetAsset } from './pet-format.mjs';"
+  },
+  {
+    "file": "shared/pets.mjs",
+    "line": 1,
+    "sample": "import { validateAppearance, validateActions, validateBehavior } from './pet-format.mjs';"
+  },
+  {
+    "file": "shared/pets.mjs",
+    "line": 2,
+    "sample": "import { t } from './i18n.mjs';"
+  },
+  {
+    "file": "shared/preferences.mjs",
+    "line": 1,
+    "sample": "import { builtInThemes } from './themes.mjs';"
+  },
+  {
+    "file": "shared/rich-document.mjs",
+    "line": 1,
+    "sample": "import { parse } from './markdown.mjs';"
+  },
+  {
+    "file": "shared/theme-format.mjs",
+    "line": 8,
+    "sample": "export const themeIconNames = ['pin','brand','panel','book','plus','search','file','folder','settings','export','import','image','link','clock','check','arrow','close','outline','list','code','table','quote','bullets','tasks','lock','copy','rename'];"
+  },
+  {
+    "file": "shared/zip-safety.mjs",
+    "line": 1,
+    "sample": "import JSZip from 'jszip';"
+  },
+  {
+    "file": "desktop/encryption.mjs",
+    "line": 1,
+    "sample": "import { randomBytes, scrypt, createCipheriv, createDecipheriv, timingSafeEqual } from 'node:crypto';"
+  },
+  {
+    "file": "desktop/encryption.mjs",
+    "line": 2,
+    "sample": "import { promisify } from 'node:util';"
+  },
+  {
+    "file": "desktop/file-operations.mjs",
+    "line": 1,
+    "sample": "import fs from 'node:fs/promises';"
+  },
+  {
+    "file": "desktop/file-operations.mjs",
+    "line": 2,
+    "sample": "import { constants } from 'node:fs';"
+  },
+  {
+    "file": "desktop/file-operations.mjs",
+    "line": 3,
+    "sample": "import path from 'node:path';"
+  },
+  {
+    "file": "desktop/file-operations.mjs",
+    "line": 4,
+    "sample": "import { randomUUID } from 'node:crypto';"
+  },
+  {
+    "file": "desktop/file-operations.mjs",
+    "line": 5,
+    "sample": "import { atomicWrite, hash, inside, validPackagePath, validateName } from './store.mjs';"
+  },
+  {
+    "file": "desktop/file-operations.mjs",
+    "line": 6,
+    "sample": "import { readFileBounded, ensurePrivateDirectory } from './safe-io.mjs';"
+  },
+  {
+    "file": "desktop/fonts.mjs",
+    "line": 1,
+    "sample": "import { execFile } from 'node:child_process';"
+  },
+  {
+    "file": "desktop/fonts.mjs",
+    "line": 2,
+    "sample": "import { promisify } from 'node:util';"
+  },
+  {
+    "file": "desktop/localized-ui.mjs",
+    "line": 1,
+    "sample": "import { t } from '../shared/i18n.mjs';"
+  },
+  {
+    "file": "desktop/main.mjs",
+    "line": 1,
+    "sample": "import { t, setLanguage, getLanguage, brandName, validLanguagePreference } from '../shared/i18n.mjs';"
+  },
+  {
+    "file": "desktop/main.mjs",
+    "line": 2,
+    "sample": "import { migrateLegacyData } from './migration.mjs';"
+  },
+  {
+    "file": "desktop/main.mjs",
+    "line": 3,
+    "sample": "import { localizedOptions } from './localized-ui.mjs';"
+  },
+  {
+    "file": "desktop/main.mjs",
+    "line": 4,
+    "sample": "import { app, BrowserWindow, ipcMain, dialog, protocol, shell, net, nativeTheme, clipboard, Menu } from 'electron';"
+  },
+  {
+    "file": "desktop/main.mjs",
+    "line": 5,
+    "sample": "import fs from 'node:fs/promises';"
+  },
+  {
+    "file": "desktop/main.mjs",
+    "line": 6,
+    "sample": "import path from 'node:path';"
+  },
+  {
+    "file": "desktop/main.mjs",
+    "line": 7,
+    "sample": "import { fileURLToPath } from 'node:url';"
+  },
+  {
+    "file": "desktop/main.mjs",
+    "line": 8,
+    "sample": "import { randomUUID } from 'node:crypto';"
+  },
+  {
+    "file": "desktop/main.mjs",
+    "line": 9,
+    "sample": "import { NotebookStore, atomicWrite, hash, inside, validateName } from './store.mjs';"
+  },
+  {
+    "file": "desktop/main.mjs",
+    "line": 10,
+    "sample": "import { renderMarkdown, isRemote, references, rewriteLinks, splitUrl } from '../shared/markdown.mjs';"
+  },
+  {
+    "file": "desktop/main.mjs",
+    "line": 12,
+    "sample": "import { builtInThemes } from '../shared/themes.mjs';"
+  },
+  {
+    "file": "desktop/main.mjs",
+    "line": 13,
+    "sample": "import { validateTheme, themeTemplate } from '../shared/theme-format.mjs';"
+  },
+  {
+    "file": "desktop/main.mjs",
+    "line": 14,
+    "sample": "import { encrypted, header, seal } from './encryption.mjs';"
+  },
+  {
+    "file": "desktop/main.mjs",
+    "line": 15,
+    "sample": "import { systemIntegration } from './system-integration.mjs';"
+  },
+  {
+    "file": "desktop/main.mjs",
+    "line": 16,
+    "sample": "import { desktopPets } from './pets.mjs';"
+  },
+  {
+    "file": "desktop/main.mjs",
+    "line": 17,
+    "sample": "import { validateFont, fontStack, migrateThemes, removeTheme } from '../shared/preferences.mjs';"
+  },
+  {
+    "file": "desktop/main.mjs",
+    "line": 18,
+    "sample": "import { validateSession } from '../shared/session.mjs';"
+  },
+  {
+    "file": "desktop/main.mjs",
+    "line": 19,
+    "sample": "import { installedFonts } from './fonts.mjs';"
+  },
+  {
+    "file": "desktop/main.mjs",
+    "line": 20,
+    "sample": "import { readFileBounded } from './safe-io.mjs';"
+  },
+  {
+    "file": "desktop/main.mjs",
+    "line": 21,
+    "sample": "import { externalUrl, mayOpenAttachment, secureWindow, trustedRenderer } from './security-policy.mjs';"
+  },
+  {
+    "file": "desktop/main.mjs",
+    "line": 147,
+    "sample": "      if (/\\.notepack$/i.test(full)) return { type: 'import', result: await store.importPackage(await readFileBounded(full,128*1024*1024)) };"
+  },
+  {
+    "file": "desktop/main.mjs",
+    "line": 240,
+    "sample": "    case 'import': {"
+  },
+  {
+    "file": "desktop/migration.mjs",
+    "line": 1,
+    "sample": "import fs from 'node:fs/promises';"
+  },
+  {
+    "file": "desktop/migration.mjs",
+    "line": 2,
+    "sample": "import path from 'node:path';"
+  },
+  {
+    "file": "desktop/pet-package.mjs",
+    "line": 1,
+    "sample": "import JSZip from 'jszip';"
+  },
+  {
+    "file": "desktop/pet-package.mjs",
+    "line": 2,
+    "sample": "import { createHash } from 'node:crypto';"
+  },
+  {
+    "file": "desktop/pet-package.mjs",
+    "line": 3,
+    "sample": "import { validatePet } from '../shared/pets.mjs';"
+  },
+  {
+    "file": "desktop/pet-package.mjs",
+    "line": 4,
+    "sample": "import { petAssetFiles, validPetAsset } from '../shared/pet-format.mjs';"
+  },
+  {
+    "file": "desktop/pet-package.mjs",
+    "line": 5,
+    "sample": "import { loadSafeZip, readZipEntry } from '../shared/zip-safety.mjs';"
+  },
+  {
+    "file": "desktop/pets.mjs",
+    "line": 1,
+    "sample": "import { t } from '../shared/i18n.mjs';"
+  },
+  {
+    "file": "desktop/pets.mjs",
+    "line": 2,
+    "sample": "import { localizedOptions } from './localized-ui.mjs';"
+  },
+  {
+    "file": "desktop/pets.mjs",
+    "line": 3,
+    "sample": "import { BrowserWindow, dialog, screen, nativeImage, Menu } from 'electron';"
+  },
+  {
+    "file": "desktop/pets.mjs",
+    "line": 4,
+    "sample": "import fs from 'node:fs/promises';"
+  },
+  {
+    "file": "desktop/pets.mjs",
+    "line": 5,
+    "sample": "import path from 'node:path';"
+  },
+  {
+    "file": "desktop/pets.mjs",
+    "line": 6,
+    "sample": "import { randomUUID } from 'node:crypto';"
+  },
+  {
+    "file": "desktop/pets.mjs",
+    "line": 7,
+    "sample": "import { initialPets, validatePet, removePet, petPosition } from '../shared/pets.mjs';"
+  },
+  {
+    "file": "desktop/pets.mjs",
+    "line": 8,
+    "sample": "import { petActions, petAssetFiles, validateActions, validPetAsset } from '../shared/pet-format.mjs';"
+  },
+  {
+    "file": "desktop/pets.mjs",
+    "line": 9,
+    "sample": "import { gifSize } from '../shared/gif.mjs';"
+  },
+  {
+    "file": "desktop/pets.mjs",
+    "line": 10,
+    "sample": "import { petImageSize } from '../shared/pet-image.mjs';"
+  },
+  {
+    "file": "desktop/pets.mjs",
+    "line": 11,
+    "sample": "import { readFileBounded } from './safe-io.mjs';"
+  },
+  {
+    "file": "desktop/pets.mjs",
+    "line": 12,
+    "sample": "import { secureWindow, trustedRenderer } from './security-policy.mjs';"
+  },
+  {
+    "file": "desktop/pets.mjs",
+    "line": 13,
+    "sample": "import { readPetPackage, writePetPackage } from './pet-package.mjs';"
+  },
+  {
+    "file": "desktop/pets.mjs",
+    "line": 14,
+    "sample": "import { petGuide } from '../shared/pet-guide.mjs';"
+  },
+  {
+    "file": "desktop/pets.mjs",
+    "line": 15,
+    "sample": "import { atomicWrite, inside } from './store.mjs';"
+  },
+  {
+    "file": "desktop/preload.cjs",
+    "line": 1,
+    "sample": "const { contextBridge, ipcRenderer } = require('electron');"
+  },
+  {
+    "file": "desktop/preload.cjs",
+    "line": 2,
+    "sample": "const allowed = new Set(['petLocale','setAlwaysOnTop','petContextMenu','petDrag','petExport','petTemplate','petImportPackage','petImportFolder','petActionImport','petDrawing','restoreThemes','installedFonts','workspaceSession','preferences','deleteTheme','petS"
+  },
+  {
+    "file": "desktop/safe-io.mjs",
+    "line": 1,
+    "sample": "import fs from 'node:fs/promises';"
+  },
+  {
+    "file": "desktop/safe-io.mjs",
+    "line": 2,
+    "sample": "import path from 'node:path';"
+  },
+  {
+    "file": "desktop/security-policy.mjs",
+    "line": 1,
+    "sample": "import path from 'node:path';"
+  },
+  {
+    "file": "desktop/security-policy.mjs",
+    "line": 2,
+    "sample": "import { pathToFileURL } from 'node:url';"
+  },
+  {
+    "file": "desktop/store.mjs",
+    "line": 1,
+    "sample": "import fs from 'node:fs/promises';"
+  },
+  {
+    "file": "desktop/store.mjs",
+    "line": 2,
+    "sample": "import path from 'node:path';"
+  },
+  {
+    "file": "desktop/store.mjs",
+    "line": 3,
+    "sample": "import { createHash, randomUUID } from 'node:crypto';"
+  },
+  {
+    "file": "desktop/store.mjs",
+    "line": 4,
+    "sample": "import { fileURLToPath, pathToFileURL } from 'node:url';"
+  },
+  {
+    "file": "desktop/store.mjs",
+    "line": 5,
+    "sample": "import JSZip from 'jszip';"
+  },
+  {
+    "file": "desktop/store.mjs",
+    "line": 6,
+    "sample": "import { references, rewriteLinks, isRemote, splitUrl } from '../shared/markdown.mjs';"
+  },
+  {
+    "file": "desktop/store.mjs",
+    "line": 7,
+    "sample": "import { encrypted, header, keyFor, seal, unseal } from './encryption.mjs';"
+  },
+  {
+    "file": "desktop/store.mjs",
+    "line": 8,
+    "sample": "import { recoverRenames, renameEntry, duplicateNote, entry } from './file-operations.mjs';"
+  },
+  {
+    "file": "desktop/store.mjs",
+    "line": 9,
+    "sample": "import { readFileBounded, ensurePrivateDirectory, privateFile } from './safe-io.mjs';"
+  },
+  {
+    "file": "desktop/store.mjs",
+    "line": 10,
+    "sample": "import { loadSafeZip, readZipEntry } from '../shared/zip-safety.mjs';"
+  },
+  {
+    "file": "desktop/system-integration.mjs",
+    "line": 1,
+    "sample": "import { t } from '../shared/i18n.mjs';"
+  },
+  {
+    "file": "desktop/system-integration.mjs",
+    "line": 2,
+    "sample": "import { execFile } from 'node:child_process';"
+  },
+  {
+    "file": "desktop/system-integration.mjs",
+    "line": 3,
+    "sample": "import { promisify } from 'node:util';"
+  },
+  {
+    "file": "desktop/system-integration.mjs",
+    "line": 4,
+    "sample": "import {documentTypes,windowsAssociationEntries} from '../shared/windows-association.mjs';"
+  },
+  {
+    "file": "scripts/audit-dependencies.mjs",
+    "line": 2,
+    "sample": "import fs from 'node:fs/promises';"
+  },
+  {
+    "file": "scripts/audit-dependencies.mjs",
+    "line": 3,
+    "sample": "import path from 'node:path';"
+  },
+  {
+    "file": "scripts/audit-dependencies.mjs",
+    "line": 4,
+    "sample": "import {createHash} from 'node:crypto';"
+  },
+  {
+    "file": "scripts/audit-ip.mjs",
+    "line": 2,
+    "sample": "import fs from 'node:fs/promises';"
+  },
+  {
+    "file": "scripts/audit-ip.mjs",
+    "line": 3,
+    "sample": "import path from 'node:path';"
+  },
+  {
+    "file": "scripts/audit-ip.mjs",
+    "line": 4,
+    "sample": "import { createHash } from 'node:crypto';"
+  },
+  {
+    "file": "scripts/audit-release.mjs",
+    "line": 2,
+    "sample": "import fs from 'node:fs/promises';"
+  },
+  {
+    "file": "scripts/audit-release.mjs",
+    "line": 3,
+    "sample": "import path from 'node:path';"
+  },
+  {
+    "file": "scripts/audit-release.mjs",
+    "line": 4,
+    "sample": "import { createHash } from 'node:crypto';"
+  },
+  {
+    "file": "scripts/audit-release.mjs",
+    "line": 5,
+    "sample": "import { collectRepository, privateFindings } from './repository-files.mjs';"
+  },
+  {
+    "file": "scripts/build-harmony.mjs",
+    "line": 1,
+    "sample": "import path from 'node:path';"
+  },
+  {
+    "file": "scripts/build-harmony.mjs",
+    "line": 2,
+    "sample": "import { fileURLToPath } from 'node:url';"
+  },
+  {
+    "file": "scripts/build-harmony.mjs",
+    "line": 3,
+    "sample": "import fs from 'node:fs/promises';"
+  },
+  {
+    "file": "scripts/build-harmony.mjs",
+    "line": 4,
+    "sample": "import { build } from 'vite';"
+  },
+  {
+    "file": "scripts/build-main.mjs",
+    "line": 1,
+    "sample": "import { build } from 'vite';"
+  },
+  {
+    "file": "scripts/download-runtime.mjs",
+    "line": 2,
+    "sample": "import { createRequire } from 'node:module';"
+  },
+  {
+    "file": "scripts/download-runtime.mjs",
+    "line": 4,
+    "sample": "require('electron/install.js');"
+  },
+  {
+    "file": "scripts/notices.mjs",
+    "line": 1,
+    "sample": "import fs from 'node:fs/promises';"
+  },
+  {
+    "file": "scripts/notices.mjs",
+    "line": 2,
+    "sample": "import path from 'node:path';"
+  },
+  {
+    "file": "scripts/notices.mjs",
+    "line": 3,
+    "sample": "import { fileURLToPath } from 'node:url';"
+  },
+  {
+    "file": "scripts/package-github.mjs",
+    "line": 1,
+    "sample": "import fs from 'node:fs/promises';"
+  },
+  {
+    "file": "scripts/package-github.mjs",
+    "line": 2,
+    "sample": "import path from 'node:path';"
+  },
+  {
+    "file": "scripts/package-github.mjs",
+    "line": 3,
+    "sample": "import { createHash } from 'node:crypto';"
+  },
+  {
+    "file": "scripts/package-github.mjs",
+    "line": 4,
+    "sample": "import { execFile } from 'node:child_process';"
+  },
+  {
+    "file": "scripts/package-github.mjs",
+    "line": 5,
+    "sample": "import { promisify } from 'node:util';"
+  },
+  {
+    "file": "scripts/package-github.mjs",
+    "line": 6,
+    "sample": "import JSZip from 'jszip';"
+  },
+  {
+    "file": "scripts/package-github.mjs",
+    "line": 7,
+    "sample": "import { collectRepository, privateFindings } from './repository-files.mjs';"
+  },
+  {
+    "file": "scripts/package-github.mjs",
+    "line": 11,
+    "sample": "await import('./audit-release.mjs');"
+  },
+  {
+    "file": "scripts/package-harmony-source.mjs",
+    "line": 1,
+    "sample": "import fs from 'node:fs/promises';"
+  },
+  {
+    "file": "scripts/package-harmony-source.mjs",
+    "line": 2,
+    "sample": "import path from 'node:path';"
+  },
+  {
+    "file": "scripts/package-harmony-source.mjs",
+    "line": 3,
+    "sample": "import { fileURLToPath } from 'node:url';"
+  },
+  {
+    "file": "scripts/package-harmony-source.mjs",
+    "line": 4,
+    "sample": "import { createHash } from 'node:crypto';"
+  },
+  {
+    "file": "scripts/package-harmony-source.mjs",
+    "line": 5,
+    "sample": "import JSZip from 'jszip';"
+  },
+  {
+    "file": "scripts/package-harmony-source.mjs",
+    "line": 6,
+    "sample": "import { createNotices } from './notices.mjs';"
+  },
+  {
+    "file": "scripts/package-harmony-source.mjs",
+    "line": 7,
+    "sample": "import { collectRepository } from './repository-files.mjs';"
+  },
+  {
+    "file": "scripts/package-source.mjs",
+    "line": 2,
+    "sample": "import fs from 'node:fs/promises';"
+  },
+  {
+    "file": "scripts/package-source.mjs",
+    "line": 3,
+    "sample": "import path from 'node:path';"
+  },
+  {
+    "file": "scripts/package-source.mjs",
+    "line": 4,
+    "sample": "import {createHash} from 'node:crypto';"
+  },
+  {
+    "file": "scripts/package-source.mjs",
+    "line": 5,
+    "sample": "import JSZip from 'jszip';"
+  },
+  {
+    "file": "scripts/package-source.mjs",
+    "line": 6,
+    "sample": "import {collectRepository,privateFindings} from './repository-files.mjs';"
+  },
+  {
+    "file": "scripts/package.mjs",
+    "line": 1,
+    "sample": "import fs from 'node:fs/promises';"
+  },
+  {
+    "file": "scripts/package.mjs",
+    "line": 2,
+    "sample": "import path from 'node:path';"
+  },
+  {
+    "file": "scripts/package.mjs",
+    "line": 3,
+    "sample": "import { fileURLToPath } from 'node:url';"
+  },
+  {
+    "file": "scripts/package.mjs",
+    "line": 4,
+    "sample": "import { createNotices } from './notices.mjs';"
+  },
+  {
+    "file": "scripts/package.mjs",
+    "line": 5,
+    "sample": "import {brandWindowsFile} from './windows-branding.mjs';"
+  },
+  {
+    "file": "scripts/package.mjs",
+    "line": 12,
+    "sample": "await import('./build-main.mjs');"
+  },
+  {
+    "file": "scripts/pet-templates.mjs",
+    "line": 1,
+    "sample": "import fs from 'node:fs/promises';"
+  },
+  {
+    "file": "scripts/pet-templates.mjs",
+    "line": 2,
+    "sample": "import { writePetPackage } from '../desktop/pet-package.mjs';"
+  },
+  {
+    "file": "scripts/pet-templates.mjs",
+    "line": 3,
+    "sample": "import { petGuide } from '../shared/pet-guide.mjs';"
+  },
+  {
+    "file": "scripts/prepare-build-tools.mjs",
+    "line": 2,
+    "sample": "import fs from 'node:fs/promises';"
+  },
+  {
+    "file": "scripts/prepare-build-tools.mjs",
+    "line": 3,
+    "sample": "import path from 'node:path';"
+  },
+  {
+    "file": "scripts/prepare-build-tools.mjs",
+    "line": 4,
+    "sample": "import { createHash } from 'node:crypto';"
+  },
+  {
+    "file": "scripts/prepare-build-tools.mjs",
+    "line": 5,
+    "sample": "import { execFile } from 'node:child_process';"
+  },
+  {
+    "file": "scripts/prepare-build-tools.mjs",
+    "line": 6,
+    "sample": "import { promisify } from 'node:util';"
+  },
+  {
+    "file": "scripts/repository-files.mjs",
+    "line": 1,
+    "sample": "import fs from 'node:fs/promises';"
+  },
+  {
+    "file": "scripts/repository-files.mjs",
+    "line": 2,
+    "sample": "import path from 'node:path';"
+  },
+  {
+    "file": "scripts/update-notices.mjs",
+    "line": 1,
+    "sample": "import { createNotices } from './notices.mjs';"
+  },
+  {
+    "file": "scripts/validate-built-release.mjs",
+    "line": 2,
+    "sample": "import fs from 'node:fs/promises';"
+  },
+  {
+    "file": "scripts/validate-built-release.mjs",
+    "line": 3,
+    "sample": "import path from 'node:path';"
+  },
+  {
+    "file": "scripts/validate-built-release.mjs",
+    "line": 4,
+    "sample": "import { execFile } from 'node:child_process';"
+  },
+  {
+    "file": "scripts/validate-built-release.mjs",
+    "line": 5,
+    "sample": "import { promisify } from 'node:util';"
+  },
+  {
+    "file": "scripts/validate-built-release.mjs",
+    "line": 6,
+    "sample": "import { createHash } from 'node:crypto';"
+  },
+  {
+    "file": "scripts/windows-branding.mjs",
+    "line": 1,
+    "sample": "import fs from 'node:fs/promises';"
+  },
+  {
+    "file": "scripts/windows-branding.mjs",
+    "line": 2,
+    "sample": "import {createHash} from 'node:crypto';"
+  },
+  {
+    "file": "scripts/windows-branding.mjs",
+    "line": 3,
+    "sample": "import {NtExecutable,NtExecutableResource,Data,Resource} from 'resedit';"
+  },
+  {
+    "file": "scripts/windows-installer.mjs",
+    "line": 1,
+    "sample": "import fs from 'node:fs/promises';"
+  },
+  {
+    "file": "scripts/windows-installer.mjs",
+    "line": 2,
+    "sample": "import path from 'node:path';"
+  },
+  {
+    "file": "scripts/windows-installer.mjs",
+    "line": 3,
+    "sample": "import { execFile } from 'node:child_process';"
+  },
+  {
+    "file": "scripts/windows-installer.mjs",
+    "line": 4,
+    "sample": "import { promisify } from 'node:util';"
+  },
+  {
+    "file": "scripts/windows-installer.mjs",
+    "line": 5,
+    "sample": "import {windowsAssociationEntries} from '../shared/windows-association.mjs';"
+  },
+  {
+    "file": "harmony/web/main.tsx",
+    "line": 1,
+    "sample": "import { t, useLanguage, setLanguage, getLanguage, brandName } from '../../src/i18n';"
+  },
+  {
+    "file": "harmony/web/main.tsx",
+    "line": 2,
+    "sample": "import React, { useEffect, useRef, useState } from 'react';"
+  },
+  {
+    "file": "harmony/web/main.tsx",
+    "line": 3,
+    "sample": "import { createRoot } from 'react-dom/client';"
+  },
+  {
+    "file": "harmony/web/main.tsx",
+    "line": 4,
+    "sample": "import { NoteEditor, type Mode } from '../../src/editor';"
+  },
+  {
+    "file": "harmony/web/main.tsx",
+    "line": 5,
+    "sample": "import { EditorToolbar } from '../../src/editor-toolbar';"
+  },
+  {
+    "file": "harmony/web/main.tsx",
+    "line": 6,
+    "sample": "import { NoteTree } from '../../src/note-browser';"
+  },
+  {
+    "file": "harmony/web/main.tsx",
+    "line": 7,
+    "sample": "import { Icon, ThemeUIContext, uiLabel } from '../../src/ui';"
+  },
+  {
+    "file": "harmony/web/main.tsx",
+    "line": 8,
+    "sample": "import { builtInThemes } from '../../shared/themes.mjs';"
+  },
+  {
+    "file": "harmony/web/main.tsx",
+    "line": 9,
+    "sample": "import { backgroundStyle, validateTheme, themeTemplate } from '../../shared/theme-format.mjs';"
+  },
+  {
+    "file": "harmony/web/main.tsx",
+    "line": 10,
+    "sample": "import { headings, renderMarkdown } from '../../shared/markdown.mjs';"
+  },
+  {
+    "file": "harmony/web/main.tsx",
+    "line": 11,
+    "sample": "import { MobileStore, encode, decode, bytes64, resolvePath } from './store.mjs';"
+  },
+  {
+    "file": "harmony/web/main.tsx",
+    "line": 12,
+    "sample": "import { native } from './bridge';"
+  },
+  {
+    "file": "harmony/web/main.tsx",
+    "line": 13,
+    "sample": "import 'katex/dist/katex.min.css';"
+  },
+  {
+    "file": "harmony/web/main.tsx",
+    "line": 14,
+    "sample": "import '../../src/style.css';"
+  },
+  {
+    "file": "harmony/web/main.tsx",
+    "line": 15,
+    "sample": "import '../../src/highlight.css';"
+  },
+  {
+    "file": "harmony/web/main.tsx",
+    "line": 16,
+    "sample": "import '../../src/sidebar.css';"
+  },
+  {
+    "file": "harmony/web/main.tsx",
+    "line": 17,
+    "sample": "import '../../src/editor-toolbar.css';"
+  },
+  {
+    "file": "harmony/web/main.tsx",
+    "line": 18,
+    "sample": "import './mobile.css';"
+  },
+  {
+    "file": "harmony/web/main.tsx",
+    "line": 159,
+    "sample": "      <div className=\"mobile-sidebar-bottom\"><button disabled={busy} onClick={importNotes}><Icon name=\"import\"/>{label('导入笔记')}</button><button onClick={() => show('settings')}><Icon name=\"settings\"/>{label('设置')}</button></div>"
+  },
+  {
+    "file": "harmony/web/store.mjs",
+    "line": 1,
+    "sample": "import JSZip from 'jszip';"
+  },
+  {
+    "file": "harmony/web/store.mjs",
+    "line": 2,
+    "sample": "import { references, rewriteLinks, isRemote } from '../../shared/markdown.mjs';"
+  },
+  {
+    "file": "harmony/web/store.mjs",
+    "line": 3,
+    "sample": "import { loadSafeZip, readZipEntry } from '../../shared/zip-safety.mjs';"
+  },
+  {
+    "file": "harmony/entry/src/main/ets/entryability/EntryAbility.ets",
+    "line": 1,
+    "sample": "import { UIAbility } from '@kit.AbilityKit';"
+  },
+  {
+    "file": "harmony/entry/src/main/ets/entryability/EntryAbility.ets",
+    "line": 2,
+    "sample": "import { window } from '@kit.ArkUI';"
+  },
+  {
+    "file": "harmony/entry/src/main/ets/entryability/EntryAbility.ets",
+    "line": 3,
+    "sample": "import { Lifecycle } from '../services/Lifecycle';"
+  },
+  {
+    "file": "harmony/entry/src/main/ets/pages/Index.ets",
+    "line": 1,
+    "sample": "import { webview } from '@kit.ArkWeb';"
+  },
+  {
+    "file": "harmony/entry/src/main/ets/pages/Index.ets",
+    "line": 2,
+    "sample": "import { common } from '@kit.AbilityKit';"
+  },
+  {
+    "file": "harmony/entry/src/main/ets/pages/Index.ets",
+    "line": 3,
+    "sample": "import { NativeBridge, trustedPage } from '../services/Bridge';"
+  },
+  {
+    "file": "harmony/entry/src/main/ets/pages/Index.ets",
+    "line": 4,
+    "sample": "import { Lifecycle } from '../services/Lifecycle';"
+  },
+  {
+    "file": "harmony/entry/src/main/ets/services/Bridge.ets",
+    "line": 1,
+    "sample": "import { common } from '@kit.AbilityKit';"
+  },
+  {
+    "file": "harmony/entry/src/main/ets/services/Bridge.ets",
+    "line": 2,
+    "sample": "import { picker } from '@kit.CoreFileKit';"
+  },
+  {
+    "file": "harmony/entry/src/main/ets/services/Bridge.ets",
+    "line": 3,
+    "sample": "import { webview } from '@kit.ArkWeb';"
+  },
+  {
+    "file": "harmony/entry/src/main/ets/services/Bridge.ets",
+    "line": 4,
+    "sample": "import { text } from '@kit.ArkGraphics2D';"
+  },
+  {
+    "file": "harmony/entry/src/main/ets/services/Bridge.ets",
+    "line": 5,
+    "sample": "import { BusinessError } from '@kit.BasicServicesKit';"
+  },
+  {
+    "file": "harmony/entry/src/main/ets/services/Bridge.ets",
+    "line": 6,
+    "sample": "import { i18n } from '@kit.LocalizationKit';"
+  },
+  {
+    "file": "harmony/entry/src/main/ets/services/Bridge.ets",
+    "line": 7,
+    "sample": "import { NoteCrypto } from './Crypto';"
+  },
+  {
+    "file": "harmony/entry/src/main/ets/services/Bridge.ets",
+    "line": 8,
+    "sample": "import { NoteFiles } from './Files';"
+  },
+  {
+    "file": "harmony/entry/src/main/ets/services/Crypto.ets",
+    "line": 1,
+    "sample": "import { cryptoFramework } from '@kit.CryptoArchitectureKit';"
+  },
+  {
+    "file": "harmony/entry/src/main/ets/services/Crypto.ets",
+    "line": 2,
+    "sample": "import { util } from '@kit.ArkTS';"
+  },
+  {
+    "file": "harmony/entry/src/main/ets/services/Files.ets",
+    "line": 1,
+    "sample": "import { fileIo as fs } from '@kit.CoreFileKit';"
+  },
+  {
+    "file": "harmony/entry/src/main/ets/services/Files.ets",
+    "line": 2,
+    "sample": "import { NoteCrypto, isEncrypted } from './Crypto';"
+  }
+]

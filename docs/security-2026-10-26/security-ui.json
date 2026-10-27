@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "version": "0.10.2",
+  "packaged": false,
+  "checks": [
+    "Executable, HTML, SVG and unknown attachments only reveal their location; passive text delegates to viewer. Native shell functions were stubbed.",
+    "Only validated http/https/mailto links reach the external-browser boundary.",
+    "Actual asset protocol serves an authorized image and rejects hidden, internal and outside-root files.",
+    "Raw HTML handlers, script/frame/object, JavaScript links, unsafe KaTeX and Mermaid links do not execute or request remote fixture URLs.",
+    "Security payload stays byte-for-byte unchanged after mode switching.",
+    "IPC rejects a main frame whose URL differs from the exact application URL and resumes after restoration.",
+    "Actual Electron window uses sandbox, context isolation, disabled Node integration, and frame-blocking CSP."
+  ],
+  "pageErrors": [],
+  "remoteRequests": [],
+  "dataIsolation": true,
+  "shellFunctionsStubbed": true
+}

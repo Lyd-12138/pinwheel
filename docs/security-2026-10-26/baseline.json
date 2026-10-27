@@ -1,0 +1,13 @@
+{
+  "version": "0.10.1",
+  "hiddenFileExportReproduced": true,
+  "hiddenFixtureOnly": true,
+  "unblockedExecutableExtensions": [
+    "example.hta",
+    "example.cpl",
+    "example.command",
+    "example.sh",
+    "example.desktop"
+  ],
+  "extensionFindingMethod": "Code-path classification; no actual executable was launched"
+}
