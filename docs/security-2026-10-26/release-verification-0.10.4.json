@@ -1,0 +1,59 @@
+{
+  "version": "0.10.4",
+  "date": "2026-10-27",
+  "passed": true,
+  "coreTests": 68,
+  "checks": [
+    {
+      "test": "language",
+      "report": "packaged-language-0.10.4.json",
+      "passed": true
+    },
+    {
+      "test": "rename-migration",
+      "report": "packaged-rename-migration-0.10.4.json",
+      "passed": true
+    },
+    {
+      "test": "security-ui",
+      "report": "packaged-security-ui-0.10.4.json",
+      "passed": true
+    },
+    {
+      "test": "encryption-ui",
+      "report": "packaged-encryption-ui-0.10.4.json",
+      "passed": true
+    },
+    {
+      "test": "pet-studio",
+      "report": "packaged-pet-studio-0.10.4.json",
+      "passed": true
+    },
+    {
+      "test": "installer",
+      "report": "packaged-installer-0.10.4.json",
+      "passed": true
+    },
+    {
+      "test": "desktop",
+      "report": "packaged-desktop-0.10.4.json",
+      "passed": true
+    }
+  ],
+  "executableSha256": "a737cfd6723b3f91d1553c69f1258a110cc3dcf79257665f0d467c34e51e24a2",
+  "mainSha256": "94d271edac3adce103bc54b49bb08bab77420f8e319468d1833ba6668a9567f3",
+  "dataIsolation": true,
+  "windowsInstallerTestMode": true,
+  "windowsInstalledLaunchUninstallTested": true,
+  "windowsNativeNameAndIconTested": true,
+  "windowsCleanVmTested": false,
+  "registryAssociationAndLoginRebootTested": false,
+  "windowsSigned": false,
+  "macRuntimeTested": false,
+  "appleSignedOrNotarized": false,
+  "harmonyNativeSdkCompiled": false,
+  "harmonyHapBuilt": false,
+  "harmonyDeviceTested": false,
+  "legalClearance": false,
+  "githubPublished": false
+}

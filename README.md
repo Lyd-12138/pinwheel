@@ -1,6 +1,6 @@
 # 风车笔记 · pinwheel
 
-离线 Markdown 笔记应用。自有代码采用 [MIT](LICENSE)；第三方组件保留各自许可证。当前源码为 **0.10.4 开发中**。已发布安装包仍为 [v0.10.3](https://github.com/Lyd-12138/pinwheel/releases/tag/v0.10.3)，不包含此次名称清理。
+离线 Markdown 笔记应用。自有代码采用 [MIT](LICENSE)；第三方组件保留各自许可证。当前版本为 **0.10.4 开发预览版**。[下载安装包](https://github.com/Lyd-12138/pinwheel/releases/tag/v0.10.4)。
 
 0.10.4 统一宠物示例、主题默认名称、导出文件名、鸿蒙接口及 macOS 可执行文件名称，保留旧数据读取兼容，详见 [名称检查说明](docs/BRANDING.md)。
 
@@ -25,9 +25,9 @@ pinwheel is an offline Markdown notebook with styled editing and a source mode. 
 
 | 平台 | 本次验证边界 |
 | --- | --- |
-| Windows x64 | 已发布 0.10.3 安装、启动、卸载和界面回归使用隔离目录验证；实际结果见发布包附带的 manifest 与 validation.json |
+| Windows x64 | 0.10.4 安装、启动、卸载和界面回归使用隔离目录验证；实际结果见发布包附带的 manifest 与 validation.json |
 | macOS Apple Silicon / Intel | ZIP、架构、符号链接与许可文件结构检查；未实机运行、未 Apple 开发者签名或公证 |
-| HarmonyOS NEXT | 0.2.4 开发源码；Web/原生服务适配测试，未 SDK 原生编译、未生成 HAP、未签名或真机测试 |
+| HarmonyOS NEXT | 0.2.4 工程源码；Web/原生服务适配测试，未 SDK 原生编译、未生成 HAP、未签名或真机测试 |
 
 Mac 完整解压后运行“安装风车笔记.command”，安装到 ~/Applications。脚本执行本机临时签名，不关闭 Gatekeeper。鸿蒙工程见 [harmony/README.md](harmony/README.md)。
 

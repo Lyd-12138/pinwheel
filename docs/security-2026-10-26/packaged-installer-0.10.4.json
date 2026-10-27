@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "version": "0.10.4",
+  "installation": "passed",
+  "launch": "passed",
+  "uninstall": "passed",
+  "nativeBranding": {
+    "version": "0.10.4",
+    "passed": true,
+    "nativeFileDescription": "pinwheel",
+    "associationRegistryIsolated": true,
+    "userDefaultApplicationsChanged": false,
+    "nativeFriendlyAppName": "pinwheel",
+    "nativeIconPixelsMatch": true,
+    "resources": {
+      "passed": true,
+      "version": "0.10.4",
+      "iconFrames": 7,
+      "englishName": "pinwheel",
+      "chineseName": "风车笔记",
+      "nonResourceSectionsUnchanged": true,
+      "originalExecutableSha256": "8e84549b05d27d444da2957653200d1e0ac287eff0fc5722b92835b9e0821a59",
+      "executableSha256": "a737cfd6723b3f91d1553c69f1258a110cc3dcf79257665f0d467c34e51e24a2",
+      "iconSha256": "e612072ebc01d9f212f7c1a89e8f180765416f8c2d95876f53bc0da1956391cf"
+    }
+  },
+  "userFilesRetained": true,
+  "systemPreferencesChanged": false
+}

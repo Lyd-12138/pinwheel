@@ -1,10 +1,10 @@
 {
-  "version": "0.10.3",
+  "version": "0.10.4",
   "date": "2026-10-27",
   "technicalChecksPassed": true,
   "legalClearance": false,
-  "repositoryFiles": 277,
-  "repositoryBytes": 17034218,
+  "repositoryFiles": 290,
+  "repositoryBytes": 16940767,
   "secretsAndPersonalPaths": [],
   "filesOverGitHub100MiB": [],
   "missingNoticeMarkers": [],

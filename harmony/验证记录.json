@@ -1,12 +1,12 @@
 {
   "product": "风车笔记 / pinwheel HarmonyOS NEXT",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "date": "2026-10-27",
   "webBuild": true,
   "typeScriptWebChecked": true,
   "coreTests": {
     "passed": true,
-    "total": 65,
+    "total": 68,
     "harmonyCases": 6,
     "environment": "Node with test adapters for documented Harmony APIs; native service source transpiled for protocol and business tests"
   },
@@ -31,7 +31,7 @@
     ],
     "errors": [],
     "blocked": [],
-    "report": "../docs/security-2026-10-26/harmony-release-preview-0.2.3.json"
+    "report": "../docs/security-2026-10-26/harmony-release-preview-0.2.4.json"
   },
   "nativeArkTsCompiled": false,
   "hapBuilt": false,

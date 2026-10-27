@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "packaged": true,
+  "checks": [
+    "legacy workspace, current document, theme and window preference restored",
+    "legacy encrypted document unlocks without changing stored ciphertext",
+    "original settings and notes preserved"
+  ]
+}
