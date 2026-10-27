@@ -3,6 +3,7 @@
 * -text
 *.zip binary
 *.jar binary
+*.pinwheel-pet binary
 *.moye-pet binary
 *.png binary
 *.ico binary

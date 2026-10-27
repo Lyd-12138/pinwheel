@@ -329,7 +329,7 @@
   "加密事务目标不在笔记库中。": "The encryption target is outside the notebook.",
   "加密事务校验失败。": "Encryption transaction integrity check failed.",
   "加密文档": "Encrypt document",
-  "加密文档 .moye": "Encrypted document .moye",
+  "加密文档 .pinwheel": "Encrypted document .pinwheel",
   "加密文档的恢复记录已损坏。": "The encrypted document's recovery record is damaged.",
   "加密文档的历史版本已损坏。": "The encrypted document's version history is damaged.",
   "加密文档格式无效或已损坏。": "Invalid or damaged encrypted document.",

@@ -59,6 +59,8 @@ for file in [root/'release'/f'Pinwheel-{version}-win-x64-Setup.exe',portable,*[r
    app=next(n.rsplit('Contents/Info.plist',1)[0] for n in z.namelist() if n.endswith('pinwheel.app/Contents/Info.plist'))
    info=plistlib.loads(z.read(app+'Contents/Info.plist'));assert info['CFBundleIdentifier']=='org.pinwheel.notes' and info['CFBundleShortVersionString']==version
    assert info['CFBundleName']=='pinwheel' and info['CFBundleLocalizations']==['en','zh-Hans']
+   assert info['CFBundleExecutable']=='pinwheel' and app+'Contents/MacOS/pinwheel' in z.namelist()
+   assert not any('/Electron Helper' in n or n==app+'Contents/MacOS/Electron' for n in z.namelist())
    for name in ['pinwheel.icns','LICENSE','LICENSES.chromium.html','LICENSE-pinwheel.txt','NOTICE.md','THIRD-PARTY-NOTICES.md','third-party/licenses/KaTeX-fonts-OFL-1.1.txt','zh-Hans.lproj/InfoPlist.strings']:assert app+'Contents/Resources/'+name in z.namelist(),name
    assert z.read(app+'Contents/Resources/LICENSE-pinwheel.txt')==(root/'LICENSE').read_bytes()
    assert hashlib.sha256(z.read(app+'Contents/Resources/app/desktop/main.mjs')).hexdigest()==digest(root/'.cache/main-bundle/main.mjs')

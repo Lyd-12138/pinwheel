@@ -1,4 +1,4 @@
-export const documentTypes=[{id:'Pinwheel.Markdown',name:'风车笔记 Markdown 文档',extensions:['.md','.markdown']},{id:'Pinwheel.Encrypted',name:'风车笔记加密文档',extensions:['.moye']},{id:'Pinwheel.Package',name:'风车笔记笔记包',extensions:['.notepack']}];
+export const documentTypes=[{id:'Pinwheel.Markdown',name:'风车笔记 Markdown 文档',extensions:['.md','.markdown']},{id:'Pinwheel.Encrypted',name:'风车笔记加密文档',extensions:['.pinwheel','.moye']},{id:'Pinwheel.Package',name:'风车笔记笔记包',extensions:['.notepack']}];
 // Shared by the installer and the app's explicit association action.
 export function windowsAssociationEntries(executable,{description='Offline Markdown notes',typeNames=documentTypes.map(t=>t.name)}={}){
  const entries=[],add=(key,name,value,type='REG_SZ')=>entries.push({key,name,value,type}),classes='Software\\Classes\\',icon=`"${executable}",0`,command=`"${executable}" "%1"`,name=`@${executable},-56001`,application=classes+'Applications\\'+executable.split(/[\\/]/).pop();

@@ -10,7 +10,7 @@ if(!/^\d+\.\d+\.\d+$/.test(version))throw Error('Expected a numeric release vers
 const folder=path.join(root,'release',`Pinwheel-${version}-win-x64`),exe=path.join(folder,'pinwheel.exe');
 await fs.access(path.join(root,'release',`Pinwheel-${version}-win-x64-Setup.exe`));await fs.access(exe);
 await fs.mkdir('.cache',{recursive:true});await fs.mkdir('test-results',{recursive:true});
-const run=promisify(execFile),env={...process.env,MOYE_PACKAGED_EXECUTABLE:exe,NO_COLOR:'1'};delete env.FORCE_COLOR;
+const run=promisify(execFile),env={...process.env,PINWHEEL_PACKAGED_EXECUTABLE:exe,NO_COLOR:'1'};delete env.FORCE_COLOR;
 const core=await run(process.execPath,['--test','--test-reporter=spec','tests/*.test.mjs'],{cwd:root,env,windowsHide:true,maxBuffer:16*1024*1024});
 await fs.writeFile('.cache/core-'+version.replaceAll('.','')+'.log',core.stdout+core.stderr);
 const match=core.stdout.match(/\bpass\s+(\d+)/);if(!match)throw Error('Test count missing');const count=Number(match[1]);console.log('Core tests passed:',count);

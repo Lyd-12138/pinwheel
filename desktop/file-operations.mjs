@@ -47,7 +47,7 @@ export async function finishRename(store, stage) {
   if (!normal(file) || !normal(target) || path.posix.dirname(file) !== path.posix.dirname(target) || !Array.isArray(notes) || notes.length > 20000 || !Array.isArray(metadata)) throw Error('重命名事务无效。');
   const staged = path.relative(store.root, path.join(stage, 'content')).split(path.sep).join('/'), allowed = new Set();
   for (const note of notes) {
-    if (!normal(note) || !(note === file || note.startsWith(file + '/')) || !/\.(md|markdown|moye)$/i.test(note)) throw Error('重命名事务中的笔记路径无效。');
+    if (!normal(note) || !(note === file || note.startsWith(file + '/')) || !/\.(md|markdown|pinwheel|moye)$/i.test(note)) throw Error('重命名事务中的笔记路径无效。');
     const renamed = target + note.slice(file.length);
     for (const kind of ['history','recovery']) {
       const suffix = kind === 'recovery' ? '.json' : '';

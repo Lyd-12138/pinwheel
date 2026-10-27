@@ -1,6 +1,6 @@
 {
   "name": "pinwheel",
-  "version": "0.10.3",
+  "version": "0.10.4",
   "private": true,
   "type": "module",
   "description": "风车笔记 · 本地 Markdown 笔记",

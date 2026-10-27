@@ -46,7 +46,7 @@ export class NoteFiles {
       if (name.startsWith('.')) continue;
       const item = full + '/' + name, stat = fs.lstatSync(item); if (stat.isSymbolicLink()) continue;
       let encrypted = false;
-      if (stat.isFile() && /\.(md|markdown|moye)$/i.test(name)) { const file = fs.openSync(item, fs.OpenMode.READ_ONLY); try { const header = new ArrayBuffer(8); const count = fs.readSync(file.fd, header); encrypted = count === 8 && isEncrypted(new Uint8Array(header)); } finally { fs.closeSync(file); } }
+      if (stat.isFile() && /\.(md|markdown|pinwheel|moye)$/i.test(name)) { const file = fs.openSync(item, fs.OpenMode.READ_ONLY); try { const header = new ArrayBuffer(8); const count = fs.readSync(file.fd, header); encrypted = count === 8 && isEncrypted(new Uint8Array(header)); } finally { fs.closeSync(file); } }
       result.push({ name, directory: stat.isDirectory(), size: stat.size, modified: stat.mtime * 1000, encrypted });
     } return result;
   }

@@ -2,12 +2,12 @@ import { _electron as electron, expect } from '@playwright/test';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-const root = path.dirname(path.dirname(fileURLToPath(import.meta.url))), packaged = process.env.MOYE_PACKAGED_EXECUTABLE;
+const root = path.dirname(path.dirname(fileURLToPath(import.meta.url))), packaged = process.env.PINWHEEL_PACKAGED_EXECUTABLE;
 const run = path.join(root, 'test-results', 'preferences-' + Date.now()), notes = path.join(run, 'notes');
 await fs.mkdir(path.join(notes, '归档'), { recursive: true }); await fs.mkdir(path.join(notes, '未展开'), { recursive: true });
 await fs.writeFile(path.join(notes, '归档/继续写作.md'), '# 恢复我的写作\n\n正文样式\n\n' + Array.from({ length: 60 }, (_, i) => `## 第 ${i + 1} 节\n\n阅读位置测试：记录自己的想法，文字不会因为修改字体而改变。\n`).join('\n'));
 await fs.writeFile(path.join(notes, '另一篇.md'), '# 另一篇\n\n不会回到这里。'); await fs.writeFile(path.join(notes, '未展开/秘密.md'), '# 保持折叠');
-const options = { ...(packaged ? { executablePath: packaged } : {}), args: packaged ? [] : [root], env: { ...process.env, MOYE_HEADLESS: '1', MOYE_TEST_LOCALE: 'zh-CN', MOYE_TEST_DATA: path.join(run, 'data'), MOYE_TEST_WORKSPACE: notes }, timeout: 60000 };
+const options = { ...(packaged ? { executablePath: packaged } : {}), args: packaged ? [] : [root], env: { ...process.env, PINWHEEL_HEADLESS: '1', PINWHEEL_TEST_LOCALE: 'zh-CN', PINWHEEL_TEST_DATA: path.join(run, 'data'), PINWHEEL_TEST_WORKSPACE: notes }, timeout: 60000 };
 let app; const errors = []; let result = {};
 try {
   app = await electron.launch(options); let page = await app.firstWindow(); page.on('pageerror', e => errors.push(String(e)));
@@ -42,7 +42,7 @@ try {
   const winInfo = await app.evaluate(({ BrowserWindow }) => { const p = BrowserWindow.getAllWindows().find(w => w.getTitle() === '风车笔记桌面宠物'); return { transparent: p.isAlwaysOnTop(), frame: p.isResizable() }; }); expect(winInfo).toEqual({ transparent: true, frame: false });
   await pet.locator('.pet-figure').click({button:'right'}); await app.evaluate(() => globalThis.__menu.getMenuItemById('pet-hide').click()); await expect(page.getByRole('checkbox', { name: '开启桌面宠物', exact: true })).not.toBeChecked();
   await page.getByRole('button', { name: '删除宠物：小橘子', exact: true }).click(); await page.getByRole('button', { name: '确认删除宠物', exact: true }).click(); await expect(page.locator('.pet-card')).toHaveCount(5);
-  const image = path.join(run, '自制.png'); await fs.copyFile(path.join(root, 'assets/moye.png'), image);
+  const image = path.join(run, '自制.png'); await fs.copyFile(path.join(root, 'assets/pinwheel.png'), image);
   await app.evaluate(({ dialog }, file) => { dialog.showOpenDialog = async () => ({ canceled: false, filePaths: [file] }); }, image); await page.getByRole('button', { name: '导入图片 / GIF', exact: true }).click(); await expect(page.getByRole('button', { name: '选择宠物：自制', exact: true })).toBeVisible(); await fs.rename(image, image + '.moved');
   expect(await page.locator('.pet-card img').evaluate(img => img.complete && img.naturalWidth > 0)).toBe(true);
   const gif = path.join(run, '动画.gif'); await fs.writeFile(gif, Buffer.from('R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7', 'base64')); await app.evaluate(({ dialog }, file) => { dialog.showOpenDialog = async () => ({ canceled: false, filePaths: [file] }); }, gif); await page.getByRole('button', { name: '导入图片 / GIF', exact: true }).click(); await expect(page.getByRole('button', { name: '选择宠物：动画', exact: true })).toBeVisible();

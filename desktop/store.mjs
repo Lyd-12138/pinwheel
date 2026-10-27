@@ -123,7 +123,7 @@ export class NotebookStore {
     const roots = asset ? [this.root, this.assetRoot, ...this.authorizedAssetRoots] : [this.root];
     if (!roots.some(r => inside(r, full))) throw Error('文件不在已授权目录中。');
     if (!roots.some(r=>inside(r,full)&&!path.relative(r,full).split(path.sep).some(p=>/[<>:"|?*]/.test(p)))) throw Error('文件路径包含不安全字符。');
-    if (!asset && (path.relative(this.root, full).split(path.sep).some(x => x.startsWith('.')) || !/\.(md|markdown|moye)$/i.test(full))) throw Error('仅允许操作 Markdown 或风车笔记加密笔记。');
+    if (!asset && (path.relative(this.root, full).split(path.sep).some(x => x.startsWith('.')) || !/\.(md|markdown|pinwheel|moye)$/i.test(full))) throw Error('仅允许操作 Markdown 或风车笔记加密笔记。');
     const real = await fs.realpath(exists ? full : path.dirname(full));
     const realRoot = await fs.realpath(this.root), realRoots = await Promise.all(roots.map(async r => ({ lexical:r, real:await fs.realpath(r).catch(()=>null) })));
     const permitted=realRoots.filter(r => r.real && inside(r.lexical, full) && (!inside(this.root,r.lexical) || inside(realRoot,r.real)) && inside(r.real,real));
@@ -143,10 +143,10 @@ export class NotebookStore {
         if (item.name.startsWith('.') || item.isSymbolicLink()) continue;
         const file = path.join(dir, item.name);
         if (item.isDirectory() && normalize(file) !== normalize(this.assetRoot)) await walk(file, depth + 1);
-        else if (item.isFile() && /\.(md|markdown|moye)$/i.test(item.name)) {
+        else if (item.isFile() && /\.(md|markdown|pinwheel|moye)$/i.test(item.name)) {
           const s = await fs.stat(file), h = await fs.open(file, 'r'); let flag;
           try { const bytes = Buffer.alloc(8); await h.read(bytes, 0, 8, 0); flag = encrypted(bytes); } finally { await h.close(); }
-          notes.push({ path: path.relative(this.root, file).split(path.sep).join('/'), name: item.name.replace(/\.(md|markdown|moye)$/i, ''), modified: s.mtimeMs, encrypted: flag });
+          notes.push({ path: path.relative(this.root, file).split(path.sep).join('/'), name: item.name.replace(/\.(md|markdown|pinwheel|moye)$/i, ''), modified: s.mtimeMs, encrypted: flag });
         }
       }
     };
@@ -154,7 +154,7 @@ export class NotebookStore {
   }
   async read(file) {
     const full = await this.resolve(file); const stored = await readFileBounded(full, MAX_NOTE), isEncrypted = encrypted(stored);
-    if (/\.moye$/i.test(file) && !isEncrypted) throw Error('加密文档格式无效或已损坏。');
+    if (/\.(pinwheel|moye)$/i.test(file) && !isEncrypted) throw Error('加密文档格式无效或已损坏。');
     if (isEncrypted && !this.keys.has(normalize(full).toLowerCase())) { header(stored); return { path: file, encrypted: true, locked: true, text: '', hash: hash(stored), bom: false, eol: '\n' }; }
     const bytes = isEncrypted ? unseal(stored, this.secret(file)) : stored;
     if (bytes.length > 20 * 1024 * 1024) throw Error('此版本最多打开 20MB 的 Markdown 文件。');
@@ -295,7 +295,7 @@ export class NotebookStore {
         if (isRemote(ref.url)) { if(warnings.length<1000)warnings.push({ note: file, url: ref.url.slice(0,4096), reason: '外部链接，未下载' }); continue; }
         const full = await this.localTarget(file, ref.url); if (!full) continue;
         const key = full.toLowerCase();
-        if (/\.(md|markdown|moye)$/i.test(full) && inside(this.root, full)) { pending.push(path.relative(this.root, full).split(path.sep).join('/')); continue; }
+        if (/\.(md|markdown|pinwheel|moye)$/i.test(full) && inside(this.root, full)) { pending.push(path.relative(this.root, full).split(path.sep).join('/')); continue; }
         if (!map.has(key)) {
           const bytes = await readFileBounded(full,Math.min(100*1024*1024,MAX_PACK-retained)); const dest = 'assets/' + hash(bytes) + path.extname(full).toLowerCase();
           map.set(key, dest);

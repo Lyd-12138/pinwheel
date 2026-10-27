@@ -36,7 +36,7 @@ async function walk(relative) {
   const full = path.join(root, relative), stat = await fs.stat(full);
   if (stat.isDirectory()) { for (const name of await fs.readdir(full)) await walk(relative + '/' + name); return; }
   const bytes = await fs.readFile(full), entry = { path:relative, bytes:bytes.length, sha256:sha(bytes) }; sourceFiles.push(entry);
-  if (/\.(png|ico|icns|svg|moye-pet|woff2?|ttf|otf|gif|jpe?g|webp|bmp)$/i.test(relative)) assets.push(entry);
+  if (/\.(png|ico|icns|svg|pinwheel-pet|moye-pet|woff2?|ttf|otf|gif|jpe?g|webp|bmp)$/i.test(relative)) assets.push(entry);
   if (/\.(mjs|cjs|js|tsx?|ets|css|html|json5?|md|py|nsi)$/i.test(relative)) {
     const text = bytes.toString('utf8');
     text.split(/\r?\n/).forEach((line, index) => {

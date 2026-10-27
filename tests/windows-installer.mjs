@@ -20,7 +20,7 @@ try{
  for(const source of sources.components)expect((await fs.stat(path.join(install,'third-party/sources',source.file))).size).toBe(source.bytes);
  expect(await fs.readFile(path.join(install,'third-party/licenses/KaTeX-fonts-OFL-1.1.txt'),'utf8')).toContain('SIL OPEN FONT LICENSE');
  const fixture=path.join(run,'打开安装版.md');await fs.writeFile(fixture,'# 安装验证\n\n保留正文。');
- app=await electron.launch({executablePath:path.join(install,'pinwheel.exe'),args:[fixture],env:{...process.env,MOYE_TEST_DATA:path.join(run,'data'),MOYE_TEST_WORKSPACE:path.join(run,'notes'),MOYE_HEADLESS: '1', MOYE_TEST_LOCALE: 'zh-CN'},timeout:60000});const page=await app.firstWindow();await expect(page.locator('.rich-editor h1')).toHaveText('安装验证');await app.close();app=null;
+ app=await electron.launch({executablePath:path.join(install,'pinwheel.exe'),args:[fixture],env:{...process.env,PINWHEEL_TEST_DATA:path.join(run,'data'),PINWHEEL_TEST_WORKSPACE:path.join(run,'notes'),PINWHEEL_HEADLESS: '1', PINWHEEL_TEST_LOCALE: 'zh-CN'},timeout:60000});const page=await app.firstWindow();await expect(page.locator('.rich-editor h1')).toHaveText('安装验证');await app.close();app=null;
  const userFile=path.join(install,'我的笔记','保留.md');await fs.mkdir(path.dirname(userFile));await fs.writeFile(userFile,'不得删除');
  await execute(path.join(install,'uninstall-pinwheel.exe'),['/S','/TEST=1','_?='+install],{windowsHide:true,windowsVerbatimArguments:true,timeout:180000});
  await expect.poll(()=>fs.stat(path.join(install,'resources/app/package.json')).then(()=>true).catch(()=>false),{timeout:60000}).toBe(false);expect(await fs.readFile(userFile,'utf8')).toBe('不得删除');

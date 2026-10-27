@@ -4,8 +4,8 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const run = path.join(root, 'test-results', 'layout-' + Date.now()); await fs.mkdir(run, { recursive: true });
-const packaged = process.env.MOYE_PACKAGED_EXECUTABLE;
-const options = { ...(packaged ? { executablePath: packaged } : {}), args: packaged ? [] : [root], env: { ...process.env, MOYE_TEST_DATA: path.join(run, 'data'), MOYE_TEST_WORKSPACE: path.join(run, 'notes'), MOYE_HEADLESS: '1', MOYE_TEST_LOCALE: 'zh-CN' }, timeout: 60000 };
+const packaged = process.env.PINWHEEL_PACKAGED_EXECUTABLE;
+const options = { ...(packaged ? { executablePath: packaged } : {}), args: packaged ? [] : [root], env: { ...process.env, PINWHEEL_TEST_DATA: path.join(run, 'data'), PINWHEEL_TEST_WORKSPACE: path.join(run, 'notes'), PINWHEEL_HEADLESS: '1', PINWHEEL_TEST_LOCALE: 'zh-CN' }, timeout: 60000 };
 let app; const errors = [];
 try {
   app = await electron.launch(options); let page = await app.firstWindow();

@@ -4,13 +4,13 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
-const packaged = process.env.MOYE_PACKAGED_EXECUTABLE;
+const packaged = process.env.PINWHEEL_PACKAGED_EXECUTABLE;
 const output = path.join(root, 'test-results', ...(packaged ? ['packaged'] : [])); await fs.mkdir(output, { recursive: true });
 const run = path.join(output, 'run-' + Date.now()); await fs.mkdir(run, { recursive: true });
 const errors = [], consoleErrors = [];
 let application;
 try {
-  application = await electron.launch({ ...(packaged ? { executablePath: packaged } : {}), args: packaged ? [] : [root], env: { ...process.env, MOYE_TEST_DATA: path.join(run, 'data'), MOYE_TEST_WORKSPACE: path.join(run, 'notes'), MOYE_HEADLESS: '1', MOYE_TEST_LOCALE: 'zh-CN', ELECTRON_DISABLE_SECURITY_WARNINGS: 'true' }, timeout: 60000 });
+  application = await electron.launch({ ...(packaged ? { executablePath: packaged } : {}), args: packaged ? [] : [root], env: { ...process.env, PINWHEEL_TEST_DATA: path.join(run, 'data'), PINWHEEL_TEST_WORKSPACE: path.join(run, 'notes'), PINWHEEL_HEADLESS: '1', PINWHEEL_TEST_LOCALE: 'zh-CN', ELECTRON_DISABLE_SECURITY_WARNINGS: 'true' }, timeout: 60000 });
   const page = await application.firstWindow();
   page.on('pageerror', error => errors.push(String(error)));
   page.on('console', message => { if (message.type() === 'error') consoleErrors.push(message.text()); });

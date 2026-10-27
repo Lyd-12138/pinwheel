@@ -1,6 +1,6 @@
 import {_electron as electron,expect} from '@playwright/test';import fs from 'node:fs/promises';import path from 'node:path';
 const root=path.resolve('.'),run=path.join(root,'test-results/language-'+Date.now()),notes=path.join(run,'notes');await fs.mkdir(notes,{recursive:true});const fixture='# Example note\n\n中文正文不应随着界面语言改变。\n\n```python\nprint("hello")\n```\n';await fs.writeFile(path.join(notes,'Example.md'),fixture);
-const executablePath=process.env.MOYE_PACKAGED_EXECUTABLE;const env={...process.env,MOYE_TEST_DATA:path.join(run,'data'),MOYE_TEST_WORKSPACE:notes,MOYE_HEADLESS:'1',MOYE_TEST_LOCALE:'fr-FR'};
+const executablePath=process.env.PINWHEEL_PACKAGED_EXECUTABLE;const env={...process.env,PINWHEEL_TEST_DATA:path.join(run,'data'),PINWHEEL_TEST_WORKSPACE:notes,PINWHEEL_HEADLESS:'1',PINWHEEL_TEST_LOCALE:'fr-FR'};
 const options={...(executablePath?{executablePath}:{}),args:executablePath?[]:[root],env};let app,page;const errors=[],checks=[];
 const start=async()=>{app=await electron.launch(options);page=await app.firstWindow();page.on('pageerror',e=>errors.push(String(e)));await expect(page.locator('.rich-editor h1')).toHaveText('Example note');};
 const chinese=()=>page.evaluate(()=>{const root=document.body.cloneNode(true);root.querySelectorAll('.rich-editor,.cm-editor,.note-item,.file-tree,.font-preview,option,.pet-title,.custom-theme-select,input,textarea').forEach(e=>e.remove());return root.textContent.match(/[^\n]{0,28}[\u3400-\u9fff][^\n]{0,60}/g)||[];});

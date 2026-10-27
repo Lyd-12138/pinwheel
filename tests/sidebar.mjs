@@ -12,8 +12,8 @@ const fixture = '# 工作手册\n\n## 开始\n\n介绍段落\n\n' + longToken + 
 await fs.writeFile(path.join(notes, '手册.md'), fixture);
 await fs.writeFile(path.join(notes, '项目/资料/同名.md'), '# 项目资料\n\n用于文件树搜索的独特词条。');
 await fs.writeFile(path.join(notes, '日记/同名.md'), '# 日记内容\n\n另一篇同名笔记。');
-const packaged = process.env.MOYE_PACKAGED_EXECUTABLE;
-const options = { ...(packaged ? { executablePath: packaged } : {}), args: packaged ? [] : [root], env: { ...process.env, MOYE_TEST_DATA: path.join(run, 'data'), MOYE_TEST_WORKSPACE: notes, MOYE_HEADLESS: '1', MOYE_TEST_LOCALE: 'zh-CN' }, timeout: 60000 };
+const packaged = process.env.PINWHEEL_PACKAGED_EXECUTABLE;
+const options = { ...(packaged ? { executablePath: packaged } : {}), args: packaged ? [] : [root], env: { ...process.env, PINWHEEL_TEST_DATA: path.join(run, 'data'), PINWHEEL_TEST_WORKSPACE: notes, PINWHEEL_HEADLESS: '1', PINWHEEL_TEST_LOCALE: 'zh-CN' }, timeout: 60000 };
 let app; const errors = [];
 try {
   app = await electron.launch(options); let page = await app.firstWindow(); page.on('pageerror', e => errors.push(String(e)));

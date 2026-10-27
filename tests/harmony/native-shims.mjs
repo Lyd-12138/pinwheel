@@ -5,7 +5,7 @@ import { promisify } from 'node:util';
 const derive = promisify(crypto.scrypt);
 const appStorage = new Map();
 globalThis.AppStorage ??= { setOrCreate: (key, value) => appStorage.set(key, value), get: key => appStorage.get(key) };
-export const i18n = { System: { getSystemLanguage: () => process.env.MOYE_TEST_LOCALE || 'zh-CN' } };
+export const i18n = { System: { getSystemLanguage: () => process.env.PINWHEEL_TEST_LOCALE || 'zh-CN' } };
 export const cryptoFramework = {
   CryptoMode: { ENCRYPT_MODE: 0, DECRYPT_MODE: 1 },
   createRandom: () => ({ generateRandomSync: size => ({ data: new Uint8Array(crypto.randomBytes(size)) }) }),

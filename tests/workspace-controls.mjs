@@ -2,10 +2,10 @@ import {_electron as electron,expect} from '@playwright/test';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-const root=path.dirname(path.dirname(fileURLToPath(import.meta.url))),packaged=process.env.MOYE_PACKAGED_EXECUTABLE;
+const root=path.dirname(path.dirname(fileURLToPath(import.meta.url))),packaged=process.env.PINWHEEL_PACKAGED_EXECUTABLE;
 const run=path.join(root,'test-results','workspace-controls-'+Date.now()),notes=path.join(run,'notes');await fs.mkdir(path.join(notes,'分类'),{recursive:true});await fs.writeFile(path.join(notes,'分类/计划.md'),'# 我的计划\n\n保留正文。');
 const external=path.join(run,'外部文档');await fs.mkdir(external);const externalFile=path.join(external,'命令行打开.markdown');await fs.writeFile(externalFile,'# 外部文档\n\n通过系统打开。');
-const options={...(packaged?{executablePath:packaged}:{}),args:packaged?[]:[root],env:{...process.env,MOYE_HEADLESS: '1', MOYE_TEST_LOCALE: 'zh-CN',MOYE_TEST_DATA:path.join(run,'data'),MOYE_TEST_WORKSPACE:notes},timeout:60000};
+const options={...(packaged?{executablePath:packaged}:{}),args:packaged?[]:[root],env:{...process.env,PINWHEEL_HEADLESS: '1', PINWHEEL_TEST_LOCALE: 'zh-CN',PINWHEEL_TEST_DATA:path.join(run,'data'),PINWHEEL_TEST_WORKSPACE:notes},timeout:60000};
 let app;const errors=[];
 try{
  app=await electron.launch(options);let page=await app.firstWindow();page.on('pageerror',e=>errors.push(String(e)));await expect(page.locator('.rich-editor h1')).toHaveText('我的计划');

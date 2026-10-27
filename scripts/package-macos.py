@@ -1,6 +1,7 @@
 """Cross-package official Electron archives without losing Unix modes or symlinks."""
 from pathlib import Path,PurePosixPath
 import json,plistlib,zipfile,hashlib,stat
+from macos_branding import brand_main, brand_entry
 
 root=Path.cwd();version=json.loads((root/'package.json').read_text(encoding='utf-8'))['version']
 electron=json.loads((root/'node_modules/electron/package.json').read_text(encoding='utf-8'))['version']
@@ -46,15 +47,18 @@ for arch,cpu in [('arm64',0x0100000c),('x64',0x01000007)]:
     with zipfile.ZipFile(runtime) as original,zipfile.ZipFile(output,'x',compression=zipfile.ZIP_DEFLATED,compresslevel=6) as target:
         info=plistlib.loads(original.read('Electron.app/Contents/Info.plist'))
         info.update(CFBundleIdentifier='org.pinwheel.notes',CFBundleName='pinwheel',CFBundleDisplayName='pinwheel',CFBundleDevelopmentRegion='en',CFBundleLocalizations=['en','zh-Hans'],CFBundleShortVersionString=version,CFBundleVersion=version,LSApplicationCategoryType='public.app-category.productivity',CFBundleIconFile='pinwheel.icns')
-        info['CFBundleDocumentTypes']=[{'CFBundleTypeName':name,'CFBundleTypeExtensions':ext,'CFBundleTypeRole':role,'LSHandlerRank':rank} for name,ext,role,rank in [('Markdown Document',['md','markdown'],'Editor','Alternate'),('pinwheel Encrypted Document',['moye'],'Editor','Owner'),('pinwheel Notebook Package',['notepack'],'Viewer','Owner')]]
-        main=original.read('Electron.app/Contents/MacOS/'+info['CFBundleExecutable']);assert main[:4]==b'\xcf\xfa\xed\xfe' and int.from_bytes(main[4:8],'little')==cpu
+        info['CFBundleDocumentTypes']=[{'CFBundleTypeName':name,'CFBundleTypeExtensions':ext,'CFBundleTypeRole':role,'LSHandlerRank':rank} for name,ext,role,rank in [('pinwheel Markdown Document',['md','markdown'],'Editor','Alternate'),('pinwheel Encrypted Document',['pinwheel','moye'],'Editor','Owner'),('pinwheel Notebook Package',['notepack'],'Viewer','Owner')]]
+        original_executable=info['CFBundleExecutable']
+        main=original.read('Electron.app/Contents/MacOS/'+original_executable);assert main[:4]==b'\xcf\xfa\xed\xfe' and int.from_bytes(main[4:8],'little')==cpu
+        info=brand_main(info)
         for entry in original.infolist():
             if not entry.filename.startswith('Electron.app/'):continue
             relative=entry.filename[len('Electron.app/'):]
             assert '..' not in PurePosixPath(relative).parts and not relative.startswith('/')
             if relative=='Contents/Info.plist':continue
+            relative,data=brand_entry(relative,original.read(entry),original_executable)
             clone=zipfile.ZipInfo(app_prefix+relative,date_time=entry.date_time);clone.create_system=entry.create_system;clone.external_attr=entry.external_attr;clone.compress_type=zipfile.ZIP_DEFLATED
-            target.writestr(clone,original.read(entry))
+            target.writestr(clone,data)
         target.writestr(*regular(app_prefix+'Contents/Info.plist',plistlib.dumps(info)))
         # Electron's release ZIP stores these outside Electron.app. Preserve both
         # in the installed app and beside it so the install script cannot omit them.
@@ -73,7 +77,7 @@ for arch,cpu in [('arm64',0x0100000c),('x64',0x01000007)]:
         for file in (root/'pet-examples').glob('*'):
             if file.is_file():target.writestr(*regular(prefix+'示例宠物/'+file.name,file.read_bytes()))
         target.writestr(*regular(prefix+'使用说明.md',(root/'README.md').read_text(encoding='utf-8').replace('(LICENSE)','(LICENSE-pinwheel.txt)').encode()))
-        for name in ['CONTRIBUTING.md','SECURITY.md','docs/GITHUB-PUBLISH.md']:
+        for name in ['CONTRIBUTING.md','SECURITY.md','docs/GITHUB-PUBLISH.md','docs/BRANDING.md']:
             target.writestr(*regular(prefix+name,(root/name).read_bytes()))
         for folder in ['docs/images','docs/audit-2026-10-26','docs/security-2026-10-26']:
             for file in (root/folder).rglob('*'):

@@ -15,27 +15,27 @@ struct Index {
     Lifecycle.background = () => {
       clearTimeout(this.lockTimer);
       this.covered = true;
-      this.controller.runJavaScript('window.moyeSuspend?.()').catch(() => {});
+      this.controller.runJavaScript('window.pinwheelSuspend?.()').catch(() => {});
       this.lockTimer = setTimeout(() => this.bridge.forgetAfterPending(), 5000);
     };
     Lifecycle.foreground = () => {
       clearTimeout(this.lockTimer);
       this.covered = false;
-      this.controller.runJavaScript('window.moyeResume?.()').catch(() => {});
+      this.controller.runJavaScript('window.pinwheelResume?.()').catch(() => {});
     };
   }
   aboutToDisappear(): void {
     clearTimeout(this.lockTimer); this.bridge.dispose(); Lifecycle.background = undefined; Lifecycle.foreground = undefined;
-    this.controller.deleteJavaScriptRegister('MoyeNative');
+    this.controller.deleteJavaScriptRegister('PinwheelNative');
   }
-  onBackPress(): boolean { this.controller.runJavaScript('window.moyeBack?.()').catch(() => {}); return true; }
+  onBackPress(): boolean { this.controller.runJavaScript('window.pinwheelBack?.()').catch(() => {}); return true; }
   build() {
     Stack() {
       Web({ src: $rawfile('web/index.html'), controller: this.controller })
         .javaScriptAccess(true)
         .domStorageAccess(false)
         .fileAccess(false)
-        .javaScriptProxy({ object: this.bridge, name: 'MoyeNative', methodList: ['post'], controller: this.controller })
+        .javaScriptProxy({ object: this.bridge, name: 'PinwheelNative', methodList: ['post'], controller: this.controller })
         .onLoadIntercept((event) => { return event ? !trustedPage(event.data.getRequestUrl()) : true; })
         .onWindowNew(() => {})
         .width('100%').height('100%')

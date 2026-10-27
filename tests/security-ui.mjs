@@ -2,12 +2,12 @@ import {_electron as electron,expect} from '@playwright/test';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-const root=path.dirname(path.dirname(fileURLToPath(import.meta.url))),packaged=process.env.MOYE_PACKAGED_EXECUTABLE;
+const root=path.dirname(path.dirname(fileURLToPath(import.meta.url))),packaged=process.env.PINWHEEL_PACKAGED_EXECUTABLE;
 const run=path.join(root,'test-results','security-ui-'+Date.now());await fs.mkdir(run,{recursive:true});
 let application;const checks=[],errors=[],network=[];
 const payload=['# Security fixture','','<script>window.__securityInjected=1</script>','<img src="https://security.invalid/pixel" onerror="window.__securityInjected=2">','<iframe src="https://security.invalid/frame"></iframe>','<object data="https://security.invalid/object"></object>','','[bad](javascript:window.__securityInjected=3)','','![remote](https://security.invalid/remote.png)','','$\\href{javascript:alert(1)}{bad}$','','$\\includegraphics{https://security.invalid/math.png}$','','```mermaid','flowchart LR',' A[Safe] --> B[Diagram]',' click A "javascript:alert(1)" "bad"','```',''].join('\n');
 try{
- application=await electron.launch({...(packaged?{executablePath:packaged}:{}),args:packaged?[]:[root],env:{...process.env,MOYE_TEST_DATA:path.join(run,'data'),MOYE_TEST_WORKSPACE:path.join(run,'notes'),MOYE_HEADLESS:'1',MOYE_TEST_LOCALE:'zh-CN'},timeout:60000});
+ application=await electron.launch({...(packaged?{executablePath:packaged}:{}),args:packaged?[]:[root],env:{...process.env,PINWHEEL_TEST_DATA:path.join(run,'data'),PINWHEEL_TEST_WORKSPACE:path.join(run,'notes'),PINWHEEL_HEADLESS:'1',PINWHEEL_TEST_LOCALE:'zh-CN'},timeout:60000});
  const page=await application.firstWindow();page.on('pageerror',e=>errors.push(String(e)));
  await page.route('https://security.invalid/**',route=>{network.push(route.request().url());return route.abort();});
  await expect(page.locator('.rich-editor h1')).toBeVisible();

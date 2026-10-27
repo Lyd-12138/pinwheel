@@ -1,7 +1,7 @@
 {
   "modelVersion": "5.0.0",
   "name": "pinwheel-harmony",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "风车笔记 Markdown 笔记",
   "dependencies": {},
   "devDependencies": {}

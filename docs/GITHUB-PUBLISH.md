@@ -1,8 +1,8 @@
 # GitHub 发布指南
 
-这份材料用于审阅和上传，没有自动创建仓库或公开发布。新名称的商标核验仍未完成，见 [审计报告](audit-2026-10-26/REPORT.md)。整理完成的技术检查不代表获得无侵权保证。
+项目仓库与 v0.10.3 预发布已上传到 [GitHub](https://github.com/Lyd-12138/pinwheel)。本指南用于后续版本的审阅和发布。新名称的商标核验仍未完成，见 [审计报告](audit-2026-10-26/REPORT.md)。整理完成的技术检查不代表获得无侵权保证。
 
-当前版本为 0.10.3，含 [安全复查修复](security-2026-10-26/REPORT.md)。使用对应的 `Pinwheel-0.10.3-GitHub-ready.zip`，其中有源码目录、安装文件、校验值和发布说明。旧的 0.10.1 包没有这些修复；此前的 security-source ZIP 仅有源码，不能代替完整发布准备包。
+当前主分支为 0.10.4 开发源码（见 [名称检查](BRANDING.md)）；已发布版本为 0.10.3，含 [安全复查修复](security-2026-10-26/REPORT.md)。使用对应的 `Pinwheel-0.10.3-GitHub-ready.zip`，其中有源码目录、安装文件、校验值和发布说明。旧的 0.10.1 包没有这些修复；此前的 security-source ZIP 仅有源码，不能代替完整发布准备包。
 
 ## 两类文件分别上传
 
@@ -31,7 +31,7 @@ git push -u origin main
 
 ## 创建 Release
 
-完成对应版本打包和验证后，在 Releases → Draft a new release 创建 `v0.10.3`，先选择 **pre-release**。将新 `release-assets/` 内文件作为附件上传，正文可参考该版本的 `RELEASE-NOTES.md`。不要混用旧版安装程序、验证记录或许可材料。
+v0.10.3 已发布，不能覆盖该标签或附件。下一版应使用新的版本号和全新的验证记录。完成对应版本打包和验证后，在 Releases → Draft a new release 创建新版本标签（例如 `v0.10.4`），先选择 **pre-release**。将新 `release-assets/` 内文件作为附件上传，正文可参考该版本的 `RELEASE-NOTES.md`。不要混用旧版安装程序、验证记录或许可材料。
 
 Mac 仍缺少实机运行及 Apple 开发者签名/公证；鸿蒙是 0.2.3 工程源码，没有 HAP，不应标为“鸿蒙安装包”。避免使用“Typora 官方版/授权版/完全复刻”等可能使用户误解关系的宣传。
 

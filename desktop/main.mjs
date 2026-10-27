@@ -23,8 +23,8 @@ const MAX_NOTE_BYTES=21*1024*1024;
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const appRoot = path.dirname(here);
-if (process.env.MOYE_TEST_DATA) app.setPath('userData', path.resolve(process.env.MOYE_TEST_DATA));
-const previousUserData = process.env.MOYE_TEST_DATA ? path.resolve(process.env.MOYE_TEST_DATA) : path.join(app.getPath('appData'), 'pinwheel'); app.setName('pinwheel'); app.setPath('userData', previousUserData);
+if (process.env.PINWHEEL_TEST_DATA) app.setPath('userData', path.resolve(process.env.PINWHEEL_TEST_DATA));
+const previousUserData = process.env.PINWHEEL_TEST_DATA ? path.resolve(process.env.PINWHEEL_TEST_DATA) : path.join(app.getPath('appData'), 'pinwheel'); app.setName('pinwheel'); app.setPath('userData', previousUserData);
 if (process.platform === 'win32') app.setAppUserModelId('org.pinwheel.notes');
 let win, store, pets, config = {}, closing = false;
 let systemLanguage = 'en';
@@ -33,7 +33,7 @@ const showOpenDialog = (options) => dialog.showOpenDialog(win, localizedOptions(
 const showSaveDialog = (options) => dialog.showSaveDialog(win, localizedOptions(options));
 let petQueue = Promise.resolve(), preferenceQueue = Promise.resolve();
 const pendingExternal = [];
-const enqueueFiles = files => { for (const file of files) if (typeof file === 'string' && /\.(md|markdown|moye|notepack)$/i.test(file) && !file.startsWith('--')) pendingExternal.push(path.resolve(file)); if (pendingExternal.length && win && !win.webContents.isLoadingMainFrame()) win.webContents.send('external-open-ready'); };
+const enqueueFiles = files => { for (const file of files) if (typeof file === 'string' && /\.(md|markdown|pinwheel|moye|notepack)$/i.test(file) && !file.startsWith('--')) pendingExternal.push(path.resolve(file)); if (pendingExternal.length && win && !win.webContents.isLoadingMainFrame()) win.webContents.send('external-open-ready'); };
 app.on('open-file', (event, file) => { event.preventDefault(); enqueueFiles([file]); });
 const ownsInstance = app.requestSingleInstanceLock();
 if (!ownsInstance) app.quit();
@@ -52,7 +52,7 @@ async function activate(root) {
   return { root: store.root, assetRoot: store.assetRoot, notes: await store.list(), directories: await store.directories(), settings: preferences() };
 }
 async function defaultWorkspace() {
-  const root = process.env.MOYE_TEST_WORKSPACE || config.workspace || path.join(app.getPath('documents'), 'pinwheel Notes');
+  const root = process.env.PINWHEEL_TEST_WORKSPACE || config.workspace || path.join(app.getPath('documents'), 'pinwheel Notes');
   const state = await activate(root);
   if (!state.notes.length) { await store.create(t('欢迎来到风车笔记'), getLanguage() === 'zh-CN' ? welcome : '# Welcome to pinwheel\n\nA place for your ideas.\n\n## Start writing\n\n- Right-click the notes area to create files and folders.\n- Edit styled Markdown directly, or switch to Source.\n- Paste images and choose an attachment folder in Settings.\n- Change your theme and app language in Settings.\n- Export a note package to share editable notes with attachments.\n\n```javascript\nconst idea = \"Keep writing.\";\n```\n'); state.notes = await store.list(); }
   return state;
@@ -64,9 +64,9 @@ async function exportDocument(args) {
   const note = await store.read(args.path);
   if (note.encrypted && args.format !== 'encrypted') throw Error('加密文档只能导出密文，正文不会转为明文。');
   if (!note.encrypted && args.format === 'encrypted') throw Error('请先为文档设置密码。');
-  const fileTypes = { encrypted: ['moye'], pack: ['notepack'], html: ['html'], pdf: ['pdf'], markdown: ['md'] };
+  const fileTypes = { encrypted: ['pinwheel'], pack: ['notepack'], html: ['html'], pdf: ['pdf'], markdown: ['md'] };
   if (!fileTypes[args.format]) throw Error('不支持的导出格式。');
-  const result = await showSaveDialog({ title: '导出笔记', defaultPath: path.basename(args.path).replace(/\.(md|markdown|moye)$/i, '') + '.' + fileTypes[args.format][0], filters: [{ name: '文档', extensions: fileTypes[args.format] }] });
+  const result = await showSaveDialog({ title: '导出笔记', defaultPath: path.basename(args.path).replace(/\.(md|markdown|pinwheel|moye)$/i, '') + '.' + fileTypes[args.format][0], filters: [{ name: '文档', extensions: fileTypes[args.format] }] });
   if (result.canceled) return null;
   if (args.format === 'encrypted') { await atomicWrite(result.filePath, await readFileBounded(await store.resolve(args.path),MAX_NOTE_BYTES)); return { path: result.filePath, warning: '已保留密码加密；仅包含正文，图片和附件需要单独携带。' }; }
   if (args.format === 'markdown') { await atomicWrite(result.filePath, args.text); return { path: result.filePath, warning: '仅导出正文；需要携带附件请使用笔记包。' }; }
@@ -143,7 +143,7 @@ async function command(name, a) {
       const file = pendingExternal.shift(); if (!file) return null;
       const full = await fs.realpath(file);
       const info=await fs.stat(full);
-      if (!info.isFile() || info.size>(/\.notepack$/i.test(full)?128*1024*1024:MAX_NOTE_BYTES) || !/\.(md|markdown|moye|notepack)$/i.test(full)) throw Error('请选择大小合适的 Markdown、加密文档或笔记包。');
+      if (!info.isFile() || info.size>(/\.notepack$/i.test(full)?128*1024*1024:MAX_NOTE_BYTES) || !/\.(md|markdown|pinwheel|moye|notepack)$/i.test(full)) throw Error('请选择大小合适的 Markdown、加密文档或笔记包。');
       if (/\.notepack$/i.test(full)) return { type: 'import', result: await store.importPackage(await readFileBounded(full,128*1024*1024)) };
       const root = path.dirname(full);
       if (!inside(store.root, full) || path.relative(store.root, full).split(path.sep).some(part => part.startsWith('.'))) await activate(root);
@@ -166,7 +166,7 @@ async function command(name, a) {
     case 'encryptedCopy': {
       const secret = store.secret(a.path); validateName(a.name);
       if (typeof a.text !== 'string' || Buffer.byteLength(a.text) > 20 * 1024 * 1024) throw Error('正文超过限制。');
-      const name = a.name + '.moye', target = await store.resolve(name, { exists: false });
+      const name = a.name + '.pinwheel', target = await store.resolve(name, { exists: false });
       await fs.writeFile(target, seal(Buffer.from(a.text), secret), { flag: 'wx' }); return { path: name };
     }
     case 'save': { const r = await store.save(a); await store.clearRecovery(a.path, a.text); return r; }
@@ -196,7 +196,7 @@ async function command(name, a) {
       if (r.canceled) return null;
       const dest = await fs.realpath(r.filePaths[0]);
       if (inside(path.join(await fs.realpath(store.root),'.notebook'),dest))throw Error('不能选择内部存储作为附件目录。');
-      const probe = path.join(dest, '.moye-write-' + randomUUID()); await fs.writeFile(probe, ''); await fs.rm(probe);
+      const probe = path.join(dest, '.pinwheel-write-' + randomUUID()); await fs.writeFile(probe, ''); await fs.rm(probe);
       config.assetHistory ||= {}; config.assetHistory[store.root] = [...new Set([...(config.assetHistory[store.root] || []), store.assetRoot, dest])];
       store.authorizedAssetRoots = config.assetHistory[store.root];
       store.assetRoot = dest; config.assetBindings ||= {}; config.assetBindings[store.root] = dest; await persist(); return dest;
@@ -216,7 +216,7 @@ async function command(name, a) {
       const selected = config.theme === 'system' ? nativeTheme.shouldUseDarkColors && !config.deletedThemes?.includes('dark') ? 'dark' : 'simple' : config.theme;
       const theme = (config.theme === 'custom' || config.theme?.startsWith('custom:')) && config.customTheme ? config.customTheme : builtInThemes.find(t => t.id === selected) || builtInThemes[0];
       const template = themeTemplate(theme);
-      const filename = template.name.replace(/[<>:"/\\|?*]/g, '-') + '.moye-theme.json';
+      const filename = template.name.replace(/[<>:"/\\|?*]/g, '-') + '.pinwheel-theme.json';
       const result = await showSaveDialog({ title: '导出可自定义的主题模板', defaultPath: filename, filters: [{ name: '风车笔记主题', extensions: ['json'] }] });
       if (result.canceled) return null;
       await atomicWrite(result.filePath, JSON.stringify(template, null, 2) + '\n');
@@ -238,13 +238,13 @@ async function command(name, a) {
     case 'attachBytes': { if(!(a.bytes instanceof Uint8Array)||a.bytes.byteLength>100*1024*1024)throw Error('附件数据无效或超过限制。');return store.ingest(Buffer.from(a.bytes), a.name, a.path); }
     case 'export': return exportDocument(a);
     case 'import': {
-      const r = await showOpenDialog({ title: '导入笔记包、Markdown 或加密文档', properties: ['openFile'], filters: [{ name: '笔记文件', extensions: ['notepack', 'md', 'moye'] }] });
+      const r = await showOpenDialog({ title: '导入笔记包、Markdown 或加密文档', properties: ['openFile'], filters: [{ name: '笔记文件', extensions: ['notepack', 'md', 'markdown', 'pinwheel', 'moye'] }] });
       if (r.canceled) return null;
       const file = r.filePaths[0];
       const imported = await readFileBounded(file,/\.notepack$/i.test(file)?128*1024*1024:MAX_NOTE_BYTES);
-      if (encrypted(imported) || /\.moye$/i.test(file)) {
+      if (encrypted(imported) || /\.(pinwheel|moye)$/i.test(file)) {
         header(imported);
-        const name = path.basename(file).replace(/\.(md|markdown|moye)$/i, '') + '-导入-' + randomUUID().slice(0, 6) + '.moye'; validateName(name);
+        const name = path.basename(file).replace(/\.(md|markdown|pinwheel|moye)$/i, '') + '-导入-' + randomUUID().slice(0, 6) + '.pinwheel'; validateName(name);
         await fs.writeFile(await store.resolve(name, { exists: false }), imported, { flag: 'wx' });
         return { folder: name, count: 1, warnings: [] };
       }
@@ -259,7 +259,7 @@ async function command(name, a) {
       if (/^https?:\/\//i.test(a.url) || /^mailto:/i.test(a.url)) { await shell.openExternal(externalUrl(a.url)); return null; }
       if (isRemote(a.url)) throw Error('不允许打开此链接类型。');
       const full = await store.localTarget(a.path, a.url); if (!full) return null;
-      if (/\.(md|markdown|moye)$/i.test(full) && inside(store.root, full)) return path.relative(store.root, full).split(path.sep).join('/');
+      if (/\.(md|markdown|pinwheel|moye)$/i.test(full) && inside(store.root, full)) return path.relative(store.root, full).split(path.sep).join('/');
       if (!(await fs.stat(full)).isFile() || !mayOpenAttachment(full)) { shell.showItemInFolder(full); return null; }
       const error = await shell.openPath(full); if (error) throw Error(error); return null;
     }
@@ -277,16 +277,16 @@ function updateApplicationMenu() {
  const role = (role, label, accelerator) => ({role, label:t(label), ...(accelerator?{accelerator}:{})});
  Menu.setApplicationMenu(Menu.buildFromTemplate([
   {label:brandName(),submenu:[role('about','关于 pinwheel'),{type:'separator'},role('services','服务'),{type:'separator'},role('hide','隐藏 pinwheel'),role('hideOthers','隐藏其他应用'),role('unhide','显示全部'),{type:'separator'},role('quit','退出 pinwheel')]},
-  {label:t('文件'),submenu:[{label:t('打开文档…'),accelerator:'CmdOrCtrl+O',click:async()=>{const selected=await showOpenDialog({properties:['openFile'],filters:[{name:'风车笔记文档',extensions:['md','markdown','moye','notepack']}]});if(!selected.canceled)enqueueFiles(selected.filePaths);}},role('close','关闭窗口')]},
+  {label:t('文件'),submenu:[{label:t('打开文档…'),accelerator:'CmdOrCtrl+O',click:async()=>{const selected=await showOpenDialog({properties:['openFile'],filters:[{name:'风车笔记文档',extensions:['md','markdown','pinwheel','moye','notepack']}]});if(!selected.canceled)enqueueFiles(selected.filePaths);}},role('close','关闭窗口')]},
   {label:t('编辑'),submenu:[role('undo','撤销'),role('redo','重做'),{type:'separator'},role('cut','剪切'),role('copy','复制'),role('paste','粘贴'),role('selectAll','全选')]},
   {label:t('视图'),submenu:[role('togglefullscreen','切换全屏')]},
   {label:t('窗口'),submenu:[role('minimize','最小化'),role('zoom','缩放窗口'),role('front','全部置于前面')]}
  ]));
 }
 if (ownsInstance) app.whenReady().then(async () => {
-await migrateLegacyData(app.getPath('userData'), process.env.MOYE_TEST_DATA ? (process.env.MOYE_TEST_LEGACY_DATA ? [process.env.MOYE_TEST_LEGACY_DATA] : []) : [path.join(app.getPath('appData'), 'moye-notes'), path.join(app.getPath('appData'), '墨页')]);
+await migrateLegacyData(app.getPath('userData'), process.env.PINWHEEL_TEST_DATA ? (process.env.PINWHEEL_TEST_LEGACY_DATA ? [process.env.PINWHEEL_TEST_LEGACY_DATA] : []) : [path.join(app.getPath('appData'), 'moye-notes'), path.join(app.getPath('appData'), '墨页')]);
 try { config = JSON.parse(await readFileBounded(settingsFile(),32*1024*1024,'utf8')); } catch(error) { if(error.code!=='ENOENT')throw error; }
-systemLanguage = process.env.MOYE_TEST_DATA && process.env.MOYE_TEST_LOCALE || app.getPreferredSystemLanguages()[0] || 'en';
+systemLanguage = process.env.PINWHEEL_TEST_DATA && process.env.PINWHEEL_TEST_LOCALE || app.getPreferredSystemLanguages()[0] || 'en';
 setLanguage(config.language || 'system', systemLanguage); app.setName(brandName());
 config.alwaysOnTop = config.alwaysOnTop === true;
 if (!config.defaultThemeVersion) { if (!config.theme || config.theme === 'light') config.theme = 'simple'; config.defaultThemeVersion = 1; }
@@ -322,7 +322,7 @@ ipcMain.handle('notebook', async (event, name, args) => {
 ipcMain.on('finish-close', event => { if (trustedRenderer(event,win,path.join(appRoot,'dist/index.html'))) { closing = true; win.close(); } });
 win.on('close', event => { if (!closing) { event.preventDefault(); win.webContents.send('prepare-close'); } });
 win.on('closed', () => pets.dispose());
-win.on('ready-to-show', () => { if (!process.env.MOYE_HEADLESS) win.show(); });
+win.on('ready-to-show', () => { if (!process.env.PINWHEEL_HEADLESS) win.show(); });
 await win.loadFile(path.join(appRoot, 'dist', 'index.html'));
 await pets.sync();
 }).catch(error => { console.error(error); dialog.showErrorBox(t('风车笔记启动失败'), t(error.message)); app.exit(1); });

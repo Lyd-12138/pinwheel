@@ -1,14 +1,14 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 export const repositoryRoots=['src','shared','desktop','scripts','tests','themes','pet-examples','assets','third-party','harmony','.github','docs/images','docs/audit-2026-10-26','docs/security-2026-10-26'];
-export const repositoryFiles=['package.json','package-lock.json','tsconfig.json','vite.config.ts','index.html','.gitignore','.gitattributes','.npmrc','pnpm-workspace.yaml','download-runtime.mjs','README.md','LICENSE','NOTICE.md','CONTRIBUTING.md','SECURITY.md','THIRD-PARTY-NOTICES.md','docs/GITHUB-PUBLISH.md'];
+export const repositoryFiles=['package.json','package-lock.json','tsconfig.json','vite.config.ts','index.html','.gitignore','.gitattributes','.npmrc','pnpm-workspace.yaml','download-runtime.mjs','README.md','LICENSE','NOTICE.md','CONTRIBUTING.md','SECURITY.md','THIRD-PARTY-NOTICES.md','docs/GITHUB-PUBLISH.md','docs/BRANDING.md'];
 export async function collectRepository(root){
  const result=[];
  const walk=async relative=>{
   const full=path.resolve(root,relative);if(!full.startsWith(path.resolve(root)+path.sep))throw Error('Outside repository');
   const stat=await fs.lstat(full);if(stat.isSymbolicLink())throw Error('Symlink in repository snapshot: '+relative);
   if(stat.isDirectory()){
-   if(['node_modules','oh_modules','.hvigor','.idea','build','.git','.cache','test-results','release'].includes(path.basename(relative))||relative==='harmony/entry/src/main/resources/rawfile/web')return;
+   if(['node_modules','oh_modules','.hvigor','.idea','build','.git','.cache','test-results','release','__pycache__'].includes(path.basename(relative))||relative==='harmony/entry/src/main/resources/rawfile/web')return;
    for(const name of (await fs.readdir(full)).sort())await walk(relative+'/'+name);
   }else if(stat.isFile()){
    if(/(?:^|\/)(?:local\.properties|\.env(?:\..*)?)$|\.(?:p12|pfx|pem|key|log)$/i.test(relative))throw Error('Private configuration in source selection: '+relative);

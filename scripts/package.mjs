@@ -26,7 +26,7 @@ await fs.cp('themes', path.join(output, '示例主题'), { recursive: true });
 await fs.writeFile(path.join(output, '使用说明.md'), (await fs.readFile('README.md','utf8')).replaceAll('(LICENSE)','(LICENSE-pinwheel.txt)'));
 await fs.mkdir(path.join(output,'docs'),{recursive:true});
 for(const name of ['images','audit-2026-10-26','security-2026-10-26'])await fs.cp(path.join('docs',name),path.join(output,'docs',name),{recursive:true});
-await fs.copyFile('docs/GITHUB-PUBLISH.md',path.join(output,'docs/GITHUB-PUBLISH.md'));
+for(const name of ['GITHUB-PUBLISH.md','BRANDING.md'])await fs.copyFile('docs/'+name,path.join(output,'docs',name));
 for(const file of ['CONTRIBUTING.md','SECURITY.md'])await fs.copyFile(file,path.join(output,file));
 await fs.copyFile('assets/pinwheel.ico', path.join(output, 'pinwheel.ico'));
 await createNotices(path.join(root, 'node_modules'), path.join(output, 'THIRD-PARTY-NOTICES.md'));

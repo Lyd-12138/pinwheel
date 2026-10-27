@@ -3,13 +3,13 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { builtInThemes } from '../shared/themes.mjs';
-const root = path.dirname(path.dirname(fileURLToPath(import.meta.url))), packaged = process.env.MOYE_PACKAGED_EXECUTABLE;
+const root = path.dirname(path.dirname(fileURLToPath(import.meta.url))), packaged = process.env.PINWHEEL_PACKAGED_EXECUTABLE;
 const run = path.join(root, 'test-results', 'theme-art-' + Date.now()), notes = path.join(run, 'notes');
 await fs.mkdir(path.join(notes, '灵感收藏'), { recursive: true });
 const fixture = '# 把灵感，写成自己的宇宙\n\n在繁忙的世界里，为自己留一处有光的角落。这里收藏偶然的心动、未完成的故事，以及每一个值得认真记录的今天。\n\n> 风格是一种表达。让文字有自己的声音，也让写作拥有自己的颜色。\n\n## 今天，开始一场小小的冒险\n\n- [x] 收集一种新的颜色\n- [ ] 写下一个大胆的想法\n\n```javascript\nconst inspiration = {\n  mood: "stay curious",\n  colors: ["aurora", "sunset", "sakura"],\n  create: () => "make something wonderful"\n};\n```\n\n## 明日来信\n\n下一页，留给尚未发生的故事。\n';
 await fs.writeFile(path.join(notes, '今日灵感.md'), fixture);
 await fs.writeFile(path.join(notes, '灵感收藏/旅行手记.md'), '# 沿途的光');
-const options = { ...(packaged ? { executablePath: packaged } : {}), args: packaged ? [] : [root], env: { ...process.env, MOYE_HEADLESS: '1', MOYE_TEST_LOCALE: 'zh-CN', MOYE_TEST_DATA: path.join(run, 'data'), MOYE_TEST_WORKSPACE: notes }, timeout: 60000 };
+const options = { ...(packaged ? { executablePath: packaged } : {}), args: packaged ? [] : [root], env: { ...process.env, PINWHEEL_HEADLESS: '1', PINWHEEL_TEST_LOCALE: 'zh-CN', PINWHEEL_TEST_DATA: path.join(run, 'data'), PINWHEEL_TEST_WORKSPACE: notes }, timeout: 60000 };
 let app; const errors = [], metrics = [];
 try {
   app = await electron.launch(options); let page = await app.firstWindow(); page.on('pageerror', e => errors.push(String(e)));

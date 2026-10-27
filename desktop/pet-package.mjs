@@ -18,7 +18,7 @@ export async function readPetPackage(bytes, inspect) {
   const file = zip.file('manifest.json'); if (!file) throw Error('宠物包缺少 manifest.json。');
   const budget={remaining:MAX};
   const manifest = JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(await readZipEntry(file,256*1024,budget)));
-  if (manifest.format !== 'moye-pet' || manifest.version !== 1 || !Array.isArray(manifest.assets) || manifest.assets.length > 300) throw Error('宠物包版本或资源清单无效。');
+  if (!['pinwheel-pet', 'moye-pet'].includes(manifest.format) || manifest.version !== 1 || !Array.isArray(manifest.assets) || manifest.assets.length > 300) throw Error('宠物包版本或资源清单无效。');
   const pet = validatePet(manifest.pet);
   if (manifest.pet.image !== undefined) { if (!validPetAsset(manifest.pet.image)) throw Error('宠物主图无效。'); pet.image = manifest.pet.image; }
   if (pet.kind === 'image' && !pet.image && !pet.actions.idle) throw Error('图片宠物需要主图或待机动作。');
@@ -45,7 +45,7 @@ export async function writePetPackage(pet, readAsset, guide = '') {
   if (value.image) value.image = mapping.get(value.image);
   for (const action of Object.values(value.actions)) action.files = action.files.map(file => mapping.get(file));
   zip.file('pet.json', JSON.stringify(value, null, 2));
-  zip.file('manifest.json', JSON.stringify({ format: 'moye-pet', version: 1, pet: value, assets }, null, 2));
+  zip.file('manifest.json', JSON.stringify({ format: 'pinwheel-pet', version: 1, pet: value, assets }, null, 2));
   if (guide) zip.file('README.md', guide);
   return zip.generateAsync({ type: 'nodebuffer', compression: 'DEFLATE' });
 }

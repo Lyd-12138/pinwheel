@@ -28,8 +28,8 @@
   },
   "ui": {
     "labels": {
-      "风车笔记": "星河札记",
-      "pinwheel": "STAR JOURNAL"
+      "风车笔记": "风车笔记",
+      "pinwheel": "pinwheel"
     },
     "icons": {
       "brand": "✧",

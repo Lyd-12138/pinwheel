@@ -22,7 +22,7 @@ export function resolvePath(note, url) {
   const resolved = safePath(parts.join('/')); if (resolved.split('/').some(p=>p.startsWith('.'))) throw Error('不能通过笔记引用隐藏文件或目录。'); return resolved;
 }
 export function relative(from, to) { const a = from.split('/').slice(0, -1), b = to.split('/'); while (a.length && a[0] === b[0]) { a.shift(); b.shift(); } return '../'.repeat(a.length) + b.join('/'); }
-const noteFile = path => /\.(md|markdown|moye)$/i.test(path);
+const noteFile = path => /\.(md|markdown|pinwheel|moye)$/i.test(path);
 export class MobileStore {
   constructor(io) { this.io = io; this.tokens = new Map(); this.settings = { language: 'system', systemLanguage: 'en', theme: 'simple', mode: 'markdown', lastPath: '', assetFolder: 'attachments', views: {}, collapsed: [], deletedThemes: [], customThemes: [], font: '', fontSize: 17, noteView: 'tree' }; this.queue = Promise.resolve(); }
   serial(fn) { const job = this.queue.then(fn); this.queue = job.catch(() => {}); return job; }
@@ -40,7 +40,7 @@ export class MobileStore {
         if (item.name.startsWith('.')) continue;
         const path = parent ? parent + '/' + item.name : item.name;
         if (item.directory) { directories.push(path); await walk(path, depth + 1); }
-        else if (noteFile(path)) notes.push({ path, name: item.name.replace(/\.(md|markdown|moye)$/i, ''), modified: item.modified, encrypted: item.encrypted });
+        else if (noteFile(path)) notes.push({ path, name: item.name.replace(/\.(md|markdown|pinwheel|moye)$/i, ''), modified: item.modified, encrypted: item.encrypted });
       }
     };
     await walk(''); notes.sort((a, b) => b.modified - a.modified || a.path.localeCompare(b.path)); return { notes, directories };
@@ -71,9 +71,9 @@ export class MobileStore {
   }); }
   async lockAll() { await this.queue; await this.io('forgetAll'); this.tokens.clear(); }
   async create(path, folder = false) { safePath(path); if (path.split('/').some(p => p.startsWith('.'))) throw Error('请使用可见的文件名。'); return folder ? this.io('mkdir', { path }) : this.io('write', { path: noteFile(path) ? path : path + '.md', data: encode(''), expected: 'new' }); }
-  async duplicate(path) { const data = await this.io('read', { path }); const base = path.replace(/\.(md|markdown|moye)$/i, ''), ext = path.slice(base.length); for (let i = 1; i <= 100; i++) { const dest = base + '-副本' + (i === 1 ? '' : i) + ext; try { await this.io('write', { path: dest, data, expected: 'new' }); return dest; } catch (e) { if (!String(e.message).includes('已存在')) throw e; } } throw Error('副本过多，请先重命名。'); }
+  async duplicate(path) { const data = await this.io('read', { path }); const base = path.replace(/\.(md|markdown|pinwheel|moye)$/i, ''), ext = path.slice(base.length); for (let i = 1; i <= 100; i++) { const dest = base + '-副本' + (i === 1 ? '' : i) + ext; try { await this.io('write', { path: dest, data, expected: 'new' }); return dest; } catch (e) { if (!String(e.message).includes('已存在')) throw e; } } throw Error('副本过多，请先重命名。'); }
   assertMutable(path) { safePath(path); if (path.split('/').some(p => p.startsWith('.')) || [...(this.settings.assetHistory || []), this.settings.assetFolder].some(root => root === path || root.startsWith(path + '/'))) throw Error('附件存储目录及其上级目录不能重命名或删除，请在设置中更改新附件的位置。'); }
-  async rename(path, name) { this.assertMutable(path); safePath(name); if (name.includes('/') || name.startsWith('.')) throw Error('请输入单独的名称。'); const isNote = noteFile(path); if (isNote && !noteFile(name)) name += /\.(md|markdown|moye)$/i.exec(path)[0]; const dest = path.includes('/') ? path.slice(0, path.lastIndexOf('/') + 1) + name : name; await this.io('move', { path, dest }); this.tokens.delete(path); return dest; }
+  async rename(path, name) { this.assertMutable(path); safePath(name); if (name.includes('/') || name.startsWith('.')) throw Error('请输入单独的名称。'); const isNote = noteFile(path); if (isNote && !noteFile(name)) name += /\.(md|markdown|pinwheel|moye)$/i.exec(path)[0]; const dest = path.includes('/') ? path.slice(0, path.lastIndexOf('/') + 1) + name : name; await this.io('move', { path, dest }); this.tokens.delete(path); return dest; }
   async trash(path) { this.assertMutable(path); await this.io('trash', { path }); this.tokens.delete(path); }
   async trashEntries() {
     const out = [];
@@ -116,7 +116,7 @@ export class MobileStore {
       zip.file(target.get(path), bytes); documents.push({ path: target.get(path), size: bytes.length, sha256: await this.io('digest', { data }) });
     }
     if (total > MAX_PACK) throw Error('移动版笔记包不能超过 32MB。');
-    zip.file('manifest.json', JSON.stringify({ format: 'local-markdown-notepack', formatVersion: 1, appVersion: 'harmony-0.2.3', dialect: 'gfm-math-v1', createdAt: new Date().toISOString(), documents, assets, warnings: [] }, null, 2));
+    zip.file('manifest.json', JSON.stringify({ format: 'local-markdown-notepack', formatVersion: 1, appVersion: 'harmony-0.2.4', dialect: 'gfm-math-v1', createdAt: new Date().toISOString(), documents, assets, warnings: [] }, null, 2));
     return bytes64(await zip.generateAsync({ type: 'uint8array', compression: 'DEFLATE' }));
   }
   async importPack(data) {

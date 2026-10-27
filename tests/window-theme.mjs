@@ -7,8 +7,8 @@ const run = path.join(root, 'test-results', 'window-theme-' + Date.now()), notes
 await fs.mkdir(notes, { recursive: true });
 const fixture = '# 给文字一片天空\n\n> 慢慢写，让每一次落笔都成为新的开始。\n\n## 今日灵感\n\n窗外的光落在书桌上。整理想法、记录片刻，也为下一次灵感留一点空间。笔记随窗口展开，主题为写作添一份心情。\n\n- [x] 留下一段值得记住的文字\n- [ ] 为新的想法起个名字\n\n## 一点结构\n\n```javascript\nconst inspiration = {\n  title: "今天的微光",\n  keepWriting: true\n};\n```\n\n' + '| ' + Array.from({ length: 10 }, (_, i) => '栏目 ' + i).join(' | ') + ' |\n|' + ' --- |'.repeat(10) + '\n|' + ' 内容可自动换行 |'.repeat(10) + '\n\n## 长行检查\n\n' + 'longword'.repeat(120) + '\n\n```python\nmessage = "' + 'longword'.repeat(120) + '"\n```\n';
 await fs.writeFile(path.join(notes, '随笔.md'), fixture);
-const packaged = process.env.MOYE_PACKAGED_EXECUTABLE;
-const options = { ...(packaged ? { executablePath: packaged } : {}), args: packaged ? [] : [root], env: { ...process.env, MOYE_TEST_DATA: path.join(run, 'data'), MOYE_TEST_WORKSPACE: notes, MOYE_HEADLESS: '1', MOYE_TEST_LOCALE: 'zh-CN' }, timeout: 60000 };
+const packaged = process.env.PINWHEEL_PACKAGED_EXECUTABLE;
+const options = { ...(packaged ? { executablePath: packaged } : {}), args: packaged ? [] : [root], env: { ...process.env, PINWHEEL_TEST_DATA: path.join(run, 'data'), PINWHEEL_TEST_WORKSPACE: notes, PINWHEEL_HEADLESS: '1', PINWHEEL_TEST_LOCALE: 'zh-CN' }, timeout: 60000 };
 let app; const errors = [];
 try {
   app = await electron.launch(options); let page = await app.firstWindow(); page.on('pageerror', e => errors.push(String(e)));

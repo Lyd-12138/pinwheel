@@ -2,12 +2,12 @@ import { _electron as electron, expect } from '@playwright/test';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-const root = path.dirname(path.dirname(fileURLToPath(import.meta.url))), packaged = process.env.MOYE_PACKAGED_EXECUTABLE;
+const root = path.dirname(path.dirname(fileURLToPath(import.meta.url))), packaged = process.env.PINWHEEL_PACKAGED_EXECUTABLE;
 const run = path.join(root, 'test-results', 'encryption-ui-' + Date.now()); await fs.mkdir(run, { recursive: true });
-const password = '墨页-长密码-2026-private', marker = '正文密文验证_秘密内容_76189';
-const exported = path.join(run, 'protected.moye'), errors = []; let app;
+const password = '风车笔记-长密码-2026-private', marker = '正文密文验证_秘密内容_76189';
+const exported = path.join(run, 'protected.pinwheel'), errors = []; let app;
 async function launch(suffix = '') {
-  app = await electron.launch({ ...(packaged ? { executablePath: packaged } : {}), args: packaged ? [] : [root], env: { ...process.env, MOYE_TEST_DATA: path.join(run, 'data' + suffix), MOYE_TEST_WORKSPACE: path.join(run, 'notes' + suffix), MOYE_HEADLESS: '1', MOYE_TEST_LOCALE: 'zh-CN' }, timeout: 60000 });
+  app = await electron.launch({ ...(packaged ? { executablePath: packaged } : {}), args: packaged ? [] : [root], env: { ...process.env, PINWHEEL_TEST_DATA: path.join(run, 'data' + suffix), PINWHEEL_TEST_WORKSPACE: path.join(run, 'notes' + suffix), PINWHEEL_HEADLESS: '1', PINWHEEL_TEST_LOCALE: 'zh-CN' }, timeout: 60000 });
   const page = await app.firstWindow(); page.on('pageerror', e => errors.push(String(e))); return page;
 }
 async function unlock(page, pass = password) {
@@ -46,7 +46,7 @@ try {
   await app.evaluate(({ dialog }, folder) => { dialog.showOpenDialog = async () => ({ canceled: false, filePaths: [folder] }); }, path.join(run, 'notes'));
   await page.locator('.workspace-button').click(); await expect(page.locator('.locked-document')).toBeVisible(); await unlock(page); await expect(page.locator('.cm-content')).toContainText('切换前的未保存输入');
   await app.evaluate(({ dialog }, file) => { dialog.showSaveDialog = async () => ({ canceled: false, filePath: file }); }, exported);
-  await page.getByRole('button', { name: '导出', exact: true }).click(); await expect(page.locator('.export-options label')).toHaveCount(1); await expect(page.locator('.export-options')).toContainText('加密文档 .moye'); await page.getByRole('dialog').getByRole('button', { name: '导出', exact: true }).click();
+  await page.getByRole('button', { name: '导出', exact: true }).click(); await expect(page.locator('.export-options label')).toHaveCount(1); await expect(page.locator('.export-options')).toContainText('加密文档 .pinwheel'); await page.getByRole('dialog').getByRole('button', { name: '导出', exact: true }).click();
   await expect.poll(() => fs.readFile(exported).then(b => b.subarray(0, 8).toString('hex')).catch(() => '')).toBe(Buffer.from('MOYEENC\x01').toString('hex'));
   expect(await fs.readFile(exported)).toEqual(await fs.readFile(path.join(run, 'notes/欢迎来到风车笔记.md')));
   await app.close(); app = null; page = await launch(); await expect(page.locator('.locked-document')).toBeVisible(); expect(await page.locator('body').textContent()).not.toContain(marker);
@@ -56,7 +56,7 @@ try {
   await app.close(); app = null;
   page = await launch('-recipient'); await expect(page.locator('.rich-editor h1')).toBeVisible();
   await app.evaluate(({ dialog }, file) => { dialog.showOpenDialog = async () => ({ canceled: false, filePaths: [file] }); }, exported);
-  await page.getByRole('button', { name: '导入笔记', exact: true }).click(); const imported = page.locator('.note-item[data-path$=".moye"]'); await expect(imported).toHaveCount(1); await imported.click();
+  await page.getByRole('button', { name: '导入笔记', exact: true }).click(); const imported = page.locator('.note-item[data-path$=".pinwheel"]'); await expect(imported).toHaveCount(1); await imported.click();
   await expect(page.locator('.locked-document')).toBeVisible(); await unlock(page); await expect(page.locator('.rich-editor')).toContainText(marker); await expect(page.locator('.rich-editor')).toContainText('加密后的自动保存');
   const searchResult = await page.evaluate(marker => window.notebook.call('search', { query: marker }), marker); expect(searchResult).toEqual([]);
   expect(errors).toEqual([]); await fs.writeFile(path.join(run, 'result.json'), JSON.stringify({ passed: true, packaged: Boolean(packaged), errors }, null, 2)); console.log('Encryption UI checks passed:', run);

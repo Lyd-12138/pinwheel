@@ -4,10 +4,10 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const run = path.join(root, 'test-results', 'context-ui-' + Date.now()); await fs.mkdir(run,{recursive:true});
-const packaged = process.env.MOYE_PACKAGED_EXECUTABLE;
+const packaged = process.env.PINWHEEL_PACKAGED_EXECUTABLE;
 let app; const errors=[];
 try {
-  app=await electron.launch({...(packaged?{executablePath:packaged}:{}),args:packaged?[]:[root],env:{...process.env,MOYE_TEST_DATA:path.join(run,'data'),MOYE_TEST_WORKSPACE:path.join(run,'notes'),MOYE_HEADLESS: '1', MOYE_TEST_LOCALE: 'zh-CN'},timeout:60000});
+  app=await electron.launch({...(packaged?{executablePath:packaged}:{}),args:packaged?[]:[root],env:{...process.env,PINWHEEL_TEST_DATA:path.join(run,'data'),PINWHEEL_TEST_WORKSPACE:path.join(run,'notes'),PINWHEEL_HEADLESS: '1', PINWHEEL_TEST_LOCALE: 'zh-CN'},timeout:60000});
   const page=await app.firstWindow();page.on('pageerror',e=>errors.push(String(e)));
   await expect(page.locator('.rich-editor h1')).toBeVisible();
   await expect(page.getByRole('button',{name:'新建笔记',exact:true})).toHaveCount(0);

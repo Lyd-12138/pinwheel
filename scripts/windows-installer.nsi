@@ -3,15 +3,15 @@ Unicode true
 !include "FileFunc.nsh"
 !include "LogicLib.nsh"
 Name "$(ProductName)"
-OutFile "${MOYE_OUTPUT}"
+OutFile "${PINWHEEL_OUTPUT}"
 InstallDir "$LOCALAPPDATA\Programs\Pinwheel"
 InstallDirRegKey HKCU "Software\Pinwheel" "InstallLocation"
 RequestExecutionLevel user
 SetCompressor /SOLID lzma
 Var TestMode
 !define MUI_ABORTWARNING
-!define MUI_ICON "${MOYE_ICON}"
-!define MUI_UNICON "${MOYE_ICON}"
+!define MUI_ICON "${PINWHEEL_ICON}"
+!define MUI_UNICON "${PINWHEEL_ICON}"
 !insertmacro MUI_PAGE_WELCOME
 !insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_INSTFILES
@@ -47,6 +47,7 @@ Section "$(ProductName)" Main
   StrCmp $INSTDIR "$DOCUMENTS" unsafe
   StrCmp $INSTDIR "$DESKTOP" unsafe
   StrCmp $INSTDIR "$WINDIR" unsafe
+  IfFileExists "$INSTDIR\.pinwheel-install" install
   IfFileExists "$INSTDIR\.moye-install" install
   IfFileExists "$INSTDIR\*.*" unsafe install
   unsafe:
@@ -55,19 +56,19 @@ Section "$(ProductName)" Main
     Abort
   install:
   SetOutPath "$INSTDIR"
-  File /r "${MOYE_SOURCE}\*.*"
-  FileOpen $0 "$INSTDIR\.moye-install" w
+  File /r "${PINWHEEL_SOURCE}\*.*"
+  FileOpen $0 "$INSTDIR\.pinwheel-install" w
   FileWrite $0 "org.pinwheel.notes"
   FileClose $0
   WriteUninstaller "$INSTDIR\uninstall-pinwheel.exe"
   StrCmp $TestMode "1" done
   WriteRegStr HKCU "Software\Pinwheel" "InstallLocation" "$INSTDIR"
   WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\Pinwheel" "DisplayName" "$(ProductName)"
-  WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\Pinwheel" "DisplayVersion" "${MOYE_VERSION}"
+  WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\Pinwheel" "DisplayVersion" "${PINWHEEL_VERSION}"
   WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\Pinwheel" "Publisher" "pinwheel"
   WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\Pinwheel" "InstallLocation" "$INSTDIR"
   WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\Pinwheel" "UninstallString" '$\"$INSTDIR\uninstall-pinwheel.exe$\"'
-  !include "${MOYE_ASSOCIATIONS}"
+  !include "${PINWHEEL_ASSOCIATIONS}"
   CreateDirectory "$SMPROGRAMS\pinwheel"
   CreateShortcut "$SMPROGRAMS\pinwheel\pinwheel.lnk" "$INSTDIR\pinwheel.exe" "" "$INSTDIR\pinwheel.ico" 0
   CreateShortcut "$SMPROGRAMS\pinwheel\Uninstall pinwheel.lnk" "$INSTDIR\uninstall-pinwheel.exe"
@@ -81,9 +82,11 @@ Function un.onInit
   ${GetOptions} $0 "/TEST=" $TestMode
 FunctionEnd
 Section "Uninstall"
-  IfFileExists "$INSTDIR\.moye-install" +3
+  IfFileExists "$INSTDIR\.pinwheel-install" uninstall
+  IfFileExists "$INSTDIR\.moye-install" uninstall
   SetErrorLevel 2
   Abort
+  uninstall:
   StrCmp $TestMode "1" files
   Delete "$DESKTOP\pinwheel.lnk"
   Delete "$SMPROGRAMS\pinwheel\pinwheel.lnk"
@@ -91,6 +94,7 @@ Section "Uninstall"
   RMDir "$SMPROGRAMS\pinwheel"
   DeleteRegValue HKCU "Software\Classes\.md\OpenWithProgids" "Pinwheel.Markdown"
   DeleteRegValue HKCU "Software\Classes\.markdown\OpenWithProgids" "Pinwheel.Markdown"
+  DeleteRegValue HKCU "Software\Classes\.pinwheel\OpenWithProgids" "Pinwheel.Encrypted"
   DeleteRegValue HKCU "Software\Classes\.moye\OpenWithProgids" "Pinwheel.Encrypted"
   DeleteRegValue HKCU "Software\Classes\.notepack\OpenWithProgids" "Pinwheel.Package"
   DeleteRegKey HKCU "Software\Classes\Pinwheel.Markdown"
@@ -104,7 +108,8 @@ Section "Uninstall"
   DeleteRegValue HKCU "Software\Microsoft\Windows\CurrentVersion\Run" "Pinwheel"
   files:
   ; Only known application files are removed. User files never get recursive deletion.
-  !include "${MOYE_UNINSTALL_LIST}"
+  !include "${PINWHEEL_UNINSTALL_LIST}"
+  Delete "$INSTDIR\.pinwheel-install"
   Delete "$INSTDIR\.moye-install"
   Delete "$INSTDIR\uninstall-pinwheel.exe"
   RMDir "$INSTDIR"

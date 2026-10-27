@@ -28,7 +28,7 @@ export class NativeBridge {
   private reply(id: number, ok: boolean, result: string): void {
     if (!this.active || !trustedPage(this.controller.getUrl())) return;
     const field = ok ? 'value' : 'error';
-    this.controller.runJavaScript(`window.moyeReply?.({"id":${id},"ok":${ok},"${field}":${result}})`).catch(() => {});
+    this.controller.runJavaScript(`window.pinwheelReply?.({"id":${id},"ok":${ok},"${field}":${result}})`).catch(() => {});
   }
   private async execute(r: Request): Promise<string> {
     switch (r.command) {
@@ -60,7 +60,7 @@ export class NativeBridge {
       }
       case 'pick': {
         const options = new picker.DocumentSelectOptions(); options.maxSelectNumber = r.kind === 'theme' ? 1 : 10;
-        if (r.kind === 'notes') options.fileSuffixFilters = [(AppStorage.get<string>('pinwheelLanguage') === 'zh-CN' ? '风车笔记笔记' : 'pinwheel notes') + '|.md,.markdown,.moye,.notepack'];
+        if (r.kind === 'notes') options.fileSuffixFilters = [(AppStorage.get<string>('pinwheelLanguage') === 'zh-CN' ? '风车笔记笔记' : 'pinwheel notes') + '|.md,.markdown,.pinwheel,.moye,.notepack'];
         if (r.kind === 'theme') options.fileSuffixFilters = [(AppStorage.get<string>('pinwheelLanguage') === 'zh-CN' ? '主题 JSON' : 'Theme JSON') + '|.json'];
         const uris = await new picker.DocumentViewPicker(this.context).select(options), result: Picked[] = []; let total = 0;
         for (const uri of uris) {

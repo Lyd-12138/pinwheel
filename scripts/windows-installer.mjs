@@ -19,5 +19,5 @@ const lines=[...files.map(file=>`Delete "$INSTDIR\\${safe(file)}"`),...directori
 const include=path.join(root,'.cache','uninstall-files.nsh');await fs.writeFile(include,'\ufeff'+lines.join('\r\n')+'\r\n');
 const compiler=path.join(root,'.cache/build-tools/nsis-bundle/windows/makensis.exe');
 const script=path.join(root,'.cache/installer-main.nsi');await fs.writeFile(script,'\ufeff'+await fs.readFile('scripts/windows-installer.nsi','utf8'));
-const result=await promisify(execFile)(compiler,['/V2',`/DMOYE_VERSION=${version}`,`/DMOYE_SOURCE=${source}`,`/DMOYE_OUTPUT=${output}`,`/DMOYE_ICON=${path.join(root,'assets/pinwheel.ico')}`,`/DMOYE_UNINSTALL_LIST=${include}`,`/DMOYE_ASSOCIATIONS=${associationInclude}`,script],{windowsHide:true,env:{...process.env,NSISDIR:path.dirname(compiler)},maxBuffer:4*1024*1024});
+const result=await promisify(execFile)(compiler,['/V2',`/DPINWHEEL_VERSION=${version}`,`/DPINWHEEL_SOURCE=${source}`,`/DPINWHEEL_OUTPUT=${output}`,`/DPINWHEEL_ICON=${path.join(root,'assets/pinwheel.ico')}`,`/DPINWHEEL_UNINSTALL_LIST=${include}`,`/DPINWHEEL_ASSOCIATIONS=${associationInclude}`,script],{windowsHide:true,env:{...process.env,NSISDIR:path.dirname(compiler)},maxBuffer:4*1024*1024});
 if(result.stdout)console.log(result.stdout);if(result.stderr)console.error(result.stderr);console.log(output);

@@ -53,7 +53,7 @@ node --test tests/harmony.test.mjs
 node tests/harmony-ui.mjs
 ```
 
-UI 测试使用隔离目录和隐藏 Edge，可设置 `MOYE_BROWSER_CHANNEL=chrome`。测试中的 Node 适配器按官方 API 行为执行原生服务源文件，能验证文件格式和业务流程，**不能替代 ArkTS 编译器、ArkWeb、软键盘和真机生命周期验证**。
+UI 测试使用隔离目录和隐藏 Edge，可设置 `PINWHEEL_BROWSER_CHANNEL=chrome`。测试中的 Node 适配器按官方 API 行为执行原生服务源文件，能验证文件格式和业务流程，**不能替代 ArkTS 编译器、ArkWeb、软键盘和真机生命周期验证**。
 
 ## 待真机验收与平台差异
 

@@ -14,7 +14,7 @@ import { readPetPackage, writePetPackage } from './pet-package.mjs';
 import { petGuide } from '../shared/pet-guide.mjs';
 import { atomicWrite, inside } from './store.mjs';
 
-const readPetFile=(file,encoding)=>readFileBounded(file,typeof file==='string'&&/\.json$/i.test(file)?256*1024:/\.(moye-pet|zip)$/i.test(file)?80*1024*1024:10*1024*1024,encoding);
+const readPetFile=(file,encoding)=>readFileBounded(file,typeof file==='string'&&/\.json$/i.test(file)?256*1024:/\.(pinwheel-pet|moye-pet|zip)$/i.test(file)?80*1024*1024:10*1024*1024,encoding);
 
 export function desktopPets({ config, persist, dataRoot, appRoot, mainWindow, dispatch }) {
   let window, timer, syncing = false, disposed = false, drag, menu;
@@ -49,7 +49,7 @@ export function desktopPets({ config, persist, dataRoot, appRoot, mainWindow, di
     petWindow.on('moved', () => { if (syncing || disposed || petWindow.isDestroyed()) return; const [x, y] = petWindow.getPosition(); state().position = { x, y }; clearTimeout(timer); timer = setTimeout(() => void persist().catch(console.error), 300); });
     petWindow.on('closed', () => { if (window === petWindow) window = undefined; drag = null; });
     await petWindow.loadFile(path.join(appRoot, 'dist', 'index.html'), { query: { pet: '1' } });
-    if (!petWindow.isDestroyed() && !process.env.MOYE_HEADLESS) petWindow.showInactive();
+    if (!petWindow.isDestroyed() && !process.env.PINWHEEL_HEADLESS) petWindow.showInactive();
   };
   const save = async () => { await persist(); await sync(); notify(); return state(); };
   const storeImages = async images => {
@@ -142,11 +142,11 @@ export function desktopPets({ config, persist, dataRoot, appRoot, mainWindow, di
       if (name === 'petExport' || name === 'petTemplate') {
         const item = name === 'petTemplate' ? { name: '我的伙伴', kind: 'cat', color: '#a899ed' } : s.items.find(p => p.id === a.id);
         if (!item) throw Error('宠物不存在。');
-        const chosen = await showSaveDialog({ title: '导出宠物包', defaultPath: item.name.replace(/[<>:"/\\|?*]/g, '-') + '.moye-pet', filters: [{ name: '风车笔记宠物包', extensions: ['moye-pet'] }] }); if (chosen.canceled) return null;
+        const chosen = await showSaveDialog({ title: '导出宠物包', defaultPath: item.name.replace(/[<>:"/\\|?*]/g, '-') + '.pinwheel-pet', filters: [{ name: '风车笔记宠物包', extensions: ['pinwheel-pet'] }] }); if (chosen.canceled) return null;
         const bytes = await writePetPackage(item, file => readPetFile(path.join(directory, file)), petGuide); await atomicWrite(chosen.filePath, bytes); return { path: chosen.filePath };
       }
       if (name === 'petImportPackage') {
-        const chosen = await showOpenDialog({ title: '导入宠物包', properties: ['openFile'], filters: [{ name: '风车笔记宠物包', extensions: ['moye-pet', 'zip'] }] }); if (chosen.canceled) return null;
+        const chosen = await showOpenDialog({ title: '导入宠物包', properties: ['openFile'], filters: [{ name: '风车笔记宠物包', extensions: ['pinwheel-pet', 'moye-pet', 'zip'] }] }); if (chosen.canceled) return null;
         if ((await fs.stat(chosen.filePaths[0])).size > 80 * 1024 * 1024) throw Error('宠物包不能超过 80 MB。'); return addImported(await readPetPackage(await readPetFile(chosen.filePaths[0]), inspect));
       }
       if (name === 'petImportFolder') {

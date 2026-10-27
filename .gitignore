@@ -19,3 +19,7 @@ Thumbs.db
 *.pem
 *.key
 **/.notebook/
+
+/SOURCE-MANIFEST.json
+__pycache__/
+*.pyc
